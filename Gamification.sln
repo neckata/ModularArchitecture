@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{A75C9908-B732-450A-B638-40C2A655D2B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebAPI", "WebAPI", "{C5EDD89E-71E7-4D12-9146-FA2EAF2D5CA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelUpload", "ExcelUpload\ExcelUpload.csproj", "{AFCC7F24-13DF-45FF-BC6D-DB7DBAF11A0B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExcelUpload", "ExcelUpload", "{DC94029C-FF8F-4D28-8BBD-D4B04D05423A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AFCC7F24-13DF-45FF-BC6D-DB7DBAF11A0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFCC7F24-13DF-45FF-BC6D-DB7DBAF11A0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFCC7F24-13DF-45FF-BC6D-DB7DBAF11A0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFCC7F24-13DF-45FF-BC6D-DB7DBAF11A0B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C5EDD89E-71E7-4D12-9146-FA2EAF2D5CA4} = {A75C9908-B732-450A-B638-40C2A655D2B7}
+		{AFCC7F24-13DF-45FF-BC6D-DB7DBAF11A0B} = {DC94029C-FF8F-4D28-8BBD-D4B04D05423A}
+		{DC94029C-FF8F-4D28-8BBD-D4B04D05423A} = {A75C9908-B732-450A-B638-40C2A655D2B7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {830FC9C8-3EF5-4F54-B531-23CC7BAA3D8B}
+	EndGlobalSection
+EndGlobal
