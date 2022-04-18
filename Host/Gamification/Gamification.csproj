@@ -9,8 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Modules\ExcelUpload\ExcelUpload\ExcelUpload.csproj" />
-    <ProjectReference Include="..\..\Modules\WebAPI\WebAPI\WebAPI.csproj" />
     <ProjectReference Include="..\..\Shared\Shared.Infrastructure\Shared.Infrastructure.csproj" />
   </ItemGroup>
 

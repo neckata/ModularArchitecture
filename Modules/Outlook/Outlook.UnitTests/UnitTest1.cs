@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace WebAPI.UnitTests
+namespace Outlook.UnitTests
 {
     public class Tests
     {
