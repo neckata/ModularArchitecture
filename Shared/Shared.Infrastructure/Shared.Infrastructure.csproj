@@ -5,15 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Middlewares\" />
     <Folder Include="Mappings\" />
-    <Folder Include="Interceptors\" />
     <Folder Include="Extensions\" />
     <Folder Include="EventLogging\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Utilities\" />
+    <Folder Include="Persistence\Migrations\" />
     <Folder Include="Validators\" />
-    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="10.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared.Core\Shared.Core.csproj" />
   </ItemGroup>
 
 </Project>

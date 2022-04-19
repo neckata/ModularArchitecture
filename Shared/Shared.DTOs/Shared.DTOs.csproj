@@ -5,11 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Identity\" />
-    <Folder Include="Mails\" />
+    <Folder Include="Identity\Users\" />
+    <Folder Include="Identity\Roles\" />
     <Folder Include="Events\" />
     <Folder Include="Connectors\" />
-    <Folder Include="ExtendedAttributes\" />
   </ItemGroup>
 
 </Project>
