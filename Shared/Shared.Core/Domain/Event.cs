@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using MediatR;
 
-namespace Shared.Core.Domain
+namespace Gamification.Shared.Core.Domain
 {
     public abstract class Event : Message, INotification
     {

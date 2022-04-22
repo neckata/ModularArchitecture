@@ -1,9 +1,13 @@
-﻿using System;
+using System;
 
-namespace Shared.DTOs.Identity.EventLogs
+namespace Gamification.Shared.DTOs.Identity.EventLogs
 {
     public class LogEventRequest
     {
+        public LogEventRequest()
+        {
+        }
+
         public string Event { get; set; }
 
         public string Description { get; set; }

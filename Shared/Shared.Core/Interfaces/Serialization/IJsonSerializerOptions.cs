@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace Shared.Core.Interfaces.Serialization
+namespace Gamification.Shared.Core.Interfaces.Serialization
 {
     public interface IJsonSerializerOptions
     {

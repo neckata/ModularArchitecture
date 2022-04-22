@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Shared.DTOs.Identity.Tokens
+﻿namespace Gamification.Shared.DTOs.Identity.Tokens
 {
-    public record TokenResponse(string Token, string RefreshToken, DateTime RefreshTokenExpiryTime);
+    public record TokenRequest(string Email, string Password);
 }

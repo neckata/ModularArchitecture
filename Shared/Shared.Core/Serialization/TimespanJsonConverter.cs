@@ -3,7 +3,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
-namespace Shared.Core.Serialization
+namespace Gamification.Shared.Core.Serialization
 {
     public class TimespanJsonConverter : JsonConverter<TimeSpan>
     {

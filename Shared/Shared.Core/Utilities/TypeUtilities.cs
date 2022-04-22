@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Shared.Core.Utilities
+namespace Gamification.Shared.Core.Utilities
 {
     public static class TypeUtilities
     {

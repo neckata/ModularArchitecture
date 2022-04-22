@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Shared.Core.Exceptions;
-using Shared.Core.Interfaces.Serialization;
-using Shared.Core.Serialization;
-using Shared.Core.Settings;
-using Shared.Core.Wrapper;
+using Gamification.Shared.Core.Exceptions;
+using Gamification.Shared.Core.Interfaces.Serialization;
+using Gamification.Shared.Core.Serialization;
+using Gamification.Shared.Core.Settings;
+using Gamification.Shared.Core.Wrapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Serialization;
 
-namespace Shared.Infrastructure.Middlewares
+namespace Gamification.Shared.Infrastructure.Middlewares
 {
     internal class GlobalExceptionHandler : IMiddleware
     {

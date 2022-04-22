@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Shared.Core.Domain;
+using Gamification.Shared.Core.Domain;
 
-namespace Shared.Core.EventLogging
+namespace Gamification.Shared.Core.EventLogging
 {
     public interface IEventLogger
     {

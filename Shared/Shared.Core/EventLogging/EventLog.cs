@@ -1,8 +1,8 @@
-﻿using Shared.Core.Domain;
-using Shared.Core.Entity;
-using System;
+﻿using System;
+using Gamification.Shared.Core.Contracts;
+using Gamification.Shared.Core.Domain;
 
-namespace Shared.Core.EventLogging
+namespace Gamification.Shared.Core.EventLogging
 {
     public class EventLog : Event, IEntity<Guid>
     {

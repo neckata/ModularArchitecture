@@ -1,13 +1,12 @@
-﻿using Shared.Core.Entity;
-using Shared.Core.EventLogging;
-using Shared.Core.Interfaces;
-using Shared.Core.Settings;
+﻿using Gamification.Shared.Core.Entities;
+using Gamification.Shared.Core.EventLogging;
+using Gamification.Shared.Core.Interfaces;
+using Gamification.Shared.Core.Settings;
+using Gamification.Shared.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Gamification.Bootstrapper")]
-namespace Shared.Infrastructure.Persistence
+namespace Gamification.Shared.Infrastructure.Persistence
 {
     internal class ApplicationDbContext : DbContext, IApplicationDbContext
     {
@@ -29,7 +28,9 @@ namespace Shared.Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasDefaultSchema(Schema);
             base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyApplicationConfiguration(_persistenceOptions);
         }
     }
 }

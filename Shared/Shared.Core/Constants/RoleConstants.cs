@@ -1,4 +1,4 @@
-﻿namespace Shared.Core.Constants
+﻿namespace Gamification.Shared.Core.Constants
 {
     public static class RoleConstants
     {

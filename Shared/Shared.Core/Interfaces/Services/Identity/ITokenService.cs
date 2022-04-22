@@ -1,8 +1,8 @@
-﻿using Shared.Core.Wrapper;
-using Shared.DTOs.Identity.Tokens;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Gamification.Shared.Core.Wrapper;
+using Gamification.Shared.DTOs.Identity.Tokens;
 
-namespace Shared.Core.Interfaces.Services.Identity
+namespace Gamification.Shared.Core.Interfaces.Services.Identity
 {
     public interface ITokenService
     {

@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace Shared.UnitTests
+namespace Gamification.UnitTests
 {
     public class Tests
     {

@@ -1,4 +1,4 @@
-﻿namespace Shared.Core.Interfaces.Serialization
+﻿namespace Gamification.Shared.Core.Interfaces.Serialization
 {
     public interface IJsonSerializerSettingsOptions : IJsonSerializerOptions, IJsonSerializerSettings
     {

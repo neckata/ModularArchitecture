@@ -1,7 +1,7 @@
-﻿using Shared.DTOs.Filters;
 using System;
+using Gamification.Shared.DTOs.Filters;
 
-namespace Shared.DTOs.Identity.EventLogs
+namespace Gamification.Shared.DTOs.Identity.EventLogs
 {
     public class PaginatedEventLogsFilter : PaginatedFilter
     {

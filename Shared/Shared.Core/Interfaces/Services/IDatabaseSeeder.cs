@@ -1,4 +1,4 @@
-﻿namespace Shared.Core.Interfaces.Services
+﻿namespace Gamification.Shared.Core.Interfaces.Services
 {
     public interface IDatabaseSeeder
     {

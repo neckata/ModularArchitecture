@@ -5,21 +5,21 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using Shared.Core.Domain;
-using Shared.Core.EventLogging;
-using Shared.Core.Exceptions;
-using Shared.Core.Extensions;
-using Shared.Core.IntegrationServices.Application;
-using Shared.Core.Interfaces;
-using Shared.Core.Interfaces.Services;
-using Shared.Core.Settings;
-using Shared.Infrastructure.Controllers;
-using Shared.Infrastructure.EventLogging;
-using Shared.Infrastructure.Interceptors;
-using Shared.Infrastructure.Middlewares;
-using Shared.Infrastructure.Persistence;
-using Shared.Infrastructure.Services;
-using Shared.Infrastructure.Swagger.Filters;
+using Gamification.Shared.Core.Domain;
+using Gamification.Shared.Core.EventLogging;
+using Gamification.Shared.Core.Exceptions;
+using Gamification.Shared.Core.Extensions;
+using Gamification.Shared.Core.IntegrationServices.Application;
+using Gamification.Shared.Core.Interfaces;
+using Gamification.Shared.Core.Interfaces.Services;
+using Gamification.Shared.Core.Settings;
+using Gamification.Shared.Infrastructure.Controllers;
+using Gamification.Shared.Infrastructure.EventLogging;
+using Gamification.Shared.Infrastructure.Interceptors;
+using Gamification.Shared.Infrastructure.Middlewares;
+using Gamification.Shared.Infrastructure.Persistence;
+using Gamification.Shared.Infrastructure.Services;
+using Gamification.Shared.Infrastructure.Swagger.Filters;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Hangfire;
@@ -30,10 +30,35 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Shared.Infrastructure.Extensions
+[assembly: InternalsVisibleTo("Gamification")]
+
+namespace Gamification.Shared.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtensions
     {
+        public static IServiceCollection AddExtendedAttributeDbContextsFromAssembly(this IServiceCollection services, Type implementationType, Assembly assembly)
+        {
+            var extendedAttributeTypes = assembly
+                .GetExportedTypes()
+                .Where(t => t.IsClass && !t.IsAbstract && t.BaseType?.IsGenericType == true)
+                .Select(t => new
+                {
+                    BaseGenericType = t.BaseType,
+                    CurrentType = t
+                })
+                .Where(t => t.BaseGenericType?.GetGenericTypeDefinition() == typeof(ExtendedAttribute<,>))
+                .ToList();
+
+            foreach (var extendedAttributeType in extendedAttributeTypes)
+            {
+                var extendedAttributeTypeGenericArguments = extendedAttributeType.BaseGenericType.GetGenericArguments().ToList();
+                var serviceType = typeof(IExtendedAttributeDbContext<,,>).MakeGenericType(extendedAttributeTypeGenericArguments[0], extendedAttributeTypeGenericArguments[1], extendedAttributeType.CurrentType);
+                services.AddScoped(serviceType, provider => provider.GetService(implementationType));
+            }
+
+            return services;
+        }
+
         internal static IServiceCollection AddSharedInfrastructure(this IServiceCollection services, IConfiguration config)
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
@@ -66,6 +91,7 @@ namespace Shared.Infrastructure.Extensions
                 options.ResourcesPath = "Resources";
             });
             services.AddRouting(options => options.LowercaseUrls = true);
+            services.AddHangfireServer();
             services.AddSingleton<GlobalExceptionHandler>();
             services.AddSwaggerDocumentation();
             services.AddCorsPolicy();
@@ -75,6 +101,7 @@ namespace Shared.Infrastructure.Extensions
 
         private static IServiceCollection AddApplicationLayer(this IServiceCollection services, IConfiguration config)
         {
+            services.AddScoped<IJobService, HangfireService>();
             services.AddTransient<IEventLogService, EventLogService>();
             services.AddTransient<IEntityReferenceService, EntityReferenceService>();
             return services;
@@ -169,10 +196,10 @@ namespace Shared.Infrastructure.Extensions
 
         private static void AddSwaggerDocs(this SwaggerGenOptions options)
         {
-            options.SwaggerDoc("v2", new OpenApiInfo
+            options.SwaggerDoc("v1", new OpenApiInfo
             {
-                Version = "v2",
-                Title = "API v2",
+                Version = "v1",
+                Title = "API v1",
                 License = new OpenApiLicense
                 {
                     Name = "MIT License",

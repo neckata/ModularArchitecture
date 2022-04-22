@@ -1,4 +1,4 @@
-﻿namespace Shared.Core.Settings
+namespace Gamification.Shared.Core.Settings
 {
     public class ApplicationSettings
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Shared.Core.Wrapper
+namespace Gamification.Shared.Core.Wrapper
 {
     public interface IResult
     {

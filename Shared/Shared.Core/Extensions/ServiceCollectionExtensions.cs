@@ -1,34 +1,32 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using Shared.Core.Behaviors;
-using Shared.Core.Domain;
-using Shared.Core.Features.Common.Queries.Validators;
-using Shared.Core.Features.ExtendedAttributes.Commands;
-using Shared.Core.Features.ExtendedAttributes.Commands.Validators;
-using Shared.Core.Features.ExtendedAttributes.Events;
-using Shared.Core.Features.ExtendedAttributes.Filters;
-using Shared.Core.Features.ExtendedAttributes.Queries;
-using Shared.Core.Features.ExtendedAttributes.Queries.Validators;
-using Shared.Core.Interfaces.Serialization;
-using Shared.Core.Serialization;
-using Shared.Core.Settings;
-using Shared.Core.Wrapper;
-using Shared.DTOs.ExtendedAttributes;
+using Gamification.Shared.Core.Behaviors;
+using Gamification.Shared.Core.Domain;
+using Gamification.Shared.Core.Features.Common.Queries.Validators;
+using Gamification.Shared.Core.Features.ExtendedAttributes.Commands;
+using Gamification.Shared.Core.Features.ExtendedAttributes.Commands.Validators;
+using Gamification.Shared.Core.Features.ExtendedAttributes.Events;
+using Gamification.Shared.Core.Features.ExtendedAttributes.Filters;
+using Gamification.Shared.Core.Features.ExtendedAttributes.Queries;
+using Gamification.Shared.Core.Features.ExtendedAttributes.Queries.Validators;
+using Gamification.Shared.Core.Interfaces.Serialization;
+using Gamification.Shared.Core.Serialization;
+using Gamification.Shared.Core.Settings;
+using Gamification.Shared.Core.Wrapper;
+using Gamification.Shared.DTOs.ExtendedAttributes;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Shared.Core.Extensions
+namespace Gamification.Shared.Core.Extensions
 {
     public static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddSharedApplication(this IServiceCollection services, IConfiguration config)
         {
-            services.Configure<CacheSettings>(config.GetSection(nameof(CacheSettings)));
             services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             return services;
         }

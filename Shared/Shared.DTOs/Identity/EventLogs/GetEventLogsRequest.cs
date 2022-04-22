@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shared.DTOs.Identity.EventLogs
+namespace Gamification.Shared.DTOs.Identity.EventLogs
 {
     public class GetEventLogsRequest
     {

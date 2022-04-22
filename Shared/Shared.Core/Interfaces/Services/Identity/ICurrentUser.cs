@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
 
-namespace Shared.Core.Interfaces.Services.Identity
+namespace Gamification.Shared.Core.Interfaces.Services.Identity
 {
     public interface ICurrentUser
     {
@@ -17,5 +18,7 @@ namespace Shared.Core.Interfaces.Services.Identity
         bool IsInRole(string role);
 
         IEnumerable<Claim> GetUserClaims();
+
+        HttpContext GetHttpContext();
     }
 }

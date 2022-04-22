@@ -1,19 +1,17 @@
-﻿using System.ComponentModel;
+﻿// --------------------------------------------------------------------------------------------------
+// <copyright file="Permissions.cs" company="FluentPOS">
+// Copyright (c) FluentPOS. All rights reserved.
+// The core team: Mukesh Murugan (iammukeshm), Chhin Sras (chhinsras), Nikolay Chebotov (unchase).
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
+// --------------------------------------------------------------------------------------------------
 
-namespace Shared.Core.Constants
+using System.ComponentModel;
+
+namespace Gamification.Shared.Core.Constants
 {
     public static class Permissions
     {
-        [DisplayName("Users")]
-        [Description("Users Permissions")]
-        public static class Users
-        {
-            public const string View = "Permissions.Users.View";
-            public const string Create = "Permissions.Users.Create";
-            public const string Edit = "Permissions.Users.Edit";
-            public const string Delete = "Permissions.Users.Delete";
-        }
-
         [DisplayName("Roles")]
         [Description("Roles Permissions")]
         public static class Roles

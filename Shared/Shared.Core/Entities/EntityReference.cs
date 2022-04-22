@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace Shared.Core.Entity
+namespace Gamification.Shared.Core.Entities
 {
     public class EntityReference
     {

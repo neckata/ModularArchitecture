@@ -1,8 +1,6 @@
-﻿using Shared.Core.Interfaces;
-
-namespace ExcelUpload.Infrastructure.Services
+﻿namespace ExcelUpload.Infrastructure.Services
 {
-    public class ExcelUploadService : IConnectorService
+    public class ExcelUploadService 
     {
     }
 }

@@ -2,7 +2,7 @@
 using System.Net;
 using Microsoft.Extensions.Localization;
 
-namespace Shared.Core.Exceptions
+namespace Gamification.Shared.Core.Exceptions
 {
     public class CustomValidationException : CustomException
     {

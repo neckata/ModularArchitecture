@@ -1,12 +1,12 @@
 ﻿using System.Linq;
-using Shared.Core.Exceptions;
+using Gamification.Shared.Core.Exceptions;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 
-namespace Shared.Infrastructure.Interceptors
+namespace Gamification.Shared.Infrastructure.Interceptors
 {
     public class ValidatorInterceptor : IValidatorInterceptor
     {

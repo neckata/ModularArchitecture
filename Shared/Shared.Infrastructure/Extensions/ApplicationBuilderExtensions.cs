@@ -1,12 +1,16 @@
 ﻿using System.IO;
-using Shared.Core.Interfaces.Services;
-using Shared.Infrastructure.Middlewares;
+using System.Runtime.CompilerServices;
+using Gamification.Shared.Core.Interfaces.Services;
+using Gamification.Shared.Infrastructure.Middlewares;
+using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
-namespace Shared.Infrastructure.Extensions
+[assembly: InternalsVisibleTo("Gamification")]
+
+namespace Gamification.Shared.Infrastructure.Extensions
 {
     internal static class ApplicationBuilderExtensions
     {
@@ -29,6 +33,10 @@ namespace Shared.Infrastructure.Extensions
             app.UseCors("CorsPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseHangfireDashboard("/jobs", new DashboardOptions
+            {
+                DashboardTitle = "Jobs"
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
@@ -55,6 +63,7 @@ namespace Shared.Infrastructure.Extensions
 
         private static IApplicationBuilder UseSwaggerDocumentation(this IApplicationBuilder app)
         {
+            app.UseSwagger();
             app.UseSwaggerUI(options =>
             {
                 options.DefaultModelsExpandDepth(-1);
@@ -65,5 +74,5 @@ namespace Shared.Infrastructure.Extensions
             });
             return app;
         }
-    } 
+    }
 }

@@ -1,9 +1,10 @@
-﻿using Shared.Core.Extensions;
-using Shared.Core.Settings;
+﻿using Gamification.Shared.Core.Extensions;
+using Gamification.Shared.Core.Settings;
+using Hangfire;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Shared.Infrastructure.Persistence
+namespace Gamification.Shared.Infrastructure.Persistence
 {
     public static class ServiceCollectionExtensions
     {
@@ -21,6 +22,7 @@ namespace Shared.Infrastructure.Persistence
             where T : DbContext
         {
             services.AddDbContext<T>(m => m.UseSqlServer(connectionString, e => e.MigrationsAssembly(typeof(T).Assembly.FullName)));
+            services.AddHangfire(x => x.UseSqlServerStorage(connectionString));
             using var scope = services.BuildServiceProvider().CreateScope();
             var dbContext = scope.ServiceProvider.GetRequiredService<T>();
             dbContext.Database.Migrate();

@@ -1,8 +1,8 @@
-﻿using Shared.Core.EventLogging;
+﻿using Gamification.Shared.Core.Entities;
+using Gamification.Shared.Core.EventLogging;
 using Microsoft.EntityFrameworkCore;
-using Shared.Core.Entity;
 
-namespace Shared.Core.Interfaces
+namespace Gamification.Shared.Core.Interfaces
 {
     public interface IApplicationDbContext : IDbContext
     {
