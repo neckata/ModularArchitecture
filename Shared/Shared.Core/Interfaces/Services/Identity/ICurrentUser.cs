@@ -11,8 +11,6 @@ namespace Gamification.Shared.Core.Interfaces.Services.Identity
 
         Guid GetUserId();
 
-        string GetUserEmail();
-
         bool IsAuthenticated();
 
         bool IsInRole(string role);

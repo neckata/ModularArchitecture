@@ -19,10 +19,8 @@ using Gamification.Shared.Infrastructure.Interceptors;
 using Gamification.Shared.Infrastructure.Middlewares;
 using Gamification.Shared.Infrastructure.Persistence;
 using Gamification.Shared.Infrastructure.Services;
-using Gamification.Shared.Infrastructure.Swagger.Filters;
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using Hangfire;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -91,7 +89,6 @@ namespace Gamification.Shared.Infrastructure.Extensions
                 options.ResourcesPath = "Resources";
             });
             services.AddRouting(options => options.LowercaseUrls = true);
-            services.AddHangfireServer();
             services.AddSingleton<GlobalExceptionHandler>();
             services.AddSwaggerDocumentation();
             services.AddCorsPolicy();
@@ -101,7 +98,6 @@ namespace Gamification.Shared.Infrastructure.Extensions
 
         private static IServiceCollection AddApplicationLayer(this IServiceCollection services, IConfiguration config)
         {
-            services.AddScoped<IJobService, HangfireService>();
             services.AddTransient<IEventLogService, EventLogService>();
             services.AddTransient<IEntityReferenceService, EntityReferenceService>();
             return services;
@@ -133,9 +129,6 @@ namespace Gamification.Shared.Infrastructure.Extensions
 
                 options.AddSwaggerDocs();
 
-                options.OperationFilter<RemoveVersionFromParameterFilter>();
-                options.DocumentFilter<ReplaceVersionWithExactValueInPathFilter>();
-                options.OperationFilter<SwaggerExcludeFilter>();
                 options.DocInclusionPredicate((version, desc) =>
                 {
                     if (!desc.TryGetMethodInfo(out var methodInfo))

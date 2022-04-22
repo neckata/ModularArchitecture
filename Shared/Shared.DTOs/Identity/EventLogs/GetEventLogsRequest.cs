@@ -14,8 +14,6 @@ namespace Gamification.Shared.DTOs.Identity.EventLogs
 
         public Guid UserId { get; set; }
 
-        public string? Email { get; set; }
-
         public string? MessageType { get; set; }
     }
 }

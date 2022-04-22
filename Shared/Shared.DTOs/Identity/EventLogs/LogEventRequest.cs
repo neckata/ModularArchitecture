@@ -8,8 +8,6 @@ namespace Gamification.Shared.DTOs.Identity.EventLogs
 
         public string Description { get; set; }
 
-        public string Email { get; set; }
-
         public Guid UserId { get; set; }
     }
 }

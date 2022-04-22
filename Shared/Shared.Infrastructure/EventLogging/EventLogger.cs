@@ -35,18 +35,11 @@ namespace Gamification.Shared.Infrastructure.EventLogging
             {
                 string serializedData = _jsonSerializer.Serialize(@event, @event.GetType());
 
-                string userEmail = _user.GetUserEmail();
-                if (string.IsNullOrWhiteSpace(userEmail))
-                {
-                    userEmail = "Anonymous";
-                }
-
                 var userId = _user.GetUserId();
                 var thisEvent = new EventLog(
                     @event,
                     serializedData,
                     changes,
-                    userEmail,
                     userId);
                 await _context.EventLogs.AddAsync(thisEvent);
                 await _context.SaveChangesAsync();

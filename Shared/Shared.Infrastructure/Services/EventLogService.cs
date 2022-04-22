@@ -45,11 +45,6 @@ namespace Gamification.Shared.Infrastructure.Services
                 queryable = queryable.Where(x => x.UserId.Equals(request.UserId));
             }
 
-            if (!string.IsNullOrWhiteSpace(request.Email))
-            {
-                queryable = queryable.Where(x => EF.Functions.Like(x.Email.ToLower(), $"%{request.Email.ToLower()}%"));
-            }
-
             if (!string.IsNullOrWhiteSpace(request.MessageType))
             {
                 queryable = queryable.Where(x => EF.Functions.Like(x.MessageType.ToLower(), $"%{request.MessageType.ToLower()}%"));
