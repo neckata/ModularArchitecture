@@ -36,11 +36,7 @@ namespace Gamification.Shared.Infrastructure.EventLogging
                 string serializedData = _jsonSerializer.Serialize(@event, @event.GetType());
 
                 var userId = _user.GetUserId();
-                var thisEvent = new EventLog(
-                    @event,
-                    serializedData,
-                    changes,
-                    userId);
+                var thisEvent = new EventLog(@event, serializedData, changes, userId);
                 await _context.EventLogs.AddAsync(thisEvent);
                 await _context.SaveChangesAsync();
             }

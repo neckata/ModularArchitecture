@@ -8,8 +8,6 @@ namespace Gamification.Shared.Infrastructure.Extensions
     {
         public static void ApplyApplicationConfiguration(this ModelBuilder builder, PersistenceSettings persistenceOptions)
         {
-            // build model for MSSQL
-
             if (persistenceOptions.UseMsSql)
             {
                 foreach (var property in builder.Model.GetEntityTypes()

@@ -23,4 +23,8 @@ namespace Gamification.Shared.Core.Mappings.Converters
 
         public string Convert(string[] orderBy, ResolutionContext context = null) => orderBy?.Any() == true ? string.Join(",", orderBy) : null;
     }
+
+    //Example
+    //CreateMap<PaginatedEventLogsFilter, GetEventLogsRequest>()
+    //            .ForMember(dest => dest.OrderBy, opt => opt.ConvertUsing<string>(new OrderByConverter()));
 }

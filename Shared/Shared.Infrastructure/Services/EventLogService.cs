@@ -36,42 +36,6 @@ namespace Gamification.Shared.Infrastructure.Services
             _logger = logger;
         }
 
-        public async Task<PaginatedResult<EventLog>> GetAllAsync(GetEventLogsRequest request)
-        {
-            var queryable = _dbContext.EventLogs.AsNoTracking().AsQueryable();
-
-            if (request.UserId != Guid.Empty)
-            {
-                queryable = queryable.Where(x => x.UserId.Equals(request.UserId));
-            }
-
-            if (!string.IsNullOrWhiteSpace(request.MessageType))
-            {
-                queryable = queryable.Where(x => EF.Functions.Like(x.MessageType.ToLower(), $"%{request.MessageType.ToLower()}%"));
-            }
-
-            string ordering = new OrderByConverter().Convert(request.OrderBy);
-            queryable = !string.IsNullOrWhiteSpace(ordering) ? queryable.OrderBy(ordering) : queryable.OrderByDescending(a => a.Timestamp);
-
-            if (!string.IsNullOrEmpty(request.SearchString))
-            {
-                string lowerSearchString = request.SearchString.ToLower();
-                queryable = queryable.Where(x => (!string.IsNullOrWhiteSpace(x.Data) && EF.Functions.Like(x.Data.ToLower(), $"%{lowerSearchString}%"))
-                                                 || (!string.IsNullOrWhiteSpace(x.OldValues) && EF.Functions.Like(x.OldValues.ToLower(), $"%{lowerSearchString}%"))
-                                                 || (!string.IsNullOrWhiteSpace(x.NewValues) && EF.Functions.Like(x.NewValues.ToLower(), $"%{lowerSearchString}%"))
-                                                 || EF.Functions.Like(x.Id.ToString().ToLower(), $"%{lowerSearchString}%"));
-            }
-
-            var eventLogList = await queryable
-                .ToPaginatedListAsync(request.PageNumber, request.PageSize);
-            if (eventLogList == null)
-            {
-                throw new CustomException(_localizer["Event Logs Not Found!"], statusCode: HttpStatusCode.NotFound);
-            }
-
-            return eventLogList;
-        }
-
         public async Task<Result<string>> LogCustomEventAsync(LogEventRequest request)
         {
             var log = _mapper.Map<EventLog>(request);

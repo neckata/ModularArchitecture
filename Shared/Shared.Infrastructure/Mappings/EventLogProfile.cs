@@ -9,8 +9,6 @@ namespace Gamification.Shared.Infrastructure.Mappings
     {
         public EventLogProfile()
         {
-            CreateMap<PaginatedEventLogsFilter, GetEventLogsRequest>()
-                .ForMember(dest => dest.OrderBy, opt => opt.ConvertUsing<string>(new OrderByConverter()));
             CreateMap<LogEventRequest, EventLog>().ReverseMap();
         }
     }
