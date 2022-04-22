@@ -28,25 +28,19 @@ namespace Gamification.Shared.Core.Features.ExtendedAttributes.Events
             _localizer = localizer;
         }
 
-#pragma warning disable RCS1046 // Asynchronous method name should end with 'Async'.
         public Task Handle(ExtendedAttributeAddedEvent<TEntityId, TEntity> notification, CancellationToken cancellationToken)
-#pragma warning restore RCS1046 // Asynchronous method name should end with 'Async'.
         {
             _logger.LogInformation(_localizer[$"{nameof(ExtendedAttributeAddedEvent<TEntityId, TEntity>)} For {typeof(TEntity).GetGenericTypeName()} Raised."]);
             return Task.CompletedTask;
         }
 
-#pragma warning disable RCS1046 // Asynchronous method name should end with 'Async'.
         public Task Handle(ExtendedAttributeUpdatedEvent<TEntityId, TEntity> notification, CancellationToken cancellationToken)
-#pragma warning restore RCS1046 // Asynchronous method name should end with 'Async'.
         {
             _logger.LogInformation(_localizer[$"{nameof(ExtendedAttributeUpdatedEvent<TEntityId, TEntity>)} For {typeof(TEntity).GetGenericTypeName()} Raised."]);
             return Task.CompletedTask;
         }
 
-#pragma warning disable RCS1046 // Asynchronous method name should end with 'Async'.
         public Task Handle(ExtendedAttributeRemovedEvent<TEntity> notification, CancellationToken cancellationToken)
-#pragma warning restore RCS1046 // Asynchronous method name should end with 'Async'.
         {
             _logger.LogInformation(_localizer[$"{nameof(ExtendedAttributeRemovedEvent<TEntity>)} For {typeof(TEntity).GetGenericTypeName()} Raised. {notification.Id} Removed."]);
             return Task.CompletedTask;

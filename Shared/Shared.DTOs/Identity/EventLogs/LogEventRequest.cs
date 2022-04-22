@@ -4,10 +4,6 @@ namespace Gamification.Shared.DTOs.Identity.EventLogs
 {
     public class LogEventRequest
     {
-        public LogEventRequest()
-        {
-        }
-
         public string Event { get; set; }
 
         public string Description { get; set; }
