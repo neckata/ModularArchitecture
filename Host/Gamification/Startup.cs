@@ -19,12 +19,8 @@ namespace Gamification
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddDistributedMemoryCache()
                 .AddSerialization(_config)
-                .AddSharedInfrastructure(_config)
-                .AddSharedApplication(_config);
-
-            //TODO here add modules
+                .AddSharedInfrastructure(_config);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

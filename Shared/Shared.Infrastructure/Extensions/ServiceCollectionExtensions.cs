@@ -13,7 +13,6 @@ using Gamification.Shared.Core.IntegrationServices.Application;
 using Gamification.Shared.Core.Interfaces;
 using Gamification.Shared.Core.Interfaces.Services;
 using Gamification.Shared.Core.Settings;
-using Gamification.Shared.Infrastructure.Controllers;
 using Gamification.Shared.Infrastructure.EventLogging;
 using Gamification.Shared.Infrastructure.Interceptors;
 using Gamification.Shared.Infrastructure.Middlewares;
@@ -34,29 +33,6 @@ namespace Gamification.Shared.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddExtendedAttributeDbContextsFromAssembly(this IServiceCollection services, Type implementationType, Assembly assembly)
-        {
-            var extendedAttributeTypes = assembly
-                .GetExportedTypes()
-                .Where(t => t.IsClass && !t.IsAbstract && t.BaseType?.IsGenericType == true)
-                .Select(t => new
-                {
-                    BaseGenericType = t.BaseType,
-                    CurrentType = t
-                })
-                .Where(t => t.BaseGenericType?.GetGenericTypeDefinition() == typeof(ExtendedAttribute<,>))
-                .ToList();
-
-            foreach (var extendedAttributeType in extendedAttributeTypes)
-            {
-                var extendedAttributeTypeGenericArguments = extendedAttributeType.BaseGenericType.GetGenericArguments().ToList();
-                var serviceType = typeof(IExtendedAttributeDbContext<,,>).MakeGenericType(extendedAttributeTypeGenericArguments[0], extendedAttributeTypeGenericArguments[1], extendedAttributeType.CurrentType);
-                services.AddScoped(serviceType, provider => provider.GetService(implementationType));
-            }
-
-            return services;
-        }
-
         internal static IServiceCollection AddSharedInfrastructure(this IServiceCollection services, IConfiguration config)
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
@@ -72,27 +48,15 @@ namespace Gamification.Shared.Infrastructure.Extensions
                 o.AssumeDefaultVersionWhenUnspecified = true;
                 o.DefaultApiVersion = new ApiVersion(1, 0);
             });
-            services.AddControllers()
-                .ConfigureApplicationPartManager(manager =>
-                {
-                    manager.FeatureProviders.Add(new InternalControllerFeatureProvider());
-                })
-                .AddMvcOptions(options =>
-                {
-                    options.ModelBindingMessageProvider.SetAttemptedValueIsInvalidAccessor((value, propertyName) =>
-                        throw new CustomException($"{propertyName}: value '{value}' is invalid.", statusCode: HttpStatusCode.BadRequest));
-                });
+            services.AddControllers();
             services.AddTransient<IValidatorInterceptor, ValidatorInterceptor>();
             services.AddApplicationLayer(config);
-            services.AddLocalization(options =>
-            {
-                options.ResourcesPath = "Resources";
-            });
             services.AddRouting(options => options.LowercaseUrls = true);
             services.AddSingleton<GlobalExceptionHandler>();
             services.AddSwaggerDocumentation();
             services.AddCorsPolicy();
             services.AddApplicationSettings(config);
+
             return services;
         }
 

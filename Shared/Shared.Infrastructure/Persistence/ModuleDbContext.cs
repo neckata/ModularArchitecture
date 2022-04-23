@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Gamification.Shared.Core.Contracts;
 using Gamification.Shared.Core.Domain;
 using Gamification.Shared.Core.EventLogging;
 using Gamification.Shared.Core.Interfaces;
 using Gamification.Shared.Core.Interfaces.Serialization;
 using Gamification.Shared.Core.Settings;
+using Gamification.Shared.Core.Utilities;
 using Gamification.Shared.Infrastructure.Extensions;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Options;
@@ -16,7 +18,6 @@ namespace Gamification.Shared.Infrastructure.Persistence
 {
     public abstract class ModuleDbContext : DbContext, IModuleDbContext
     {
-        private readonly IMediator _mediator;
         private readonly IEventLogger _eventLogger;
         private readonly PersistenceSettings _persistenceOptions;
         private readonly IJsonSerializer _json;
@@ -25,13 +26,11 @@ namespace Gamification.Shared.Infrastructure.Persistence
 
         protected ModuleDbContext(
             DbContextOptions options,
-            IMediator mediator,
             IEventLogger eventLogger,
             IOptions<PersistenceSettings> persistenceOptions,
             IJsonSerializer json)
                 : base(options)
         {
-            _mediator = mediator;
             _eventLogger = eventLogger;
             _persistenceOptions = persistenceOptions.Value;
             _json = json;
@@ -50,10 +49,41 @@ namespace Gamification.Shared.Infrastructure.Persistence
             modelBuilder.ApplyModuleConfiguration(_persistenceOptions);
         }
 
+
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             var changes = OnBeforeSaveChanges();
-            return await this.SaveChangeWithPublishEventsAsync(_eventLogger, _mediator, changes, _json, cancellationToken);
+            var domainEntities = this.ChangeTracker
+                  .Entries<IBaseEntity>()
+                  .Where(x => x.Entity.DomainEvents != null && x.Entity.DomainEvents.Any())
+                  .ToList();
+
+            var domainEvents = domainEntities
+                .SelectMany(x => x.Entity.DomainEvents)
+                .ToList();
+
+            domainEntities.ToList()
+                .ForEach(entity => entity.Entity.ClearDomainEvents());
+
+            var tasks = domainEvents
+                .Select(async (domainEvent) =>
+                {
+                    var relatedEntriesChanges = changes.Where(x => domainEvent.RelatedEntities.Any(t => t == x.entityEntry.Entity.GetType())).ToList();
+                    if (relatedEntriesChanges.Any())
+                    {
+                        var oldValues = relatedEntriesChanges.ToDictionary(x => x.entityEntry.Entity.GetType().GetGenericTypeName(), y => y.oldValues);
+                        var newValues = relatedEntriesChanges.ToDictionary(x => x.entityEntry.Entity.GetType().GetGenericTypeName(), y => y.newValues);
+                        var relatedChanges = (oldValues.Count == 0 ? null : _json.Serialize(oldValues), newValues.Count == 0 ? null : _json.Serialize(newValues));
+                        await _eventLogger.SaveAsync(domainEvent, relatedChanges);
+                    }
+                    else
+                    {
+                        await _eventLogger.SaveAsync(domainEvent, (null, null));
+                    }
+                });
+            await Task.WhenAll(tasks);
+
+            return await SaveChangesAsync(true, cancellationToken);
         }
 
         private List<(EntityEntry entityEntry, string oldValues, string newValues)> OnBeforeSaveChanges()
@@ -101,17 +131,6 @@ namespace Gamification.Shared.Infrastructure.Persistence
             }
 
             return result;
-        }
-
-        public override int SaveChanges()
-        {
-            var changes = OnBeforeSaveChanges();
-            return this.SaveChangeWithPublishEvents(_eventLogger, _mediator, changes, _json);
-        }
-
-        public override int SaveChanges(bool acceptAllChangesOnSuccess)
-        {
-            return SaveChanges();
         }
     }
 }

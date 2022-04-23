@@ -39,7 +39,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gamification", "Host\Gamifi
 		{2B69FF4B-38F8-42B2-929D-F867CF8E124F} = {2B69FF4B-38F8-42B2-929D-F867CF8E124F}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.UnitTests", "Shared\Shared.UnitTests\Shared.UnitTests.csproj", "{017E6940-1353-45AE-8900-B15C6C3EC7F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.UnitTests", "Shared\Shared.UnitTests\Shared.UnitTests.csproj", "{017E6940-1353-45AE-8900-B15C6C3EC7F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

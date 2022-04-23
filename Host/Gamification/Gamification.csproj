@@ -9,10 +9,18 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Shared.Infrastructure\Shared.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\ExcelUpload\Controllers\" />
+    <Folder Include="Areas\ExcelUpload\Views\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Areas\" />
   </ItemGroup>
 
 </Project>

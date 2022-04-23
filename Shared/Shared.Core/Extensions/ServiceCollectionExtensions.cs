@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using Gamification.Shared.Core.Behaviors;
 using Gamification.Shared.Core.Domain;
 using Gamification.Shared.Core.Features.Common.Queries.Validators;
-using Gamification.Shared.Core.Features.ExtendedAttributes.Commands;
-using Gamification.Shared.Core.Features.ExtendedAttributes.Filters;
-using Gamification.Shared.Core.Features.ExtendedAttributes.Queries;
 using Gamification.Shared.Core.Interfaces.Serialization;
 using Gamification.Shared.Core.Serialization;
 using Gamification.Shared.Core.Settings;
 using Gamification.Shared.Core.Wrapper;
 using Gamification.Shared.DTOs.ExtendedAttributes;
-using FluentValidation;
-using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,13 +15,6 @@ namespace Gamification.Shared.Core.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddSharedApplication(this IServiceCollection services, IConfiguration config)
-        {
-            services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-            return services;
-        }
-
         public static IServiceCollection AddSerialization(this IServiceCollection services, IConfiguration config)
         {
             services.Configure<SerializationSettings>(config.GetSection(nameof(SerializationSettings)));
