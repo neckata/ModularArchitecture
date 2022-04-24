@@ -2,12 +2,10 @@
 using System.Linq;
 using System.Reflection;
 using Gamification.Shared.Core.Domain;
-using Gamification.Shared.Core.Features.Common.Queries.Validators;
 using Gamification.Shared.Core.Interfaces.Serialization;
 using Gamification.Shared.Core.Serialization;
 using Gamification.Shared.Core.Settings;
 using Gamification.Shared.Core.Wrapper;
-using Gamification.Shared.DTOs.ExtendedAttributes;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

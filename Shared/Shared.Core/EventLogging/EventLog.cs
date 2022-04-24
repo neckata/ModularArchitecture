@@ -18,10 +18,6 @@ namespace Gamification.Shared.Core.EventLogging
             EventDescription = theEvent.EventDescription;
         }
 
-        protected EventLog()
-        {
-        }
-
         public Guid Id { get; set; }
 
         public string Data { get; private set; }

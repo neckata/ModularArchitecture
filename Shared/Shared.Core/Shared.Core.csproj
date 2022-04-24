@@ -47,7 +47,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="IntegrationServices\Events\" />
     <Folder Include="IntegrationServices\Connectors\" />
   </ItemGroup>
 
