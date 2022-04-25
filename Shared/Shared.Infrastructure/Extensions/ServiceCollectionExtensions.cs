@@ -192,8 +192,6 @@ namespace Gamification.Shared.Infrastructure.Extensions
                 .AddScoped<ICurrentUser, CurrentUser>()
                 .Configure<JwtSettings>(configuration.GetSection("JwtSettings"))
                 .AddTransient<ITokenService, TokenService>()
-                //.AddDatabaseContext<IdentityDbContext>()
-                //.AddScoped<IIdentityDbContext>(provider => provider.GetService<IdentityDbContext>())
                 .AddIdentity<User, Role>(options =>
                 {
                     options.Password.RequiredLength = 6;

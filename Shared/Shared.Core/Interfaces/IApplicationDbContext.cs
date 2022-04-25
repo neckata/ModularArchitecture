@@ -8,10 +8,10 @@ namespace Gamification.Shared.Core.Interfaces
     {
         public DbSet<EventLog> EventLogs { get; set; }
 
-        //public DbSet<User> Roles { get; set; }
+        public DbSet<User> Users { get; set; }
 
-        //public DbSet<Role> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
-        //public DbSet<RoleClaim> RoleClaims { get; set; }
+        public DbSet<RoleClaim> RoleClaims { get; set; }
     }
 }

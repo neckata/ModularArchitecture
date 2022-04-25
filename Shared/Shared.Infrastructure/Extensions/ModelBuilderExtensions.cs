@@ -19,25 +19,25 @@ namespace Gamification.Shared.Infrastructure.Extensions
                 }
             }
 
-            //builder.Entity<User>(entity =>
-            //{
-            //    entity.ToTable(name: "Users");
-            //});
+            builder.Entity<User>(entity =>
+            {
+                entity.ToTable(name: "Users");
+            });
 
-            //builder.Entity<Role>(entity =>
-            //{
-            //    entity.ToTable(name: "Roles");
-            //});
+            builder.Entity<Role>(entity =>
+            {
+                entity.ToTable(name: "Roles");
+            });
 
-            //builder.Entity<RoleClaim>(entity =>
-            //{
-            //    entity.ToTable(name: "RoleClaims");
+            builder.Entity<RoleClaim>(entity =>
+            {
+                entity.ToTable(name: "RoleClaims");
 
-            //    entity.HasOne(d => d.Role)
-            //        .WithMany(p => p.RoleClaims)
-            //        .HasForeignKey(d => d.RoleId)
-            //        .OnDelete(DeleteBehavior.Cascade);
-            //});
+                entity.HasOne(d => d.Role)
+                    .WithMany(p => p.RoleClaims)
+                    .HasForeignKey(d => d.RoleId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
         }
 
         public static void ApplyModuleConfiguration(this ModelBuilder builder, PersistenceSettings persistenceOptions)
