@@ -8,8 +8,6 @@ using System.Runtime.CompilerServices;
 using Gamification.Shared.Core.Domain;
 using Gamification.Shared.Core.EventLogging;
 using Gamification.Shared.Core.Exceptions;
-using Gamification.Shared.Core.Extensions;
-using Gamification.Shared.Core.IntegrationServices.Application;
 using Gamification.Shared.Core.Interfaces;
 using Gamification.Shared.Core.Interfaces.Services;
 using Gamification.Shared.Core.Settings;
@@ -26,6 +24,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Gamification.Shared.Core.Interfaces.Services.Identity;
+using Gamification.Shared.Core.Extensions;
 
 [assembly: InternalsVisibleTo("Gamification")]
 
@@ -63,7 +63,6 @@ namespace Gamification.Shared.Infrastructure.Extensions
         private static IServiceCollection AddApplicationLayer(this IServiceCollection services, IConfiguration config)
         {
             services.AddTransient<IEventLogService, EventLogService>();
-            services.AddTransient<IEntityReferenceService, EntityReferenceService>();
             return services;
         }
 
@@ -182,5 +181,88 @@ namespace Gamification.Shared.Infrastructure.Extensions
                 });
             });
         }
+
+        //public static IServiceCollection AddIdentityInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        //{
+        //    services
+        //        .AddHttpContextAccessor()
+        //        .AddScoped<ICurrentUser, CurrentUser>()
+        //        .Configure<JwtSettings>(configuration.GetSection("JwtSettings"))
+        //        .AddTransient<ITokenService, TokenService>()
+        //        .AddTransient<IIdentityService, IdentityService>()
+        //        .AddTransient<IUserService, UserService>()
+        //        .AddTransient<IRoleService, RoleService>()
+        //        .AddTransient<IRoleClaimService, RoleClaimService>()
+        //        .AddDatabaseContext<IdentityDbContext>()
+        //        .AddScoped<IIdentityDbContext>(provider => provider.GetService<IdentityDbContext>())
+        //        .AddIdentity<FluentUser, FluentRole>(options =>
+        //        {
+        //            options.Password.RequiredLength = 6;
+        //            options.Password.RequireDigit = false;
+        //            options.Password.RequireLowercase = false;
+        //            options.Password.RequireNonAlphanumeric = false;
+        //            options.Password.RequireUppercase = false;
+        //            options.User.RequireUniqueEmail = true;
+        //        })
+        //        .AddEntityFrameworkStores<IdentityDbContext>()
+        //        .AddDefaultTokenProviders();
+        //    services.AddExtendedAttributeDbContextsFromAssembly(typeof(IdentityDbContext), Assembly.GetAssembly(typeof(IIdentityDbContext)));
+        //    services.AddTransient<IDatabaseSeeder, IdentityDbSeeder>();
+        //    services.AddPermissions(configuration);
+        //    services.AddJwtAuthentication(configuration);
+        //    return services;
+        //}
+
+        //public static IServiceCollection AddPermissions(this IServiceCollection services, IConfiguration configuration)
+        //{
+        //    services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>()
+        //        .AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
+        //    return services;
+        //}
+
+        //internal static IServiceCollection AddJwtAuthentication(
+        //    this IServiceCollection services, IConfiguration config)
+        //{
+        //    var jwtSettings = services.GetOptions<JwtSettings>(nameof(JwtSettings));
+        //    byte[] key = Encoding.ASCII.GetBytes(jwtSettings.Key);
+        //    services
+        //        .AddAuthentication(authentication =>
+        //        {
+        //            authentication.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        //            authentication.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        //        })
+        //        .AddJwtBearer(bearer =>
+        //        {
+        //            bearer.RequireHttpsMetadata = false;
+        //            bearer.SaveToken = true;
+        //            bearer.TokenValidationParameters = new TokenValidationParameters
+        //            {
+        //                ValidateIssuerSigningKey = true,
+        //                IssuerSigningKey = new SymmetricSecurityKey(key),
+        //                ValidateIssuer = false,
+        //                ValidateAudience = false,
+        //                RoleClaimType = ClaimTypes.Role,
+        //                ClockSkew = TimeSpan.Zero
+        //            };
+        //            bearer.Events = new JwtBearerEvents
+        //            {
+        //                OnChallenge = context =>
+        //                {
+        //                    context.HandleResponse();
+        //                    if (!context.Response.HasStarted)
+        //                    {
+        //                        throw new IdentityException("You are not Authorized.", statusCode: HttpStatusCode.Unauthorized);
+        //                    }
+
+        //                    return Task.CompletedTask;
+        //                },
+        //                OnForbidden = context =>
+        //                {
+        //                    throw new IdentityException("You are not authorized to access this resource.", statusCode: HttpStatusCode.Forbidden);
+        //                },
+        //            };
+        //        });
+        //    return services;
+        //}
     }
 }

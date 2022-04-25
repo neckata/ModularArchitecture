@@ -24,8 +24,6 @@ namespace Gamification.Shared.Infrastructure.Persistence
 
         public DbSet<EventLog> EventLogs { get; set; }
 
-        public DbSet<EntityReference> EntityReferences { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema(Schema);

@@ -49,7 +49,6 @@ namespace Gamification.Shared.Infrastructure.Persistence
             modelBuilder.ApplyModuleConfiguration(_persistenceOptions);
         }
 
-
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             var changes = OnBeforeSaveChanges();
