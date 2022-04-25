@@ -2,7 +2,7 @@
 using Gamification.Shared.Core.Wrapper;
 using Gamification.Shared.DTOs.Identity.Tokens;
 
-namespace Gamification.Shared.Core.Interfaces.Services.Identity
+namespace Gamification.Shared.Core.Services.Identity
 {
     public interface ITokenService
     {

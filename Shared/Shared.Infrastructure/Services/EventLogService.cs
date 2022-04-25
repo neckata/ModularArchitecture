@@ -20,17 +20,14 @@ namespace Gamification.Shared.Infrastructure.Services
     {
         private readonly IEventLogger _logger;
         private readonly IApplicationDbContext _dbContext;
-        private readonly IStringLocalizer<EventLogService> _localizer;
         private readonly IMapper _mapper;
 
         public EventLogService(
             IApplicationDbContext dbContext,
-            IStringLocalizer<EventLogService> localizer,
             IMapper mapper,
             IEventLogger logger)
         {
             _dbContext = dbContext;
-            _localizer = localizer;
             _mapper = mapper;
             _logger = logger;
         }

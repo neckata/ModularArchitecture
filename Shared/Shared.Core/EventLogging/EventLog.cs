@@ -27,5 +27,10 @@ namespace Gamification.Shared.Core.EventLogging
         public string NewValues { get; private set; }
 
         public Guid UserId { get; private set; }
+
+        public EventLog()
+        {
+
+        }
     }
 }
