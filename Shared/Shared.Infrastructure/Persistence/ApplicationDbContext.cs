@@ -7,6 +7,8 @@ using Gamification.Shared.Core.Interfaces.Serialization;
 using Gamification.Shared.Core.Settings;
 using Gamification.Shared.Core.Utilities;
 using Gamification.Shared.Infrastructure.Extensions;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Options;
@@ -17,7 +19,8 @@ using System.Threading.Tasks;
 
 namespace Gamification.Shared.Infrastructure.Persistence
 {
-    internal class ApplicationDbContext : DbContext, IApplicationDbContext
+    internal class ApplicationDbContext : IdentityDbContext<User, Role, string, IdentityUserClaim<string>, IdentityUserRole<string>, IdentityUserLogin<string>, RoleClaim, IdentityUserToken<string>>, 
+        IApplicationDbContext
     {
         //private readonly IEventLogger _eventLogger;
         private readonly PersistenceSettings _persistenceOptions;
@@ -27,20 +30,20 @@ namespace Gamification.Shared.Infrastructure.Persistence
 
         public DbSet<EventLog> EventLogs { get; set; }
 
-        public DbSet<User> Users { get; set; }
+        //public DbSet<User> Users { get; set; }
 
-        public DbSet<Role> Roles { get; set; }
+        //public DbSet<Role> Roles { get; set; }
 
-        public DbSet<RoleClaim> RoleClaims { get; set; }
+        //public DbSet<RoleClaim> RoleClaims { get; set; }
 
         public ApplicationDbContext(
             DbContextOptions<ApplicationDbContext> options,
-           // IEventLogger eventLogger,
+            // IEventLogger eventLogger,
             IOptions<PersistenceSettings> persistenceOptions,
             IJsonSerializer json)
                 : base(options)
         {
-           // _eventLogger = eventLogger;
+            // _eventLogger = eventLogger;
             _persistenceOptions = persistenceOptions.Value;
             _json = json;
         }
@@ -81,11 +84,11 @@ namespace Gamification.Shared.Infrastructure.Persistence
                         var oldValues = relatedEntriesChanges.ToDictionary(x => x.entityEntry.Entity.GetType().GetGenericTypeName(), y => y.oldValues);
                         var newValues = relatedEntriesChanges.ToDictionary(x => x.entityEntry.Entity.GetType().GetGenericTypeName(), y => y.newValues);
                         var relatedChanges = (oldValues.Count == 0 ? null : _json.Serialize(oldValues), newValues.Count == 0 ? null : _json.Serialize(newValues));
-                       // await _eventLogger.SaveAsync(domainEvent, relatedChanges);
+                        // await _eventLogger.SaveAsync(domainEvent, relatedChanges);
                     }
                     else
                     {
-                      //  await _eventLogger.SaveAsync(domainEvent, (null, null));
+                        //  await _eventLogger.SaveAsync(domainEvent, (null, null));
                     }
                 });
             await Task.WhenAll(tasks);

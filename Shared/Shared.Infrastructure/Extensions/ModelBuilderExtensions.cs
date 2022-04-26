@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Gamification.Shared.Core.Entities;
 using Gamification.Shared.Core.Settings;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gamification.Shared.Infrastructure.Extensions
@@ -37,6 +38,15 @@ namespace Gamification.Shared.Infrastructure.Extensions
                     .WithMany(p => p.RoleClaims)
                     .HasForeignKey(d => d.RoleId)
                     .OnDelete(DeleteBehavior.Cascade);
+            });
+            builder.Entity<IdentityUserRole<string>>(entity =>
+            {
+                entity.ToTable("UserRoles");
+            });
+
+            builder.Entity<IdentityUserClaim<string>>(entity =>
+            {
+                entity.ToTable("UserClaims");
             });
         }
 

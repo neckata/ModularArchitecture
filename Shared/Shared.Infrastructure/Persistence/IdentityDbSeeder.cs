@@ -5,7 +5,6 @@ using Gamification.Shared.Core.Entities;
 using Gamification.Shared.Core.Interfaces;
 using Gamification.Shared.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Gamification.Shared.Infrastructure.Utilities;
 using System.Linq;
@@ -99,7 +98,7 @@ namespace Gamification.Shared.Infrastructure.Persistence
                     }
                 }
 
-                foreach (string permission in typeof(Shared.Core.Constants.Permissions).GetNestedClassesStaticStringValues())
+                foreach (string permission in typeof(Core.Constants.Permissions).GetNestedClassesStaticStringValues())
                 {
                     await _roleManager.AddPermissionClaimAsync(superAdminRoleInDb, permission);
                 }

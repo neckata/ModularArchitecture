@@ -10,13 +10,11 @@ using System.Threading.Tasks;
 using Gamification.Shared.Core.Entities;
 using Gamification.Shared.Core.Exceptions;
 using Gamification.Shared.Core.Interfaces.Services;
-using Gamification.Shared.Core.Interfaces.Services.Identity;
 using Gamification.Shared.Core.Services.Identity;
 using Gamification.Shared.Core.Settings;
 using Gamification.Shared.Core.Wrapper;
 using Gamification.Shared.DTOs.Identity.Tokens;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
