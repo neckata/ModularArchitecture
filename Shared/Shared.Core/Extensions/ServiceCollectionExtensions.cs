@@ -1,11 +1,7 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-using Gamification.Shared.Core.Domain;
+﻿using System.Linq;
 using Gamification.Shared.Core.Interfaces.Serialization;
 using Gamification.Shared.Core.Serialization;
 using Gamification.Shared.Core.Settings;
-using Gamification.Shared.Core.Wrapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

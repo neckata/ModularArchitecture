@@ -5,7 +5,6 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using Gamification.Shared.Core.Domain;
 using Gamification.Shared.Core.EventLogging;
 using Gamification.Shared.Core.Exceptions;
 using Gamification.Shared.Core.Interfaces;

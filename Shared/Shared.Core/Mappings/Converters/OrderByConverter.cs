@@ -4,9 +4,7 @@ using AutoMapper;
 
 namespace Gamification.Shared.Core.Mappings.Converters
 {
-    public class OrderByConverter :
-        IValueConverter<string, string[]>,
-        IValueConverter<string[], string>
+    public class OrderByConverter : IValueConverter<string, string[]>, IValueConverter<string[], string>
     {
         public string[] Convert(string orderBy, ResolutionContext context = null)
         {

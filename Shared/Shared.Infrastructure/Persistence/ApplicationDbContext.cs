@@ -30,15 +30,9 @@ namespace Gamification.Shared.Infrastructure.Persistence
 
         public DbSet<EventLog> EventLogs { get; set; }
 
-        //public DbSet<User> Users { get; set; }
-
-        //public DbSet<Role> Roles { get; set; }
-
-        //public DbSet<RoleClaim> RoleClaims { get; set; }
-
         public ApplicationDbContext(
             DbContextOptions<ApplicationDbContext> options,
-            // IEventLogger eventLogger,
+            //IEventLogger eventLogger,
             IOptions<PersistenceSettings> persistenceOptions,
             IJsonSerializer json)
                 : base(options)

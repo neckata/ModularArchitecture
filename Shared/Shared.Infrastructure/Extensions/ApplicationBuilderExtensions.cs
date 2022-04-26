@@ -1,10 +1,8 @@
-﻿using System.IO;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using Gamification.Shared.Core.Interfaces.Services;
 using Gamification.Shared.Infrastructure.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 [assembly: InternalsVisibleTo("Gamification")]
