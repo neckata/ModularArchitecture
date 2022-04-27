@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text.Json;
-using Shared.Core.Interfaces.Serialization;
+using Gamification.Shared.Core.Interfaces.Serialization;
 using Microsoft.Extensions.Options;
 
-namespace Shared.Core.Serialization
+namespace Gamification.Shared.Core.Serialization
 {
     public class SystemTextJsonSerializer : IJsonSerializer
     {

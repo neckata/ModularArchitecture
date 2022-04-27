@@ -1,14 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Shared.Core.Wrapper
+namespace Gamification.Shared.Core.Wrapper
 {
     public class Result : IResult
     {
-        public Result()
-        {
-        }
-
         public List<string> Messages { get; set; } = new();
 
         public bool Succeeded { get; set; }
@@ -85,10 +81,6 @@ namespace Shared.Core.Wrapper
 
     public class Result<T> : Result, IResult<T>
     {
-        public Result()
-        {
-        }
-
         public T Data { get; set; }
 
         public new static Result<T> Fail()

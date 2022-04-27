@@ -1,7 +1,7 @@
-﻿using Shared.Core.Utilities;
-using System;
+﻿using System;
+using Gamification.Shared.Core.Utilities;
 
-namespace Shared.Core.Domain
+namespace Gamification.Shared.Core.Domain
 {
     public abstract class Message
     {

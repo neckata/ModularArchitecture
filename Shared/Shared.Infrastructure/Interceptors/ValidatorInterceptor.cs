@@ -1,22 +1,14 @@
 ﻿using System.Linq;
-using Shared.Core.Exceptions;
+using Gamification.Shared.Core.Exceptions;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Localization;
 
-namespace Shared.Infrastructure.Interceptors
+namespace Gamification.Shared.Infrastructure.Interceptors
 {
     public class ValidatorInterceptor : IValidatorInterceptor
     {
-        private readonly IStringLocalizer<ValidatorInterceptor> _localizer;
-
-        public ValidatorInterceptor(IStringLocalizer<ValidatorInterceptor> localizer)
-        {
-            _localizer = localizer;
-        }
-
         public IValidationContext BeforeAspNetValidation(ActionContext actionContext, IValidationContext commonContext)
         {
             return commonContext;
@@ -29,7 +21,7 @@ namespace Shared.Infrastructure.Interceptors
             if (failures.Count != 0)
             {
                 var errorMessages = failures.Select(a => a.ErrorMessage).Distinct().ToList();
-                throw new CustomValidationException(_localizer, errorMessages);
+                throw new CustomValidationException(errorMessages);
             }
 
             return result;

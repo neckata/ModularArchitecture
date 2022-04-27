@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using MediatR;
 
-namespace Shared.Core.Domain
+namespace Gamification.Shared.Core.Domain
 {
-    public abstract class Event : Message, INotification
+    public abstract class Event : Message
     {
         [NotMapped]
         [Newtonsoft.Json.JsonIgnore]

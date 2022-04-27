@@ -1,17 +1,56 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Gamification.Shared.Core</RootNamespace>
+    <AssemblyName>Gamification.Shared.Core</AssemblyName>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\piked\source\repos\Gamification\Shared\Shared.Core\Gamification.Shared.Core.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\..\Gamification.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>Gamification.Shared.Core.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\..\Gamification.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="10.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.4" />
+    <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.16" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.16" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="FluentValidation" Version="10.3.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.0" />
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="5.0.16" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Shared.DTOs\Shared.DTOs.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="IntegrationServices\Event\" />
+    <Folder Include="Interfaces\Services\Event\" />
   </ItemGroup>
 
 </Project>
