@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Gamification.Shared.Core</name>
+    </assembly>
+    <members>
+        <member name="F:Gamification.Shared.Core.Serialization.TimespanJsonConverter.TimeSpanFormatString">
+            <summary>
+            Format: Days.Hours:Minutes:Seconds:Milliseconds.
+            </summary>
+        </member>
+    </members>
+</doc>

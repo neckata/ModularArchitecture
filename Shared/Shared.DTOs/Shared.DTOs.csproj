@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile></DocumentationFile>
+    <DocumentationFile>C:\Users\piked\source\repos\Gamification\Shared\Shared.DTOs\Gamification.DTOs.xml</DocumentationFile>
     <CodeAnalysisRuleSet>..\..\Gamification.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 

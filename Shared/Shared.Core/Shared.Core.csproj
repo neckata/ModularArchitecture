@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile></DocumentationFile>
+    <DocumentationFile>C:\Users\piked\source\repos\Gamification\Shared\Shared.Core\Gamification.Shared.Core.xml</DocumentationFile>
     <CodeAnalysisRuleSet>..\..\Gamification.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
@@ -41,7 +41,7 @@
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.0" />
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="5.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="5.0.16" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,7 +49,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="IntegrationServices\Connectors\" />
+    <Folder Include="IntegrationServices\Event\" />
+    <Folder Include="Interfaces\Services\Event\" />
   </ItemGroup>
 
 </Project>

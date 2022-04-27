@@ -19,10 +19,10 @@ using System.Threading.Tasks;
 
 namespace Gamification.Shared.Infrastructure.Persistence
 {
-    internal class ApplicationDbContext : IdentityDbContext<User, Role, string, IdentityUserClaim<string>, IdentityUserRole<string>, IdentityUserLogin<string>, RoleClaim, IdentityUserToken<string>>, 
+    internal class ApplicationDbContext : IdentityDbContext<User, Role, string, IdentityUserClaim<string>, IdentityUserRole<string>, IdentityUserLogin<string>, RoleClaim, IdentityUserToken<string>>,
         IApplicationDbContext
     {
-        //private readonly IEventLogger _eventLogger;
+        private readonly IEventLogger _eventLogger;
         private readonly PersistenceSettings _persistenceOptions;
         private readonly IJsonSerializer _json;
 
@@ -30,14 +30,16 @@ namespace Gamification.Shared.Infrastructure.Persistence
 
         public DbSet<EventLog> EventLogs { get; set; }
 
+        public DbSet<Connector> Connectors { get ; set ; }
+
         public ApplicationDbContext(
             DbContextOptions<ApplicationDbContext> options,
-            //IEventLogger eventLogger,
+            IEventLogger eventLogger,
             IOptions<PersistenceSettings> persistenceOptions,
             IJsonSerializer json)
                 : base(options)
         {
-            // _eventLogger = eventLogger;
+            _eventLogger = eventLogger;
             _persistenceOptions = persistenceOptions.Value;
             _json = json;
         }
@@ -57,7 +59,7 @@ namespace Gamification.Shared.Infrastructure.Persistence
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             var changes = OnBeforeSaveChanges();
-            var domainEntities = this.ChangeTracker
+            var domainEntities = ChangeTracker
                   .Entries<IBaseEntity>()
                   .Where(x => x.Entity.DomainEvents != null && x.Entity.DomainEvents.Any())
                   .ToList();
@@ -78,11 +80,11 @@ namespace Gamification.Shared.Infrastructure.Persistence
                         var oldValues = relatedEntriesChanges.ToDictionary(x => x.entityEntry.Entity.GetType().GetGenericTypeName(), y => y.oldValues);
                         var newValues = relatedEntriesChanges.ToDictionary(x => x.entityEntry.Entity.GetType().GetGenericTypeName(), y => y.newValues);
                         var relatedChanges = (oldValues.Count == 0 ? null : _json.Serialize(oldValues), newValues.Count == 0 ? null : _json.Serialize(newValues));
-                        // await _eventLogger.SaveAsync(domainEvent, relatedChanges);
+                        await _eventLogger.SaveAsync(domainEvent, relatedChanges, this);
                     }
                     else
                     {
-                        //  await _eventLogger.SaveAsync(domainEvent, (null, null));
+                        await _eventLogger.SaveAsync(domainEvent, (null, null), this);
                     }
                 });
             await Task.WhenAll(tasks);

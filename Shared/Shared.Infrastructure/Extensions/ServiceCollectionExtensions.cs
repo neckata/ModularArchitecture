@@ -47,11 +47,12 @@ namespace Gamification.Shared.Infrastructure.Extensions
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddPersistenceSettings(config);
+            services.AddIdentityInfrastructure(config);
+            services.AddScoped<IEventLogger, EventLogger>();
             services
                 .AddDatabaseContext<ApplicationDbContext>()
                 .AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
-
-            services.AddScoped<IEventLogger, EventLogger>();
+       
             services.AddApiVersioning(o =>
             {
                 o.AssumeDefaultVersionWhenUnspecified = true;
@@ -71,13 +72,12 @@ namespace Gamification.Shared.Infrastructure.Extensions
             services.AddCorsPolicy();
             services.AddApplicationSettings(config);
 
-            services.AddIdentityInfrastructure(config);
-
             return services;
         }
 
         private static IServiceCollection AddApplicationLayer(this IServiceCollection services, IConfiguration config)
         {
+            //Here add all services
             services.AddTransient<IEventLogService, EventLogService>();
             return services;
         }
@@ -86,6 +86,100 @@ namespace Gamification.Shared.Infrastructure.Extensions
         {
             return services
                 .Configure<PersistenceSettings>(config.GetSection(nameof(PersistenceSettings)));
+        }
+
+        private static IServiceCollection AddApplicationSettings(this IServiceCollection services, IConfiguration configuration)
+        {
+            return services
+                .Configure<ApplicationSettings>(configuration.GetSection(nameof(ApplicationSettings)));
+        }
+
+        private static IServiceCollection AddCorsPolicy(this IServiceCollection services)
+        {
+            var corsSettings = services.GetOptions<CorsSettings>(nameof(CorsSettings));
+            return services.AddCors(opt =>
+            {
+                opt.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins(corsSettings.Url);
+                });
+            });
+        }
+
+        private static IServiceCollection AddIdentityInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        {
+            services
+                .AddHttpContextAccessor()
+                .AddScoped<ICurrentUser, CurrentUser>()
+                .Configure<JwtSettings>(configuration.GetSection("JwtSettings"))
+                .AddTransient<ITokenService, TokenService>()
+                .AddIdentity<User, Role>(options =>
+                {
+                    options.Password.RequiredLength = 6;
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                    options.User.RequireUniqueEmail = true;
+                })
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+            services.AddTransient<IDatabaseSeeder, IdentityDbSeeder>();
+            services.AddPermissions(configuration);
+            services.AddJwtAuthentication(configuration);
+            return services;
+        }
+
+        private static IServiceCollection AddPermissions(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>()
+                .AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
+            return services;
+        }
+
+        private static IServiceCollection AddJwtAuthentication(
+            this IServiceCollection services, IConfiguration config)
+        {
+            var jwtSettings = services.GetOptions<JwtSettings>(nameof(JwtSettings));
+            byte[] key = Encoding.ASCII.GetBytes(jwtSettings.Key);
+            services
+                .AddAuthentication(authentication =>
+                {
+                    authentication.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    authentication.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(bearer =>
+                {
+                    bearer.RequireHttpsMetadata = false;
+                    bearer.SaveToken = true;
+                    bearer.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        RoleClaimType = ClaimTypes.Role,
+                        ClockSkew = TimeSpan.Zero
+                    };
+                    bearer.Events = new JwtBearerEvents
+                    {
+                        OnChallenge = context =>
+                        {
+                            context.HandleResponse();
+                            if (!context.Response.HasStarted)
+                            {
+                                throw new IdentityException("You are not Authorized.", statusCode: HttpStatusCode.Unauthorized);
+                            }
+
+                            return Task.CompletedTask;
+                        },
+                        OnForbidden = context =>
+                        {
+                            throw new IdentityException("You are not authorized to access this resource.", statusCode: HttpStatusCode.Forbidden);
+                        },
+                    };
+                });
+            return services;
         }
 
         private static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services)
@@ -166,111 +260,12 @@ namespace Gamification.Shared.Infrastructure.Extensions
             });
         }
 
-        private static IServiceCollection AddApplicationSettings(this IServiceCollection services, IConfiguration configuration)
-        {
-            return services
-                .Configure<ApplicationSettings>(configuration.GetSection(nameof(ApplicationSettings)));
-        }
-
-        private static IServiceCollection AddCorsPolicy(this IServiceCollection services)
-        {
-            var corsSettings = services.GetOptions<CorsSettings>(nameof(CorsSettings));
-            return services.AddCors(opt =>
-            {
-                opt.AddPolicy("CorsPolicy", policy =>
-                {
-                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins(corsSettings.Url);
-                });
-            });
-        }
-
-        private static IServiceCollection AddIdentityInfrastructure(this IServiceCollection services, IConfiguration configuration)
-        {
-            services
-                .AddHttpContextAccessor()
-                .AddScoped<ICurrentUser, CurrentUser>()
-                .Configure<JwtSettings>(configuration.GetSection("JwtSettings"))
-                .AddTransient<ITokenService, TokenService>()
-                .AddIdentity<User, Role>(options =>
-                {
-                    options.Password.RequiredLength = 6;
-                    options.Password.RequireDigit = false;
-                    options.Password.RequireLowercase = false;
-                    options.Password.RequireNonAlphanumeric = false;
-                    options.Password.RequireUppercase = false;
-                    options.User.RequireUniqueEmail = false;
-                })
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
-            services.AddTransient<IDatabaseSeeder, IdentityDbSeeder>();
-            services.AddPermissions(configuration);
-            services.AddJwtAuthentication(configuration);
-            return services;
-        }
-
-        private static IServiceCollection AddPermissions(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>()
-                .AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
-            return services;
-        }
-
-        private static IServiceCollection AddJwtAuthentication(
-            this IServiceCollection services, IConfiguration config)
-        {
-            var jwtSettings = services.GetOptions<JwtSettings>(nameof(JwtSettings));
-            byte[] key = Encoding.ASCII.GetBytes(jwtSettings.Key);
-            services
-                .AddAuthentication(authentication =>
-                {
-                    authentication.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    authentication.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                })
-                .AddJwtBearer(bearer =>
-                {
-                    bearer.RequireHttpsMetadata = false;
-                    bearer.SaveToken = true;
-                    bearer.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(key),
-                        ValidateIssuer = false,
-                        ValidateAudience = false,
-                        RoleClaimType = ClaimTypes.Role,
-                        ClockSkew = TimeSpan.Zero
-                    };
-                    bearer.Events = new JwtBearerEvents
-                    {
-                        OnChallenge = context =>
-                        {
-                            context.HandleResponse();
-                            if (!context.Response.HasStarted)
-                            {
-                                throw new IdentityException("You are not Authorized.", statusCode: HttpStatusCode.Unauthorized);
-                            }
-
-                            return Task.CompletedTask;
-                        },
-                        OnForbidden = context =>
-                        {
-                            throw new IdentityException("You are not authorized to access this resource.", statusCode: HttpStatusCode.Forbidden);
-                        },
-                    };
-                });
-            return services;
-        }
-
         private static void AddSwaggerDocs(this SwaggerGenOptions options)
         {
             options.SwaggerDoc("v1", new OpenApiInfo
             {
                 Version = "v1",
-                Title = "API v1",
-                License = new OpenApiLicense
-                {
-                    Name = "MIT License",
-                    Url = new Uri("https://opensource.org/licenses/MIT")
-                }
+                Title = "Gamification API"
             });
         }
     }

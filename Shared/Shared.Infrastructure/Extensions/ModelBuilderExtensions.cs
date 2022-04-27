@@ -48,6 +48,11 @@ namespace Gamification.Shared.Infrastructure.Extensions
             {
                 entity.ToTable("UserClaims");
             });
+
+            builder.Entity<Connector>(entity =>
+            {
+                entity.ToTable("Connectors");
+            });
         }
 
         public static void ApplyModuleConfiguration(this ModelBuilder builder, PersistenceSettings persistenceOptions)
