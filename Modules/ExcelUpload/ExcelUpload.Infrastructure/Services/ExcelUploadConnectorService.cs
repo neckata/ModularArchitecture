@@ -1,9 +1,7 @@
 ﻿using Gamification.Shared.DTOs.Connector;
 using Gamification.Shared.Core.Interfaces.Services.Connector;
 using Gamification.Shared.Core.Wrapper;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Gamification.Shared.Core.Entities;
 using AutoMapper;
 using Gamification.Shared.Core.Features;
 using Gamification.Shared.Core.Interfaces;
@@ -12,25 +10,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ExcelUpload.Infrastructure.Services
 {
-    public class ExcelUploadService : IConnectorService
+    public class ExcelUploadConnectorService : IConnectorService, IExcelUploadService
     {
         private readonly IMapper _mapper;
         private readonly IApplicationDbContext _context;
 
-        public ExcelUploadService(IMapper mapper, IApplicationDbContext context)
+        public ExcelUploadConnectorService(IMapper mapper, IApplicationDbContext context)
         {
             _mapper = mapper;
             _context = context;
-        }
-
-        public Task<Result<List<ConnectorResponse>>> GetAllAsync()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<IResult<ConnectorResponse>> GetAsync(string userId)
-        {
-            throw new System.NotImplementedException();
         }
 
         public async Task<IResult<string>> UpdateAsync(UpdateConnectorRequest request)
@@ -42,7 +30,15 @@ namespace ExcelUpload.Infrastructure.Services
             //Example of adding domain event
             connector.AddDomainEvent(new ConnectorUpdatedEvent(connector));
 
-            throw new System.NotImplementedException();
+            _context.Connectors.Update(connector);
+            await _context.SaveChangesAsync();
+
+            return await Result<string>.SuccessAsync(connector.Id, "Connector Updated");
+        }
+
+        public async Task<IResult<string>> UploadFile()
+        {
+            return await Result<string>.SuccessAsync();
         }
     }
 }

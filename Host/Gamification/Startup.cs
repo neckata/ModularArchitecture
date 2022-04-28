@@ -1,3 +1,4 @@
+using Gamification.Modules.ExcelUpload.Infrastructure.Extensions;
 using Gamification.Shared.Core.Extensions;
 using Gamification.Shared.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Builder;
@@ -21,7 +22,8 @@ namespace Gamification
             services
                   .AddDistributedMemoryCache()
                   .AddSerialization(_config)
-                  .AddSharedInfrastructure(_config);
+                  .AddSharedInfrastructure(_config)
+                  .AddExcelUploadInfrastructure(_config);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
