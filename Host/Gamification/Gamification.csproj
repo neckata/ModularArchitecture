@@ -13,8 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Modules\ExcelUpload\ExcelUpload.Core\ExcelUpload.Core.csproj" />
+    <ProjectReference Include="..\..\Modules\ExcelUpload\ExcelUpload.Infrastructure\ExcelUpload.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Shared\Shared.Infrastructure\Shared.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
