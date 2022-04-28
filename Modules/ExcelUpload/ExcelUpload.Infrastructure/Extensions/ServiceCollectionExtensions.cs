@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FluentPOS.Modules.Catalog.Infrastructure.Extensions
+namespace Gamification.Modules.ExcelUpload.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtensions
     {

@@ -1,4 +1,4 @@
-using FluentPOS.Modules.Catalog.Infrastructure.Extensions;
+using Gamification.Modules.ExcelUpload.Infrastructure.Extensions;
 using Gamification.Shared.Core.Extensions;
 using Gamification.Shared.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Builder;
