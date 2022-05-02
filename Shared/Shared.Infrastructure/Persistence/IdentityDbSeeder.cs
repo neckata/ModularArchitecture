@@ -72,10 +72,10 @@ namespace Gamification.Shared.Infrastructure.Persistence
                 // Check if User Exists
                 var superUser = new User
                 {
-                    FirstName = "Nikola",
-                    LastName = "Netsov",
-                    Email = "nikola.netsov@scalefocus.com",
-                    UserName = "superadmin",
+                    FirstName = "Admin",
+                    LastName = "Admin",
+                    Email = "admin@admin.com",
+                    UserName = "admin",
                     EmailConfirmed = true,
                     PhoneNumberConfirmed = true,
                     IsActive = true
