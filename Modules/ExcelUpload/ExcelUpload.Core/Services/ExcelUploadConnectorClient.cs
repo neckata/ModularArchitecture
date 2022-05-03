@@ -7,15 +7,16 @@ using Gamification.Shared.Core.Features;
 using Gamification.Shared.Core.Interfaces;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using ExcelUpload.Core.Interfaces;
 
-namespace ExcelUpload.Infrastructure.Services
+namespace ExcelUpload.Core.Services
 {
-    public class ExcelUploadConnectorService : IConnectorService, IExcelUploadService
+    public class ExcelUploadConnectorClient : IConnectorClient, IExcelUploadClient
     {
         private readonly IMapper _mapper;
         private readonly IApplicationDbContext _context;
 
-        public ExcelUploadConnectorService(IMapper mapper, IApplicationDbContext context)
+        public ExcelUploadConnectorClient(IMapper mapper, IApplicationDbContext context)
         {
             _mapper = mapper;
             _context = context;

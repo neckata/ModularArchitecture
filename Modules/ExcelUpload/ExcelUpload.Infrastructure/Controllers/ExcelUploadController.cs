@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using ExcelUpload.Infrastructure.Services;
+using ExcelUpload.Core.Interfaces;
 using Gamification.Shared.Core.Constants;
 using Gamification.Shared.Infrastructure.Controllers;
 using Microsoft.AspNetCore.Authorization;
@@ -10,9 +10,9 @@ namespace ExcelUpload.Infrastructure.Controllers.ExcelUpload
     [ApiVersion("1")]
     public class ExcelUploadController : CommonBaseController
     {
-        private IExcelUploadService _excelUploadService;
+        private IExcelUploadClient _excelUploadService;
 
-        public ExcelUploadController(IExcelUploadService excelUploadService)
+        public ExcelUploadController(IExcelUploadClient excelUploadService)
         {
             _excelUploadService = excelUploadService;
         }
