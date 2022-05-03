@@ -3,16 +3,16 @@ using Gamification.Shared.Core.Constants;
 using Gamification.Shared.Infrastructure.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Outlook.Infrastructure.Services;
+using Outlook.Core.Services;
 
 namespace Outlook.Infrastructure.Controllers.ExcelUpload
 {
     [ApiVersion("1")]
     public class OutlookController : CommonBaseController
     {
-        private IOutlookService _outlookService;
+        private IOutlookClient _outlookService;
 
-        public OutlookController(IOutlookService outlookService)
+        public OutlookController(IOutlookClient outlookService)
         {
             _outlookService = outlookService;
         }

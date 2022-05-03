@@ -8,14 +8,14 @@ using Gamification.Shared.Core.Interfaces;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
-namespace Outlook.Infrastructure.Services
+namespace Outlook.Core.Services
 {
-    public class OutlookConnectorService : IConnectorService, IOutlookService
+    public class OutlookConnectorClient : IConnectorClient, IOutlookClient
     {
         private readonly IMapper _mapper;
         private readonly IApplicationDbContext _context;
 
-        public OutlookConnectorService(IMapper mapper, IApplicationDbContext context)
+        public OutlookConnectorClient(IMapper mapper, IApplicationDbContext context)
         {
             _mapper = mapper;
             _context = context;

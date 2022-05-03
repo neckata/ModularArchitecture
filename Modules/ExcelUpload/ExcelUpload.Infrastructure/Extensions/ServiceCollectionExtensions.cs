@@ -1,4 +1,5 @@
-﻿using ExcelUpload.Infrastructure.Services;
+﻿using ExcelUpload.Core.Interfaces;
+using ExcelUpload.Core.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,7 +9,7 @@ namespace Gamification.Modules.ExcelUpload.Infrastructure.Extensions
     {
         public static IServiceCollection AddExcelUploadInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddTransient<IExcelUploadService, ExcelUploadConnectorService>();
+            services.AddTransient<IExcelUploadClient, ExcelUploadConnectorClient>();
             services.AddControllers();
             return services;
         }

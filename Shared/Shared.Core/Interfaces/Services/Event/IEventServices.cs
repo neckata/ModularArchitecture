@@ -3,7 +3,7 @@ using Gamification.Shared.DTOs.Connector;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Gamification.Shared.Core.Interfaces.Services.Connector
+namespace Gamification.Shared.Core.Interfaces.Services.Event
 {
     public interface IEventServices
     {

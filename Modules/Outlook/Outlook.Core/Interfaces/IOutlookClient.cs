@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Gamification.Shared.Core.Wrapper;
 
-namespace Outlook.Infrastructure.Services
+namespace Outlook.Core.Services
 {
-    public interface IOutlookService
+    public interface IOutlookClient
     {
         public Task<IResult<string>> GetEvents();
     }
