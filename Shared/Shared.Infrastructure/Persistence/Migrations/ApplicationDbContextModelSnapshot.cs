@@ -20,6 +20,31 @@ namespace Gamification.Shared.Infrastructure.Persistence.Migrations
                 .HasAnnotation("ProductVersion", "5.0.16")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Gamification.Shared.Core.Entities.Action", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("ConnectorType")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Actions");
+                });
+
+            modelBuilder.Entity("Gamification.Shared.Core.Entities.Connector", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Connectors");
+                });
+
             modelBuilder.Entity("Gamification.Shared.Core.Entities.Role", b =>
                 {
                     b.Property<string>("Id")

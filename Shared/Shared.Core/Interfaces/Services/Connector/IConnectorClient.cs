@@ -1,11 +1,13 @@
-﻿using Gamification.Shared.DTOs.Connector;
-using Gamification.Shared.Core.Wrapper;
+﻿using Gamification.Shared.Core.Wrapper;
 using System.Threading.Tasks;
+using Gamification.DTOs.Actions;
 
 namespace Gamification.Shared.Core.Interfaces.Services.Connector
 {
     public interface IConnectorClient
     {
-        Task<IResult<string>> UpdateAsync(UpdateConnectorRequest request);
+        Task<IResult<System.Guid>> UpdateActionAsync(UpdateActionRequest request);
+
+        Task<IResult<System.Guid>> CreateActionAsync(CreateActionRequest request);
     }
 }

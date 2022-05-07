@@ -32,6 +32,8 @@ namespace Gamification.Shared.Infrastructure.Persistence
 
         public DbSet<Connector> Connectors { get ; set ; }
 
+        public DbSet<Action> Actions { get; set; }
+
         public ApplicationDbContext(
             DbContextOptions<ApplicationDbContext> options,
             IEventLogger eventLogger,

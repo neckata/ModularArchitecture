@@ -1,5 +1,4 @@
-﻿using Gamification.Shared.DTOs.Connector;
-using Gamification.Shared.Core.Interfaces.Services.Connector;
+﻿using Gamification.Shared.Core.Interfaces.Services.Connector;
 using Gamification.Shared.Core.Wrapper;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -7,7 +6,12 @@ using Gamification.Shared.Core.Features;
 using Gamification.Shared.Core.Interfaces;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Gamification.DTOs.Actions;
+using Gamification.Shared.Core.Entities;
+using System.Collections.Generic;
+using Gamification.Shared.Core.Enums;
 using ExcelUpload.Core.Interfaces;
+using Gamification.Shared.Core.Exceptions;
 
 namespace ExcelUpload.Core.Services
 {
@@ -22,24 +26,66 @@ namespace ExcelUpload.Core.Services
             _context = context;
         }
 
-        public async Task<IResult<string>> UpdateAsync(UpdateConnectorRequest request)
+        public async Task<IResult<List<Action>>> GetActions()
         {
-            var connector = await _context.Connectors.Where(b => b.Id == request.Id).AsNoTracking().FirstOrDefaultAsync();
+            var actions = await _context.Actions.Where(x => x.ConnectorType == ConnectorTypeEnum.ExcelUpload).AsNoTracking().ToListAsync();
 
-            _mapper.Map(request, connector);
+            return await Result<List<Action>>.SuccessAsync(actions);
+        }
 
-            //Example of adding domain event
-            connector.AddDomainEvent(new ConnectorUpdatedEvent(connector));
+        public async Task<IResult<System.Guid>> UpdateActionAsync(UpdateActionRequest request)
+        {
+            UpdateExcel(request);
 
-            _context.Connectors.Update(connector);
+            var action = await _context.Actions.Where(b => b.Id == request.Id).AsNoTracking().FirstOrDefaultAsync();
+
+            _mapper.Map(request, action);
+
+            action.AddDomainEvent(new ActionUpdatedEvent(action));
+
+            _context.Actions.Update(action);
             await _context.SaveChangesAsync();
 
-            return await Result<string>.SuccessAsync(connector.Id, "Connector Updated");
+            return await Result<System.Guid>.SuccessAsync(action.Id, "Action Updated");
         }
 
-        public async Task<IResult<string>> UploadFile()
+        /// <summary>
+        /// Not implemented for excel upload
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task<IResult<System.Guid>> CreateActionAsync(CreateActionRequest request)
         {
-            return await Result<string>.SuccessAsync();
+            //There is no need of this implemantation
+            throw new MethodNotImplementedException("ExcelUpload can't create action from method");
         }
+
+        public async Task<IResult<System.Guid>> UploadFile(CreateActionRequest createActionRequest)
+        {
+            AddExcel(createActionRequest);
+
+            //Read excel fille
+
+            var action = _mapper.Map<Action>(createActionRequest);
+
+            action.ConnectorType = ConnectorTypeEnum.ExcelUpload;
+
+            action.AddDomainEvent(new ActionAddEvent(action));
+
+            await _context.Actions.AddAsync(action);
+            await _context.SaveChangesAsync();
+
+            return await Result<System.Guid>.SuccessAsync(action.Id, "Action Added");
+        }
+
+        private void UpdateExcel(UpdateActionRequest request)
+        {
+            //Here you will update the excel file in the file system
+        }
+
+        private void AddExcel(CreateActionRequest createActionRequest)
+        {
+            //Here you add the exel to the file system
+        } 
     }
 }

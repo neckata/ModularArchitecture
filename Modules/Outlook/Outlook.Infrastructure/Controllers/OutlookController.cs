@@ -19,9 +19,9 @@ namespace Outlook.Infrastructure.Controllers.ExcelUpload
 
         [HttpGet]
         [Authorize(Policy = Permissions.Outlook.View)]
-        public async Task<IActionResult> GetEvents()
+        public async Task<IActionResult> GetActions()
         {
-            return Ok(await _outlookService.GetEvents());
+            return Ok(await _outlookService.GetActions());
         }
     }
 }

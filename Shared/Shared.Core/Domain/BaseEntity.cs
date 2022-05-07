@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using Gamification.Shared.Core.Contracts;
 
 namespace Gamification.Shared.Core.Domain
@@ -15,6 +16,7 @@ namespace Gamification.Shared.Core.Domain
 
         private List<Event> _domainEvents;
 
+        [NotMapped]
         public IReadOnlyCollection<Event> DomainEvents => _domainEvents?.AsReadOnly();
 
         public void AddDomainEvent(Event domainEvent)
