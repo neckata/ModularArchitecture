@@ -53,6 +53,11 @@ namespace Gamification.Shared.Infrastructure.Extensions
             {
                 entity.ToTable("Connectors");
             });
+
+            builder.Entity<Action>(entity =>
+            {
+                entity.ToTable("Actions");
+            });
         }
 
         public static void ApplyModuleConfiguration(this ModelBuilder builder, PersistenceSettings persistenceOptions)

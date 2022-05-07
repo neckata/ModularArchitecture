@@ -14,14 +14,14 @@ namespace Gamification.Shared.Core.Constants
             public const string Delete = "Permissions.Roles.Delete";
         }
 
-        [DisplayName("Events")]
-        [Description("Events Permissions")]
-        public static class Events
+        [DisplayName("Actions")]
+        [Description("Actions Permissions")]
+        public static class Actions
         {
-            public const string View = "Permissions.Events.View";
-            public const string Create = "Permissions.Events.Create";
-            public const string Edit = "Permissions.Events.Edit";
-            public const string Delete = "Permissions.Events.Delete";
+            public const string View = "Permissions.Actions.View";
+            public const string Create = "Permissions.Actions.Create";
+            public const string Edit = "Permissions.Actions.Edit";
+            public const string Delete = "Permissions.Actions.Delete";
         }
 
         [DisplayName("ExcelUpload")]

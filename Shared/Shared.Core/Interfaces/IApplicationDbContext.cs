@@ -15,5 +15,7 @@ namespace Gamification.Shared.Core.Interfaces
         public DbSet<RoleClaim> RoleClaims { get; set; }
 
         public DbSet<Connector> Connectors { get; set; }
+
+        public DbSet<Action> Actions { get; set; }
     }
 }

@@ -11,6 +11,19 @@ namespace Gamification.Shared.Infrastructure.Persistence.Migrations
                 name: "Application");
 
             migrationBuilder.CreateTable(
+                name: "Actions",
+                schema: "Application",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ConnectorType = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Actions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 schema: "Application",
                 columns: table => new
@@ -57,6 +70,18 @@ namespace Gamification.Shared.Infrastructure.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Connectors",
+                schema: "Application",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Connectors", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -262,6 +287,10 @@ namespace Gamification.Shared.Infrastructure.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Actions",
+                schema: "Application");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoleClaims",
                 schema: "Application");
 
@@ -279,6 +308,10 @@ namespace Gamification.Shared.Infrastructure.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens",
+                schema: "Application");
+
+            migrationBuilder.DropTable(
+                name: "Connectors",
                 schema: "Application");
 
             migrationBuilder.DropTable(
