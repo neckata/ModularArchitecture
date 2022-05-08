@@ -22,6 +22,7 @@ namespace Gamification.Controllers
         public async Task<IActionResult> GetTokenAsync(TokenRequest request)
         {
             var token = await _tokenService.GetTokenAsync(request, GenerateIPAddress());
+
             return Ok(token);
         }
 
@@ -30,6 +31,7 @@ namespace Gamification.Controllers
         public async Task<ActionResult> RefreshAsync(RefreshTokenRequest request)
         {
             var response = await _tokenService.RefreshTokenAsync(request, GenerateIPAddress());
+
             return Ok(response);
         }
 

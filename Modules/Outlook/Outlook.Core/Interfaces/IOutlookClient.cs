@@ -7,6 +7,6 @@ namespace Outlook.Core.Services
 {
     public interface IOutlookClient
     {
-        public Task<IResult<List<Action>>> GetActions();
+        
     }
 }
