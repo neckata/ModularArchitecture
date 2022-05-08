@@ -1,7 +1,9 @@
-﻿namespace Gamification.Shared.DTOs.Connector
+﻿using System;
+
+namespace Gamification.Shared.DTOs.Connector
 {
     public class ConnectorResponse
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

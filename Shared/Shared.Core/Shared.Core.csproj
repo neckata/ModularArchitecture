@@ -48,8 +48,4 @@
     <ProjectReference Include="..\Shared.DTOs\Shared.DTOs.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="IntegrationServices\Event\" />
-  </ItemGroup>
-
 </Project>

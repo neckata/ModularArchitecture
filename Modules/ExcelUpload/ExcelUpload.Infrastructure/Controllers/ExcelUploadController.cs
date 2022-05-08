@@ -18,13 +18,6 @@ namespace ExcelUpload.Infrastructure.Controllers.ExcelUpload
             _excelUploadService = excelUploadService;
         }
 
-        [HttpGet]
-        [Authorize(Policy = Permissions.ExcelUpload.View)]
-        public async Task<IActionResult> GetActions()
-        {
-            return Ok(await _excelUploadService.GetActions());
-        }
-
         [HttpPut]
         [Authorize(Policy = Permissions.ExcelUpload.Edit)]
         public async Task<IActionResult> UploadFile()

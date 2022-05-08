@@ -35,6 +35,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Gamification.Shared.Infrastructure.Permissions;
+using Gamification.Shared.Core.Interfaces.Services.Event;
+using Gamification.Shared.Core.IntegrationServices.Event;
 
 [assembly: InternalsVisibleTo("Gamification")]
 
@@ -79,6 +81,7 @@ namespace Gamification.Shared.Infrastructure.Extensions
         {
             //Here add all services
             services.AddTransient<IEventLogService, EventLogService>();
+            services.AddTransient<IEventService, EventService>();
             return services;
         }
 
@@ -125,6 +128,7 @@ namespace Gamification.Shared.Infrastructure.Extensions
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
             services.AddTransient<IDatabaseSeeder, IdentityDbSeeder>();
+            services.AddTransient<IDatabaseSeeder, ConnectorDbSeeder>();
             services.AddPermissions(configuration);
             services.AddJwtAuthentication(configuration);
             return services;

@@ -4,6 +4,13 @@ namespace Gamification.Shared.Core.Constants
 {
     public static class Permissions
     {
+        [DisplayName("Connectors")]
+        [Description("Connectors Permissions")]
+        public static class Connectors
+        {
+            public const string View = "Permissions.Connectors.View";
+        }
+
         [DisplayName("Roles")]
         [Description("Roles Permissions")]
         public static class Roles
