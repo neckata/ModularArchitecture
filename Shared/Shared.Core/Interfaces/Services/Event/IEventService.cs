@@ -1,10 +1,10 @@
-﻿using Gamification.Shared.Core.Wrapper;
-using Gamification.Shared.DTOs.Connector;
+﻿using ModularArchitecture.Shared.Core.Wrapper;
+using ModularArchitecture.Shared.DTOs.Connector;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Gamification.Shared.Core.Interfaces.Services.Event
+namespace ModularArchitecture.Shared.Core.Interfaces.Services.Event
 {
     public interface IEventService
     {

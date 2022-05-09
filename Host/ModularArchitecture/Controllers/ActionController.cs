@@ -1,15 +1,15 @@
-﻿using Gamification.DTOs.Actions;
-using Gamification.Shared.Core;
-using Gamification.Shared.Core.Constants;
-using Gamification.Shared.Core.Enums;
-using Gamification.Shared.Core.Interfaces.Services.Event;
-using Gamification.Shared.Infrastructure.Controllers;
+﻿using ModularArchitecture.DTOs.Actions;
+using ModularArchitecture.Shared.Core;
+using ModularArchitecture.Shared.Core.Constants;
+using ModularArchitecture.Shared.Core.Enums;
+using ModularArchitecture.Shared.Core.Interfaces.Services.Event;
+using ModularArchitecture.Shared.Infrastructure.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
-namespace Gamification.Controllers
+namespace Host.ModularArchitecture.Controllers
 {
     [ApiVersion("1")]
     public class ActionController : CommonBaseController

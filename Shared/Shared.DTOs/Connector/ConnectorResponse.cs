@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Gamification.Shared.DTOs.Connector
+namespace ModularArchitecture.Shared.DTOs.Connector
 {
     public class ConnectorResponse
     {

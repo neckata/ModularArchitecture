@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Gamification.Shared.Core.Constants;
-using Gamification.Shared.Infrastructure.Controllers;
+using ModularArchitecture.Shared.Core.Constants;
+using ModularArchitecture.Shared.Infrastructure.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Outlook.Core.Services;

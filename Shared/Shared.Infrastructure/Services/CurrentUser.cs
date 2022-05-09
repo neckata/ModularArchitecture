@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Security.Claims;
-using Gamification.Shared.Infrastructure.Extensions;
-using Gamification.Shared.Core.Interfaces.Services.Identity;
+using ModularArchitecture.Shared.Infrastructure.Extensions;
+using ModularArchitecture.Shared.Core.Interfaces.Services.Identity;
 using Microsoft.AspNetCore.Http;
 
-namespace Gamification.Shared.Infrastructure.Services
+namespace ModularArchitecture.Shared.Infrastructure.Services
 {
     public class CurrentUser : ICurrentUser
     {

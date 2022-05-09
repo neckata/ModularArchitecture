@@ -1,14 +1,14 @@
-﻿using Gamification.Shared.Core.Interfaces;
-using Gamification.Shared.Core.Interfaces.Services.Event;
-using Gamification.Shared.Core.Wrapper;
-using Gamification.Shared.DTOs.Connector;
+﻿using ModularArchitecture.Shared.Core.Interfaces;
+using ModularArchitecture.Shared.Core.Interfaces.Services.Event;
+using ModularArchitecture.Shared.Core.Wrapper;
+using ModularArchitecture.Shared.DTOs.Connector;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Gamification.Shared.Core.IntegrationServices.Event
+namespace ModularArchitecture.Shared.Core.IntegrationServices.Event
 {
     public class EventService : IEventService
     {

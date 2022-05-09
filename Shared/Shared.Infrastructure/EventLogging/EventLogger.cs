@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
-using Gamification.Shared.Core.Domain;
-using Gamification.Shared.Core.EventLogging;
-using Gamification.Shared.Core.Interfaces;
-using Gamification.Shared.Core.Interfaces.Serialization;
-using Gamification.Shared.Core.Interfaces.Services.Identity;
+using ModularArchitecture.Shared.Core.Domain;
+using ModularArchitecture.Shared.Core.EventLogging;
+using ModularArchitecture.Shared.Core.Interfaces;
+using ModularArchitecture.Shared.Core.Interfaces.Serialization;
+using ModularArchitecture.Shared.Core.Interfaces.Services.Identity;
 
-namespace Gamification.Shared.Infrastructure.EventLogging
+namespace ModularArchitecture.Shared.Infrastructure.EventLogging
 {
     internal class EventLogger : IEventLogger
     {

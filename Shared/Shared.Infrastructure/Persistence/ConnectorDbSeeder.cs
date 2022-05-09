@@ -1,14 +1,14 @@
 ﻿using System.Threading.Tasks;
-using Gamification.Shared.Core.Entities;
-using Gamification.Shared.Core.Interfaces;
-using Gamification.Shared.Core.Interfaces.Services;
+using ModularArchitecture.Shared.Core.Entities;
+using ModularArchitecture.Shared.Core.Interfaces;
+using ModularArchitecture.Shared.Core.Interfaces.Services;
 using Microsoft.Extensions.Logging;
 using System.Linq;
-using Gamification.Shared.Core.Enums;
+using ModularArchitecture.Shared.Core.Enums;
 using System;
 using Microsoft.EntityFrameworkCore;
 
-namespace Gamification.Shared.Infrastructure.Persistence
+namespace ModularArchitecture.Shared.Infrastructure.Persistence
 {
     internal class ConnectorDbSeeder : IDatabaseSeeder
     {

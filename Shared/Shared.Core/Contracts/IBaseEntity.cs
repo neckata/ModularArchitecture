@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Gamification.Shared.Core.Domain;
+using ModularArchitecture.Shared.Core.Domain;
 
-namespace Gamification.Shared.Core.Contracts
+namespace ModularArchitecture.Shared.Core.Contracts
 {
     public interface IBaseEntity
     {

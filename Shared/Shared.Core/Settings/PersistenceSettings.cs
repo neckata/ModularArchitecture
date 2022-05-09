@@ -1,4 +1,4 @@
-﻿namespace Gamification.Shared.Core.Settings
+﻿namespace ModularArchitecture.Shared.Core.Settings
 {
     public class PersistenceSettings
     {

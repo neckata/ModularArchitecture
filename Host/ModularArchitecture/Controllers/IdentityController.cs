@@ -1,11 +1,11 @@
-﻿using Gamification.Shared.Core.Services.Identity;
-using Gamification.Shared.DTOs.Identity.Tokens;
-using Gamification.Shared.Infrastructure.Controllers;
+﻿using ModularArchitecture.Shared.Core.Services.Identity;
+using ModularArchitecture.Shared.DTOs.Identity.Tokens;
+using ModularArchitecture.Shared.Infrastructure.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace Gamification.Controllers
+namespace Host.ModularArchitecture.Controllers
 {
     [ApiVersion("1")]
     public class IdentityController : CommonBaseController

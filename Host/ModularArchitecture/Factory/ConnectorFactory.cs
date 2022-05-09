@@ -1,12 +1,12 @@
 ﻿using ExcelUpload.Core.Services;
-using Gamification.Shared.Core.Enums;
-using Gamification.Shared.Core.Interfaces.Services.Connector;
-using Gamification.Shared.Core;
+using ModularArchitecture.Shared.Core.Enums;
+using ModularArchitecture.Shared.Core.Interfaces.Services.Connector;
+using ModularArchitecture.Shared.Core;
 using Outlook.Core.Services;
 using System;
 using ExcelUpload.Core.Interfaces;
 
-namespace Gamification.Factory
+namespace Host.ModularArchitecture.Factory
 {
     public class ConnectorFactory : IConnectorFactory
     {

@@ -2,21 +2,21 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Gamification.Shared.Infrastructure</RootNamespace>
-    <AssemblyName>Gamification.Shared.Infrastructure</AssemblyName>
+    <RootNamespace>ModularArchitecture.Shared.Infrastructure</RootNamespace>
+    <AssemblyName>ModularArchitecture.Shared.Infrastructure</AssemblyName>
     <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
     <EnableNETAnalyzers>false</EnableNETAnalyzers>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\piked\source\repos\Gamification\Shared\Shared.Infrastructure\Gamification.Shared.Infrastructure.xml</DocumentationFile>
-    <CodeAnalysisRuleSet>..\..\Gamification.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>C:\Users\piked\source\repos\ModularArchitecture\Shared\Shared.Infrastructure\ModularArchitecture.Shared.Infrastructure.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\..\ModularArchitecture.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>Gamification.Shared.Infrastructure.xml</DocumentationFile>
-    <CodeAnalysisRuleSet>..\..\Gamification.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>ModularArchitecture.Shared.Infrastructure.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\..\ModularArchitecture.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />

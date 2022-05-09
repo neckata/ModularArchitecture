@@ -1,4 +1,4 @@
-﻿namespace Gamification.Shared.Core.Enums
+﻿namespace ModularArchitecture.Shared.Core.Enums
 {
     public enum ConnectorTypeEnum
     {

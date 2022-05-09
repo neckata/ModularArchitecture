@@ -3,7 +3,7 @@ using ExcelUpload.Core.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Gamification.Modules.ExcelUpload.Infrastructure.Extensions
+namespace ModularArchitecture.Modules.ExcelUpload.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtensions
     {

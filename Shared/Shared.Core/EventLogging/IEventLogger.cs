@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Gamification.Shared.Core.Domain;
-using Gamification.Shared.Core.Interfaces;
+using ModularArchitecture.Shared.Core.Domain;
+using ModularArchitecture.Shared.Core.Interfaces;
 
-namespace Gamification.Shared.Core.EventLogging
+namespace ModularArchitecture.Shared.Core.EventLogging
 {
     public interface IEventLogger
     {

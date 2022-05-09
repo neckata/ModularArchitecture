@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Gamification.Shared.Core.Interfaces
+namespace ModularArchitecture.Shared.Core.Interfaces
 {
     public interface IDbContext
     {

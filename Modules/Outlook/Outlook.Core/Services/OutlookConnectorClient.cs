@@ -1,15 +1,15 @@
-﻿using Gamification.Shared.Core.Interfaces.Services.Connector;
-using Gamification.Shared.Core.Wrapper;
-using System.Threading.Tasks;
-using AutoMapper;
-using Gamification.Shared.Core.Features;
-using Gamification.Shared.Core.Interfaces;
-using System.Linq;
+﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Gamification.DTOs.Actions;
-using Gamification.Shared.Core.Entities;
+using ModularArchitecture.DTOs.Actions;
+using ModularArchitecture.Shared.Core.Entities;
+using ModularArchitecture.Shared.Core.Enums;
+using ModularArchitecture.Shared.Core.Features;
+using ModularArchitecture.Shared.Core.Interfaces;
+using ModularArchitecture.Shared.Core.Interfaces.Services.Connector;
+using ModularArchitecture.Shared.Core.Wrapper;
 using System.Collections.Generic;
-using Gamification.Shared.Core.Enums;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Outlook.Core.Services
 {

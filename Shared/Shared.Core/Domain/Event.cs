@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Gamification.Shared.Core.Domain
+namespace ModularArchitecture.Shared.Core.Domain
 {
     public abstract class Event : Message
     {

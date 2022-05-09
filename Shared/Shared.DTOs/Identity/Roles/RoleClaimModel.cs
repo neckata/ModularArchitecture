@@ -1,4 +1,4 @@
-﻿namespace Gamification.Shared.DTOs.Identity.Roles
+﻿namespace ModularArchitecture.Shared.DTOs.Identity.Roles
 {
     public class RoleClaimModel
     {

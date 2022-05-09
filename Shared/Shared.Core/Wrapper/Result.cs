@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Gamification.Shared.Core.Wrapper
+namespace ModularArchitecture.Shared.Core.Wrapper
 {
     public class Result : IResult
     {

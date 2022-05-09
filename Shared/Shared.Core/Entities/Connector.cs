@@ -1,6 +1,6 @@
-﻿using Gamification.Shared.Core.Domain;
+﻿using ModularArchitecture.Shared.Core.Domain;
 
-namespace Gamification.Shared.Core.Entities
+namespace ModularArchitecture.Shared.Core.Entities
 {
     public class Connector : BaseEntity
     {

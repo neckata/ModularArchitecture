@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 
-namespace Gamification.Shared.Core.Exceptions
+namespace ModularArchitecture.Shared.Core.Exceptions
 {
     public class CustomException : Exception
     {

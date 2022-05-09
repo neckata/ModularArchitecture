@@ -1,7 +1,7 @@
-﻿using Gamification.Shared.Core.Enums;
-using Gamification.Shared.Core.Interfaces.Services.Connector;
+﻿using ModularArchitecture.Shared.Core.Enums;
+using ModularArchitecture.Shared.Core.Interfaces.Services.Connector;
 
-namespace Gamification.Shared.Core
+namespace ModularArchitecture.Shared.Core
 {
     public interface IConnectorFactory
     {

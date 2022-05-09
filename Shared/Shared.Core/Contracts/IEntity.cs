@@ -1,4 +1,4 @@
-﻿namespace Gamification.Shared.Core.Contracts
+﻿namespace ModularArchitecture.Shared.Core.Contracts
 {
     public interface IEntity<TEntityId> : IEntity
     {

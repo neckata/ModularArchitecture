@@ -1,9 +1,9 @@
-﻿using Gamification.Shared.Core.Extensions;
-using Gamification.Shared.Core.Settings;
+﻿using ModularArchitecture.Shared.Core.Extensions;
+using ModularArchitecture.Shared.Core.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Gamification.Shared.Infrastructure.Persistence
+namespace ModularArchitecture.Shared.Infrastructure.Persistence
 {
     public static class ServiceCollectionExtensions
     {

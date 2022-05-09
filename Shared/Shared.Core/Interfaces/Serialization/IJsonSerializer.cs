@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Gamification.Shared.Core.Interfaces.Serialization
+namespace ModularArchitecture.Shared.Core.Interfaces.Serialization
 {
     public interface IJsonSerializer
     {

@@ -1,4 +1,4 @@
-﻿namespace Gamification.Shared.DTOs.Filters
+﻿namespace ModularArchitecture.Shared.DTOs.Filters
 {
     public class PaginatedFilter : BaseFilter
     {

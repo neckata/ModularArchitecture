@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using Gamification.Shared.Core.Contracts;
-using Gamification.Shared.Core.Domain;
+using ModularArchitecture.Shared.Core.Contracts;
+using ModularArchitecture.Shared.Core.Domain;
 using Microsoft.AspNetCore.Identity;
 
-namespace Gamification.Shared.Core.Entities
+namespace ModularArchitecture.Shared.Core.Entities
 {
     public class User : IdentityUser, IEntity<string>, IBaseEntity
     {

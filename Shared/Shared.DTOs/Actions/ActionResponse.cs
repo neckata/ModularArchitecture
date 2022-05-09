@@ -1,4 +1,4 @@
-﻿namespace Gamification.DTOs.Actions
+﻿namespace ModularArchitecture.DTOs.Actions
 {
     public class ActionResponse
     {

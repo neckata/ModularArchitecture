@@ -1,8 +1,8 @@
 ﻿using System;
-using Gamification.Shared.Core.Contracts;
-using Gamification.Shared.Core.Domain;
+using ModularArchitecture.Shared.Core.Contracts;
+using ModularArchitecture.Shared.Core.Domain;
 
-namespace Gamification.Shared.Core.EventLogging
+namespace ModularArchitecture.Shared.Core.EventLogging
 {
     public class EventLog : Event, IEntity<Guid>
     {

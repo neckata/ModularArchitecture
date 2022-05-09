@@ -1,13 +1,13 @@
 ﻿using System.Runtime.CompilerServices;
-using Gamification.Shared.Core.Interfaces.Services;
-using Gamification.Shared.Infrastructure.Middlewares;
+using ModularArchitecture.Shared.Core.Interfaces.Services;
+using ModularArchitecture.Shared.Infrastructure.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
-[assembly: InternalsVisibleTo("Gamification")]
+[assembly: InternalsVisibleTo("ModularArchitecture")]
 
-namespace Gamification.Shared.Infrastructure.Extensions
+namespace ModularArchitecture.Shared.Infrastructure.Extensions
 {
     internal static class ApplicationBuilderExtensions
     {

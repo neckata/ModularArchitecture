@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Gamification.Shared.Core.Domain
+namespace ModularArchitecture.Shared.Core.Domain
 {
     public abstract class DomainEvent : Event
     {

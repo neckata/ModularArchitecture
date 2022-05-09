@@ -5,16 +5,16 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using Gamification.Shared.Core.EventLogging;
-using Gamification.Shared.Core.Exceptions;
-using Gamification.Shared.Core.Interfaces;
-using Gamification.Shared.Core.Interfaces.Services;
-using Gamification.Shared.Core.Settings;
-using Gamification.Shared.Infrastructure.EventLogging;
-using Gamification.Shared.Infrastructure.Interceptors;
-using Gamification.Shared.Infrastructure.Middlewares;
-using Gamification.Shared.Infrastructure.Persistence;
-using Gamification.Shared.Infrastructure.Services;
+using ModularArchitecture.Shared.Core.EventLogging;
+using ModularArchitecture.Shared.Core.Exceptions;
+using ModularArchitecture.Shared.Core.Interfaces;
+using ModularArchitecture.Shared.Core.Interfaces.Services;
+using ModularArchitecture.Shared.Core.Settings;
+using ModularArchitecture.Shared.Infrastructure.EventLogging;
+using ModularArchitecture.Shared.Infrastructure.Interceptors;
+using ModularArchitecture.Shared.Infrastructure.Middlewares;
+using ModularArchitecture.Shared.Infrastructure.Persistence;
+using ModularArchitecture.Shared.Infrastructure.Services;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
@@ -23,24 +23,24 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using Gamification.Shared.Core.Interfaces.Services.Identity;
-using Gamification.Shared.Core.Extensions;
+using ModularArchitecture.Shared.Core.Interfaces.Services.Identity;
+using ModularArchitecture.Shared.Core.Extensions;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Threading.Tasks;
-using Gamification.Shared.Core.Services.Identity;
-using Gamification.Shared.Core.Entities;
+using ModularArchitecture.Shared.Core.Services.Identity;
+using ModularArchitecture.Shared.Core.Entities;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
-using Gamification.Shared.Infrastructure.Permissions;
-using Gamification.Shared.Core.Interfaces.Services.Event;
-using Gamification.Shared.Core.IntegrationServices.Event;
+using ModularArchitecture.Shared.Infrastructure.Permissions;
+using ModularArchitecture.Shared.Core.Interfaces.Services.Event;
+using ModularArchitecture.Shared.Core.IntegrationServices.Event;
 
-[assembly: InternalsVisibleTo("Gamification")]
+[assembly: InternalsVisibleTo("ModularArchitecture")]
 
-namespace Gamification.Shared.Infrastructure.Extensions
+namespace ModularArchitecture.Shared.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtensions
     {
@@ -269,7 +269,7 @@ namespace Gamification.Shared.Infrastructure.Extensions
             options.SwaggerDoc("v1", new OpenApiInfo
             {
                 Version = "v1",
-                Title = "Gamification API"
+                Title = "ModularArchitecture API"
             });
         }
     }

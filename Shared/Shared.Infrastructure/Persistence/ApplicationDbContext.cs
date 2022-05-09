@@ -1,12 +1,12 @@
-﻿using Gamification.Shared.Core.Contracts;
-using Gamification.Shared.Core.Domain;
-using Gamification.Shared.Core.Entities;
-using Gamification.Shared.Core.EventLogging;
-using Gamification.Shared.Core.Interfaces;
-using Gamification.Shared.Core.Interfaces.Serialization;
-using Gamification.Shared.Core.Settings;
-using Gamification.Shared.Core.Utilities;
-using Gamification.Shared.Infrastructure.Extensions;
+﻿using ModularArchitecture.Shared.Core.Contracts;
+using ModularArchitecture.Shared.Core.Domain;
+using ModularArchitecture.Shared.Core.Entities;
+using ModularArchitecture.Shared.Core.EventLogging;
+using ModularArchitecture.Shared.Core.Interfaces;
+using ModularArchitecture.Shared.Core.Interfaces.Serialization;
+using ModularArchitecture.Shared.Core.Settings;
+using ModularArchitecture.Shared.Core.Utilities;
+using ModularArchitecture.Shared.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +17,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Gamification.Shared.Infrastructure.Persistence
+namespace ModularArchitecture.Shared.Infrastructure.Persistence
 {
     internal class ApplicationDbContext : IdentityDbContext<User, Role, string, IdentityUserClaim<string>, IdentityUserRole<string>, IdentityUserLogin<string>, RoleClaim, IdentityUserToken<string>>,
         IApplicationDbContext

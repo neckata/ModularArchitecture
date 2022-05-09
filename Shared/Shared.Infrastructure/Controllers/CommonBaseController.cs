@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Gamification.Shared.Infrastructure.Controllers
+namespace ModularArchitecture.Shared.Infrastructure.Controllers
 {
     [ApiController]
     [Route(BasePath + "/[controller]")]

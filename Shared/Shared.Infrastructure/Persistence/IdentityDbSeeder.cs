@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Gamification.Shared.Core.Constants;
-using Gamification.Shared.Core.Entities;
-using Gamification.Shared.Core.Interfaces;
-using Gamification.Shared.Core.Interfaces.Services;
+using ModularArchitecture.Shared.Core.Constants;
+using ModularArchitecture.Shared.Core.Entities;
+using ModularArchitecture.Shared.Core.Interfaces;
+using ModularArchitecture.Shared.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-using Gamification.Shared.Infrastructure.Utilities;
+using ModularArchitecture.Shared.Infrastructure.Utilities;
 using System.Linq;
-using Gamification.Shared.Core.Helpers;
+using ModularArchitecture.Shared.Core.Helpers;
 
-namespace Gamification.Shared.Infrastructure.Persistence
+namespace ModularArchitecture.Shared.Infrastructure.Persistence
 {
     internal class IdentityDbSeeder : IDatabaseSeeder
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Gamification.Shared.DTOs.Identity.EventLogs
+namespace ModularArchitecture.Shared.DTOs.Identity.EventLogs
 {
     public class LogEventRequest
     {
