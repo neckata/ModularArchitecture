@@ -1,10 +1,10 @@
 ﻿using System.Linq;
-using Gamification.Shared.Core.Entities;
-using Gamification.Shared.Core.Settings;
+using ModularArchitecture.Shared.Core.Entities;
+using ModularArchitecture.Shared.Core.Settings;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace Gamification.Shared.Infrastructure.Extensions
+namespace ModularArchitecture.Shared.Infrastructure.Extensions
 {
     public static class ModelBuilderExtensions
     {

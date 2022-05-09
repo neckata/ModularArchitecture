@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using ExcelUpload.Core.Interfaces;
-using Gamification.DTOs.Actions;
-using Gamification.Shared.Core.Constants;
-using Gamification.Shared.Infrastructure.Controllers;
+using ModularArchitecture.DTOs.Actions;
+using ModularArchitecture.Shared.Core.Constants;
+using ModularArchitecture.Shared.Infrastructure.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,8 +1,8 @@
 ﻿using System.Text.Json;
-using Gamification.Shared.Core.Interfaces.Serialization;
+using ModularArchitecture.Shared.Core.Interfaces.Serialization;
 using Newtonsoft.Json;
 
-namespace Gamification.Shared.Core.Serialization
+namespace ModularArchitecture.Shared.Core.Serialization
 {
     public class JsonSerializerSettingsOptions : IJsonSerializerSettingsOptions
     {

@@ -7,18 +7,18 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using Gamification.Shared.Core.Entities;
-using Gamification.Shared.Core.Exceptions;
-using Gamification.Shared.Core.Interfaces.Services;
-using Gamification.Shared.Core.Services.Identity;
-using Gamification.Shared.Core.Settings;
-using Gamification.Shared.Core.Wrapper;
-using Gamification.Shared.DTOs.Identity.Tokens;
+using ModularArchitecture.Shared.Core.Entities;
+using ModularArchitecture.Shared.Core.Exceptions;
+using ModularArchitecture.Shared.Core.Interfaces.Services;
+using ModularArchitecture.Shared.Core.Services.Identity;
+using ModularArchitecture.Shared.Core.Settings;
+using ModularArchitecture.Shared.Core.Wrapper;
+using ModularArchitecture.Shared.DTOs.Identity.Tokens;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Gamification.Shared.Infrastructure.Services
+namespace ModularArchitecture.Shared.Infrastructure.Services
 {
     public class TokenService : ITokenService
     {

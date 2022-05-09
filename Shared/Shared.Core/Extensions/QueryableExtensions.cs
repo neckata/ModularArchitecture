@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using Gamification.Shared.Core.Exceptions;
-using Gamification.Shared.Core.Wrapper;
+using ModularArchitecture.Shared.Core.Exceptions;
+using ModularArchitecture.Shared.Core.Wrapper;
 using Microsoft.EntityFrameworkCore;
 
-namespace Gamification.Shared.Core.Extensions
+namespace ModularArchitecture.Shared.Core.Extensions
 {
     public static class QueryableExtensions
     {

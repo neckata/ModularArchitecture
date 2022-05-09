@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Gamification.Modules.Outlook.Infrastructure.Extensions
+namespace ModularArchitecture.Modules.Outlook.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtensions
     {

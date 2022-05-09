@@ -1,12 +1,12 @@
 using System.Threading.Tasks;
 using AutoMapper;
-using Gamification.Shared.Core.EventLogging;
-using Gamification.Shared.Core.Interfaces;
-using Gamification.Shared.Core.Interfaces.Services;
-using Gamification.Shared.Core.Wrapper;
-using Gamification.Shared.DTOs.Identity.EventLogs;
+using ModularArchitecture.Shared.Core.EventLogging;
+using ModularArchitecture.Shared.Core.Interfaces;
+using ModularArchitecture.Shared.Core.Interfaces.Services;
+using ModularArchitecture.Shared.Core.Wrapper;
+using ModularArchitecture.Shared.DTOs.Identity.EventLogs;
 
-namespace Gamification.Shared.Infrastructure.Services
+namespace ModularArchitecture.Shared.Infrastructure.Services
 {
     public class EventLogService : IEventLogService
     {

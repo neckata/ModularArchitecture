@@ -1,7 +1,7 @@
 ﻿using System;
-using Gamification.Shared.Core.Utilities;
+using ModularArchitecture.Shared.Core.Utilities;
 
-namespace Gamification.Shared.Core.Domain
+namespace ModularArchitecture.Shared.Core.Domain
 {
     public abstract class Message
     {

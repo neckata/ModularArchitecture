@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Gamification.Shared.Infrastructure.Utilities
+namespace ModularArchitecture.Shared.Infrastructure.Utilities
 {
     public static class TypeUtilities
     {

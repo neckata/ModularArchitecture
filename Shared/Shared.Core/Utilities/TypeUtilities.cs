@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Gamification.Shared.Core.Utilities
+namespace ModularArchitecture.Shared.Core.Utilities
 {
     public static class TypeUtilities
     {

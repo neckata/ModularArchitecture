@@ -1,15 +1,15 @@
-using Gamification.Factory;
-using Gamification.Modules.ExcelUpload.Infrastructure.Extensions;
-using Gamification.Modules.Outlook.Infrastructure.Extensions;
-using Gamification.Shared.Core;
-using Gamification.Shared.Core.Extensions;
-using Gamification.Shared.Infrastructure.Extensions;
+using Host.ModularArchitecture.Factory;
+using ModularArchitecture.Modules.ExcelUpload.Infrastructure.Extensions;
+using ModularArchitecture.Modules.Outlook.Infrastructure.Extensions;
+using ModularArchitecture.Shared.Core;
+using ModularArchitecture.Shared.Core.Extensions;
+using ModularArchitecture.Shared.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Gamification
+namespace Host.ModularArchitecture
 {
     public class Startup
     {

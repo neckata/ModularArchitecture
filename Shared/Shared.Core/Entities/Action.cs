@@ -1,7 +1,7 @@
-﻿using Gamification.Shared.Core.Domain;
-using Gamification.Shared.Core.Enums;
+﻿using ModularArchitecture.Shared.Core.Domain;
+using ModularArchitecture.Shared.Core.Enums;
 
-namespace Gamification.Shared.Core.Entities
+namespace ModularArchitecture.Shared.Core.Entities
 {
     public class Action : BaseEntity
     {

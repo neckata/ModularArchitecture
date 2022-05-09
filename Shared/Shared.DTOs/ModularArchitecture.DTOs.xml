@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Gamification.Shared.Infrastructure</name>
+        <name>ModularArchitecture.DTOs</name>
     </assembly>
     <members>
     </members>

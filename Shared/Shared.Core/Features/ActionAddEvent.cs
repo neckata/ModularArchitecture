@@ -1,7 +1,7 @@
-﻿using Gamification.Shared.Core.Domain;
-using Gamification.Shared.Core.Entities;
+﻿using ModularArchitecture.Shared.Core.Domain;
+using ModularArchitecture.Shared.Core.Entities;
 
-namespace Gamification.Shared.Core.Features
+namespace ModularArchitecture.Shared.Core.Features
 {
     public class ActionAddEvent : Event
     {

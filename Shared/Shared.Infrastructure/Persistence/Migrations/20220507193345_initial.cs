@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Gamification.Shared.Infrastructure.Persistence.Migrations
+namespace ModularArchitecture.Shared.Infrastructure.Persistence.Migrations
 {
     public partial class initial : Migration
     {

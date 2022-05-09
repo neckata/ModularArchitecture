@@ -1,11 +1,11 @@
 ﻿using System.Linq;
-using Gamification.Shared.Core.Interfaces.Serialization;
-using Gamification.Shared.Core.Serialization;
-using Gamification.Shared.Core.Settings;
+using ModularArchitecture.Shared.Core.Interfaces.Serialization;
+using ModularArchitecture.Shared.Core.Serialization;
+using ModularArchitecture.Shared.Core.Settings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Gamification.Shared.Core.Extensions
+namespace ModularArchitecture.Shared.Core.Extensions
 {
     public static class ServiceCollectionExtensions
     {

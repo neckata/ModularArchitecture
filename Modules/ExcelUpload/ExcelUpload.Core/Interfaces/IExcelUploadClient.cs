@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Gamification.DTOs.Actions;
-using Gamification.Shared.Core.Wrapper;
+using ModularArchitecture.DTOs.Actions;
+using ModularArchitecture.Shared.Core.Wrapper;
 
 namespace ExcelUpload.Core.Interfaces
 {

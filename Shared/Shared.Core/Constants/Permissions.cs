@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Gamification.Shared.Core.Constants
+namespace ModularArchitecture.Shared.Core.Constants
 {
     public static class Permissions
     {

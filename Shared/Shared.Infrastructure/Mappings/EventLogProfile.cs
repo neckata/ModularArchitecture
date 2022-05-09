@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Gamification.Shared.Core.EventLogging;
-using Gamification.Shared.DTOs.Identity.EventLogs;
+using ModularArchitecture.Shared.Core.EventLogging;
+using ModularArchitecture.Shared.DTOs.Identity.EventLogs;
 
-namespace Gamification.Shared.Infrastructure.Mappings
+namespace ModularArchitecture.Shared.Infrastructure.Mappings
 {
     public class EventLogProfile : Profile
     {

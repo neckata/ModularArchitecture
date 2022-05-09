@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 
-namespace Gamification.Shared.Core.Interfaces.Services.Identity
+namespace ModularArchitecture.Shared.Core.Interfaces.Services.Identity
 {
     public interface ICurrentUser
     {

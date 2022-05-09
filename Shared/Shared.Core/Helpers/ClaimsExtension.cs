@@ -3,12 +3,12 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using Gamification.Shared.Core.Constants;
-using Gamification.Shared.Core.Entities;
-using Gamification.Shared.DTOs.Identity.Roles;
+using ModularArchitecture.Shared.Core.Constants;
+using ModularArchitecture.Shared.Core.Entities;
+using ModularArchitecture.Shared.DTOs.Identity.Roles;
 using Microsoft.AspNetCore.Identity;
 
-namespace Gamification.Shared.Core.Helpers
+namespace ModularArchitecture.Shared.Core.Helpers
 {
     public static class ClaimsHelper
     {

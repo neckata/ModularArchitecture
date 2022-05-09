@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
 
-namespace Gamification
+namespace Host.ModularArchitecture
 {
+    using Microsoft.Extensions.Hosting;
+
     public class Program
     {
         public static void Main(string[] args)

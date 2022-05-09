@@ -34,7 +34,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Infrastructure", "Sh
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Host", "Host", "{771DC464-CFA1-4DE1-BF6F-E0C28E5DA060}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gamification", "Host\Gamification\Gamification.csproj", "{BF8513D7-BBB2-45CE-AE62-DFD6978A7CD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModularArchitecture", "Host\ModularArchitecture\ModularArchitecture.csproj", "{BF8513D7-BBB2-45CE-AE62-DFD6978A7CD3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{2B69FF4B-38F8-42B2-929D-F867CF8E124F} = {2B69FF4B-38F8-42B2-929D-F867CF8E124F}
 	EndProjectSection

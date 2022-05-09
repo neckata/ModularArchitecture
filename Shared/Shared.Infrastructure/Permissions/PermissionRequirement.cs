@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace Gamification.Shared.Infrastructure.Permissions
+namespace ModularArchitecture.Shared.Infrastructure.Permissions
 {
     internal class PermissionRequirement : IAuthorizationRequirement
     {

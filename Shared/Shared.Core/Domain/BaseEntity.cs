@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using Gamification.Shared.Core.Contracts;
+using ModularArchitecture.Shared.Core.Contracts;
 
-namespace Gamification.Shared.Core.Domain
+namespace ModularArchitecture.Shared.Core.Domain
 {
     public abstract class BaseEntity : IEntity<Guid>, IBaseEntity
     {

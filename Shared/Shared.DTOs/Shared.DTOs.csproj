@@ -2,20 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Gamification.DTOs</RootNamespace>
-    <AssemblyName>Gamification.DTOs</AssemblyName>
+    <RootNamespace>ModularArchitecture.DTOs</RootNamespace>
+    <AssemblyName>ModularArchitecture.DTOs</AssemblyName>
     <CodeAnalysisRuleSet />
     <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\piked\source\repos\Gamification\Shared\Shared.DTOs\Gamification.DTOs.xml</DocumentationFile>
-    <CodeAnalysisRuleSet>..\..\Gamification.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>C:\Users\piked\source\repos\ModularArchitecture\Shared\Shared.DTOs\ModularArchitecture.DTOs.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\..\ModularArchitecture.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>Gamification.DTOs.xml</DocumentationFile>
-    <CodeAnalysisRuleSet>..\..\Gamification.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>ModularArchitecture.DTOs.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>..\..\ModularArchitecture.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 </Project>

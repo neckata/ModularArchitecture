@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Gamification.Shared.Core.Constants;
+using ModularArchitecture.Shared.Core.Constants;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 
-namespace Gamification.Shared.Infrastructure.Permissions
+namespace ModularArchitecture.Shared.Infrastructure.Permissions
 {
     internal class PermissionPolicyProvider : IAuthorizationPolicyProvider
     {

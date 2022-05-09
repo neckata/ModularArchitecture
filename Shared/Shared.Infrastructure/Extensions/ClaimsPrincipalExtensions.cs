@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Claims;
 
-namespace Gamification.Shared.Infrastructure.Extensions
+namespace ModularArchitecture.Shared.Infrastructure.Extensions
 {
     public static class ClaimsPrincipalExtensions
     {

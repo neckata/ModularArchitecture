@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Gamification.DTOs.Actions;
-using Gamification.Shared.Core.Entities;
+using ModularArchitecture.DTOs.Actions;
+using ModularArchitecture.Shared.Core.Entities;
 
-namespace Gamification.Shared.Infrastructure.Mappings
+namespace ModularArchitecture.Shared.Infrastructure.Mappings
 {
     public class ActionLogProfile : Profile
     {

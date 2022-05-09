@@ -1,10 +1,10 @@
-﻿using Gamification.Shared.Core.Wrapper;
+﻿using ModularArchitecture.Shared.Core.Wrapper;
 using System.Threading.Tasks;
-using Gamification.DTOs.Actions;
+using ModularArchitecture.DTOs.Actions;
 using System.Collections.Generic;
-using Gamification.Shared.Core.Entities;
+using ModularArchitecture.Shared.Core.Entities;
 
-namespace Gamification.Shared.Core.Interfaces.Services.Connector
+namespace ModularArchitecture.Shared.Core.Interfaces.Services.Connector
 {
     public interface IConnectorClient
     {

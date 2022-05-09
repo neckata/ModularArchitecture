@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using Gamification.Shared.Core.Constants;
+using ModularArchitecture.Shared.Core.Constants;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Gamification.Shared.Infrastructure.Permissions
+namespace ModularArchitecture.Shared.Infrastructure.Permissions
 {
     internal class PermissionAuthorizationHandler : AuthorizationHandler<PermissionRequirement>
     {

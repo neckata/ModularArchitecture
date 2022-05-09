@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Gamification": {
+    "ModularArchitecture": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,
