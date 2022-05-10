@@ -21,7 +21,7 @@ namespace Outlook.Infrastructure.Controllers.ExcelUpload
         [Authorize(Policy = Permissions.Outlook.View)]
         public async Task<IActionResult> GetEmails()
         {
-            return Ok();
+            return Ok(await _outlookService.GetEmails());
         }
     }
 }

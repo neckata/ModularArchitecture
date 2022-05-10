@@ -64,6 +64,13 @@ namespace Outlook.Core.Services
             return await Result<System.Guid>.SuccessAsync(action.Id, "Action Added");
         }
 
+        public async Task<IResult<List<string>>> GetEmails()
+        {
+            var emails = GetEmailsFromOutlook();
+
+            return await Result<List<string>>.SuccessAsync(emails);
+        }
+
         private void UpdateOutlookEvent(UpdateActionRequest request)
         {
             //Here you will connect and update the event in outlook
@@ -72,6 +79,12 @@ namespace Outlook.Core.Services
         private void AddOutlookEvent(CreateActionRequest request)
         {
             //Here you will connect and add the event in outlook
+        }
+
+        private List<string> GetEmailsFromOutlook()
+        {
+            //Here you will connect and get emails
+            return new List<string>();
         }
     }
 }
