@@ -1,5 +1,5 @@
 using Host.ModularArchitecture.Factory;
-using ModularArchitecture.Modules.ExcelUpload.Infrastructure.Extensions;
+using ModularArchitecture.Modules.Slack.Infrastructure.Extensions;
 using ModularArchitecture.Modules.Outlook.Infrastructure.Extensions;
 using ModularArchitecture.Shared.Core;
 using ModularArchitecture.Shared.Core.Extensions;
@@ -26,7 +26,7 @@ namespace Host.ModularArchitecture
                   .AddDistributedMemoryCache()
                   .AddSerialization(_config)
                   .AddSharedInfrastructure(_config)
-                  .AddExcelUploadInfrastructure(_config)
+                  .AddSlackInfrastructure(_config)
                   .AddOutlookInfrastructure(_config);
 
             services.AddTransient<IConnectorFactory, ConnectorFactory>();

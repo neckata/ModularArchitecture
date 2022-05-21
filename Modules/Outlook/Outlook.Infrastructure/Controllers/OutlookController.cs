@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Outlook.Core.Services;
 
-namespace Outlook.Infrastructure.Controllers.ExcelUpload
+namespace Outlook.Infrastructure.Controllers.Slack
 {
     [ApiVersion("1")]
     public class OutlookController : CommonBaseController

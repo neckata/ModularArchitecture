@@ -1,10 +1,10 @@
-﻿using ExcelUpload.Core.Services;
+﻿using Slack.Core.Services;
 using ModularArchitecture.Shared.Core.Enums;
 using ModularArchitecture.Shared.Core.Interfaces.Services.Connector;
 using ModularArchitecture.Shared.Core;
 using Outlook.Core.Services;
 using System;
-using ExcelUpload.Core.Interfaces;
+using Slack.Core.Interfaces;
 
 namespace Host.ModularArchitecture.Factory
 {
@@ -21,8 +21,8 @@ namespace Host.ModularArchitecture.Factory
         {
             switch (connectorType)
             {
-                case ConnectorTypeEnum.ExcelUpload:
-                    return (ExcelUploadConnectorClient)_container.GetService(typeof(IExcelUploadClient));
+                case ConnectorTypeEnum.Slack:
+                    return (SlackConnectorClient)_container.GetService(typeof(ISlackClient));
                 case ConnectorTypeEnum.Outlook:
                     return (OutlookConnectorClient)_container.GetService(typeof(IOutlookClient));
             }

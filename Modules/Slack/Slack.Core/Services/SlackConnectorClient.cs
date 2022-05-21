@@ -10,17 +10,16 @@ using ModularArchitecture.DTOs.Actions;
 using ModularArchitecture.Shared.Core.Entities;
 using System.Collections.Generic;
 using ModularArchitecture.Shared.Core.Enums;
-using ExcelUpload.Core.Interfaces;
-using ModularArchitecture.Shared.Core.Exceptions;
+using Slack.Core.Interfaces;
 
-namespace ExcelUpload.Core.Services
+namespace Slack.Core.Services
 {
-    public class ExcelUploadConnectorClient : IConnectorClient, IExcelUploadClient
+    public class SlackConnectorClient : IConnectorClient, ISlackClient
     {
         private readonly IMapper _mapper;
         private readonly IApplicationDbContext _context;
 
-        public ExcelUploadConnectorClient(IMapper mapper, IApplicationDbContext context)
+        public SlackConnectorClient(IMapper mapper, IApplicationDbContext context)
         {
             _mapper = mapper;
             _context = context;
@@ -28,14 +27,14 @@ namespace ExcelUpload.Core.Services
 
         public async Task<IResult<List<Action>>> GetActions()
         {
-            var actions = await _context.Actions.Where(x => x.ConnectorType == ConnectorTypeEnum.ExcelUpload).AsNoTracking().ToListAsync();
+            var actions = await _context.Actions.Where(x => x.ConnectorType == ConnectorTypeEnum.Slack).AsNoTracking().ToListAsync();
 
             return await Result<List<Action>>.SuccessAsync(actions);
         }
 
         public async Task<IResult<System.Guid>> UpdateActionAsync(UpdateActionRequest request)
         {
-            UpdateExcel(request);
+            UpdateChannel(request);
 
             var action = await _context.Actions.Where(b => b.Id == request.Id).AsNoTracking().FirstOrDefaultAsync();
 
@@ -49,43 +48,43 @@ namespace ExcelUpload.Core.Services
             return await Result<System.Guid>.SuccessAsync(action.Id, "Action Updated");
         }
 
-        /// <summary>
-        /// Not implemented for excel upload
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
         public async Task<IResult<System.Guid>> CreateActionAsync(CreateActionRequest request)
         {
-            //There is no need of this implemantation
-            throw new MethodNotImplementedException("ExcelUpload can't create action from method");
-        }
+            AddChannel(request);
 
-        public async Task<IResult<System.Guid>> UploadFile(CreateActionRequest createActionRequest)
-        {
-            AddExcel(createActionRequest);
+            var action = _mapper.Map<Action>(request);
 
-            //Read excel fille
-
-            var action = _mapper.Map<Action>(createActionRequest);
-
-            action.ConnectorType = ConnectorTypeEnum.ExcelUpload;
+            action.ConnectorType = ConnectorTypeEnum.Slack;
 
             action.AddDomainEvent(new ActionAddEvent(action));
 
             await _context.Actions.AddAsync(action);
             await _context.SaveChangesAsync();
 
-            return await Result<System.Guid>.SuccessAsync(action.Id, "Action Added");
+            return await Result<System.Guid>.SuccessAsync(action.Id, "Channel Added");
         }
 
-        private void UpdateExcel(UpdateActionRequest request)
+        public async Task<IResult<List<string>>> GetChannels()
         {
-            //Here you will update the excel file in the file system
+            var emails = GetChannelsFromSlack();
+
+            return await Result<List<string>>.SuccessAsync(emails);
         }
 
-        private void AddExcel(CreateActionRequest createActionRequest)
+        private List<string> GetChannelsFromSlack()
         {
-            //Here you add the exel to the file system
-        } 
+            //Here you will connect to slack and get channels
+            return new List<string>();
+        }
+
+        private void UpdateChannel(UpdateActionRequest request)
+        {
+            //Here you will update the channel
+        }
+
+        private void AddChannel(CreateActionRequest createActionRequest)
+        {
+            //Here you add the channel
+        }
     }
 }

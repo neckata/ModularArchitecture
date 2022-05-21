@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\Shared.Infrastructure\Shared.Infrastructure.csproj" />
-    <ProjectReference Include="..\ExcelUpload.Core\ExcelUpload.Core.csproj" />
+    <ProjectReference Include="..\Slack.Core\Slack.Core.csproj" />
   </ItemGroup>
 
 </Project>

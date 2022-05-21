@@ -2,7 +2,7 @@
 {
     public enum ConnectorTypeEnum
     {
-        ExcelUpload,
+        Slack,
         Outlook
     }
 }

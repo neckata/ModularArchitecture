@@ -7,13 +7,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{A75C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Outlook", "Outlook", "{C5EDD89E-71E7-4D12-9146-FA2EAF2D5CA4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExcelUpload", "ExcelUpload", "{69CFB23B-A43F-47B4-B591-C8128F43A906}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Slack", "Slack", "{69CFB23B-A43F-47B4-B591-C8128F43A906}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelUpload.Core", "Modules\ExcelUpload\ExcelUpload.Core\ExcelUpload.Core.csproj", "{08776A35-AF06-47F6-A6FB-490E251F93C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Slack.Core", "Modules\Slack\Slack.Core\Slack.Core.csproj", "{08776A35-AF06-47F6-A6FB-490E251F93C6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelUpload.Infrastructure", "Modules\ExcelUpload\ExcelUpload.Infrastructure\ExcelUpload.Infrastructure.csproj", "{C10D47EB-C5E3-45BF-8F52-74080EF5248C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Slack.Infrastructure", "Modules\Slack\Slack.Infrastructure\Slack.Infrastructure.csproj", "{C10D47EB-C5E3-45BF-8F52-74080EF5248C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelUpload.UnitTests", "Modules\ExcelUpload\ExcelUpload.UnitTests\ExcelUpload.UnitTests.csproj", "{BC4ACC14-3975-4DA5-BC4D-9ADBCA2DFDF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Slack.UnitTests", "Modules\Slack\Slack.UnitTests\Slack.UnitTests.csproj", "{BC4ACC14-3975-4DA5-BC4D-9ADBCA2DFDF1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Outlook.Infrastructure", "Modules\Outlook\Outlook.Infrastructure\Outlook.Infrastructure.csproj", "{C559849C-C40E-4FD4-B9BE-40AF16901089}"
 EndProject

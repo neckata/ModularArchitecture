@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Modules\ExcelUpload\ExcelUpload.Infrastructure\ExcelUpload.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Modules\Slack\Slack.Infrastructure\Slack.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Modules\Outlook\Outlook.Infrastructure\Outlook.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Shared\Shared.Infrastructure\Shared.Infrastructure.csproj" />
   </ItemGroup>
