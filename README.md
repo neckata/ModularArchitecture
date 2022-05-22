@@ -35,7 +35,7 @@ You can use these credentials to generate jwt tokens in the `api/identity/tokens
 - Shared Infrastructure – Application-Specific Interfaces and implementations are found here for other modules to consume. This includes Middlewares, Data Access providers, and so on.
 - Database
 - 
-![Project Strucutre]([http://url/to/img.pn](https://raw.githubusercontent.com/neckata/ModularArchitecture/master/About/structure.PNG))
+![Project Strucutre](https://raw.githubusercontent.com/neckata/ModularArchitecture/master/About/structure.PNG)
 
 #### Definition of a Module
  - A module is a logical unit of the business requirement. Slack and Outlook are a few examples of Modules.
