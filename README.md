@@ -48,4 +48,12 @@ You can use these credentials to generate jwt tokens in the `api/identity/tokens
  - Modules.Slack.Core – Contains Entities, Abstractions, and everything needed for the module to function independently.
  - Modules.Slack.Infrastructure – This project depends on the Core for abstractions.
 
+![Modules](https://raw.githubusercontent.com/neckata/ModularArchitecture/master/About/modules.PNG)
+
+### Dependencies 
+ - Module.Slack.Core should have a referece to Shared.Core
+ - Module.Slack.Infrastructure should have a referece to Shared.Infrastructure & Module.Slack.Core
+ - Module.Slack should have a referece to Module.Slack.Core and Module.Slack.Infrastructure
+ - Shared.Infrastructure should have a reference to Shared.Core
+ - Shared.Core should depend on Shared.Models
 
