@@ -38,9 +38,8 @@ You can use these credentials to generate jwt tokens in the `api/identity/tokens
 ![Project Strucutre](https://raw.githubusercontent.com/neckata/ModularArchitecture/master/About/structure.PNG)
 
  - API will hold all the service / controller registration logics and nothing else.
- - Module.Slack & Module.Outlook will contain the API controllers only,which will be picked up by the API Project.
  - Module.Slack.Core & Module.Outlook.Core will contain the Entity models, interfaces specific to the module and so on.
- - Module.Slack.Infrastructure & Module.Outlook.Infrastructure will mainly hold the Service implementation.
+ - Module.Slack.Infrastructure & Module.Outlook.Infrastructure will mainly hold the Service implementation and the API controllers only, which will be picked up by the API Project
  - Shared.Core will have Common Service Implementations / Interfaces and basically everything that has to be shared across the application.
  - Shared.Models is where the Request /Response classes are added.
  - Shared.Infrastructure contians middlewares, utilities and specify which Database Provider to use for the entire application.
@@ -52,7 +51,6 @@ You can use these credentials to generate jwt tokens in the `api/identity/tokens
  - Every module will be further split into API, Core, and Infrastructure projects to enforce Clean Architecture.
  - Cross Module communication can happen only via Interfaces/events/in-memory bus.
 
- - Modules.Slack – Contains the API Controllers needed for the module.
  - Modules.Slack.Core – Contains Entities, Abstractions, and everything needed for the module to function independently.
  - Modules.Slack.Infrastructure – This project depends on the Core for abstractions.
 
@@ -61,7 +59,9 @@ You can use these credentials to generate jwt tokens in the `api/identity/tokens
 ### Dependencies 
  - Module.Slack.Core should have a referece to Shared.Core
  - Module.Slack.Infrastructure should have a referece to Shared.Infrastructure & Module.Slack.Core
- - Module.Slack should have a referece to Module.Slack.Core and Module.Slack.Infrastructure
  - Shared.Infrastructure should have a reference to Shared.Core
  - Shared.Core should depend on Shared.Models
 
+![Dependencies](https://raw.githubusercontent.com/neckata/ModularArchitecture/master/About/dependencies.PNG)
+
+### Swagger
