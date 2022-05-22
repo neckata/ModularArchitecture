@@ -65,3 +65,8 @@ You can use these credentials to generate jwt tokens in the `api/identity/tokens
 ![Dependencies](https://raw.githubusercontent.com/neckata/ModularArchitecture/master/About/dependencies.PNG)
 
 ### Swagger
+ - There is swagger instaled
+ - The module seperation is easily seen
+ - The shared "Action" controller is where the diffrent implemantation of the modules comes to use
+ 
+![Dependencies](https://raw.githubusercontent.com/neckata/ModularArchitecture/master/About/swagger.PNG)
