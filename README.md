@@ -35,16 +35,17 @@ You can use these credentials to generate jwt tokens in the `api/identity/tokens
 - Shared Infrastructure – Application-Specific Interfaces and implementations are found here for other modules to consume. This includes Middlewares, Data Access providers, and so on.
 - Database
 
+[ Project Strucutre](https://raw.githubusercontent.com/neckata/ModularArchitecture/master/About/structure.PNG)
+
 #### Definition of a Module
  - A module is a logical unit of the business requirement. Slack and Outlook are a few examples of Modules.
  - One module should never depend on any other module. It can depend on Abstraction Interfaces that are present in Shared Application Projects.
  - Each module has to follow a domain-driven architecture
  - Every module will be further split into API, Core, and Infrastructure projects to enforce Clean Onion Architecture.
  - Cross Module communication can happen only via Interfaces/events/in-memory bus.
- TODO Insert image here
- 
-Modules.Slack – Contains the API Controllers needed for the module.
-Modules.Slack.Core – Contains Entities, Abstractions, and everything needed for the module to function independently.
-Modules.Slack.Infrastructure – This project depends on the Core for abstractions.
+
+ - Modules.Slack – Contains the API Controllers needed for the module.
+ - Modules.Slack.Core – Contains Entities, Abstractions, and everything needed for the module to function independently.
+ - Modules.Slack.Infrastructure – This project depends on the Core for abstractions.
 
 
