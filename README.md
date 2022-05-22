@@ -34,7 +34,7 @@ You can use these credentials to generate jwt tokens in the `api/identity/tokens
 - Modules – A logical block of the business unit. For example, Slack. Everything that is related to Slack can be found here. We will walk through the definition of a module in the next section.
 - Shared Infrastructure – Application-Specific Interfaces and implementations are found here for other modules to consume. This includes Middlewares, Data Access providers, and so on.
 - Database
-- 
+
 ![Project Strucutre](https://raw.githubusercontent.com/neckata/ModularArchitecture/master/About/structure.PNG)
 
 #### Definition of a Module
