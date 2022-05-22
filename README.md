@@ -37,11 +37,19 @@ You can use these credentials to generate jwt tokens in the `api/identity/tokens
 
 ![Project Strucutre](https://raw.githubusercontent.com/neckata/ModularArchitecture/master/About/structure.PNG)
 
+ - API will hold all the service / controller registration logics and nothing else.
+ - Module.Slack & Module.Outlook will contain the API controllers only,which will be picked up by the API Project.
+ - Module.Slack.Core & Module.Outlook.Core will contain the Entity models, interfaces specific to the module and so on.
+ - Module.Slack.Infrastructure & Module.Outlook.Infrastructure will mainly hold the Service implementation.
+ - Shared.Core will have Common Service Implementations / Interfaces and basically everything that has to be shared across the application.
+ - Shared.Models is where the Request /Response classes are added.
+ - Shared.Infrastructure contians middlewares, utilities and specify which Database Provider to use for the entire application.
+
 #### Definition of a Module
  - A module is a logical unit of the business requirement. Slack and Outlook are a few examples of Modules.
  - One module should never depend on any other module. It can depend on Abstraction Interfaces that are present in Shared Application Projects.
  - Each module has to follow a domain-driven architecture
- - Every module will be further split into API, Core, and Infrastructure projects to enforce Clean Onion Architecture.
+ - Every module will be further split into API, Core, and Infrastructure projects to enforce Clean Architecture.
  - Cross Module communication can happen only via Interfaces/events/in-memory bus.
 
  - Modules.Slack – Contains the API Controllers needed for the module.
