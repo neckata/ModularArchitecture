@@ -28,7 +28,7 @@
 
 You can use these credentials to generate jwt tokens in the `api/identity/tokens` endpoint.
 
-#### Project Structure
+### Project Structure
 
 - API / Host – A very thin Rest API / Host Application that is responsible for registering the controllers/services of other modules into the service container.
 - Modules – A logical block of the business unit. For example, Slack. Everything that is related to Slack can be found here. We will walk through the definition of a module in the next section.
