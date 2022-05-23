@@ -16,7 +16,7 @@
 #### Running the API
 
 1. Open up `ModularArchitecture.sln` in Visual Studio 2019.
-2. Navigate to appSettings.json under `src/Api/Bootstrapper/appsettings.json`
+2. Navigate to appSettings.json under `src/Host/ModularArchitecture/appsettings.json`
 3. Add you MSSQL connection string under `PersistenceSettings`. The default connection string is `"mssql": "Data Source=.; Initial Catalog=ModularArchitecture; Integrated Security=true; Max Pool Size=1000; Min Pool Size=12; Pooling=True;"`
 4. That's everything you need to setup the API. Just build and run the API project.
 5. By default, the database is migrated and latest changes are applied.
@@ -24,7 +24,7 @@
 
 #### Default Credentials
 
-- superadmin - admin@admin.com / 123Pa$$word!
+- admin - admin@admin.com / 123Pa$$word!
 
 You can use these credentials to generate jwt tokens in the `api/identity/tokens` endpoint.
 
@@ -66,7 +66,7 @@ You can use these credentials to generate jwt tokens in the `api/identity/tokens
 
 ### Swagger
  - There is swagger instaled
- - The module seperation is easily seen
- - The shared "Action" controller is where the diffrent implemantation of the modules comes to use
+ - Module seperation is seen -> Outlook/Slack and their specific endpoints 
+ - The "Action" controller is where the diffrent implemantation of the IConnectorClient from the modules comes into use
  
 ![Dependencies](https://raw.githubusercontent.com/neckata/ModularArchitecture/master/About/swagger.PNG)
