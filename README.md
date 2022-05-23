@@ -68,5 +68,7 @@ You can use these credentials to generate jwt tokens in the `api/identity/tokens
  - There is swagger instaled
  - Module seperation is seen -> Outlook/Slack and their specific endpoints 
  - The "Action" controller is where the diffrent implemantation of the IConnectorClient from the modules comes into use
+ - You can add/update/get an action by chosing the specific connector
+ - You can get all Connector from Action controller
  
 ![Dependencies](https://raw.githubusercontent.com/neckata/ModularArchitecture/master/About/swagger.PNG)
