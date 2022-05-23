@@ -64,10 +64,9 @@ You can use these credentials to generate jwt tokens in the `api/identity/tokens
 
 ![Dependencies](https://raw.githubusercontent.com/neckata/ModularArchitecture/master/About/dependencies.PNG)
 
-### IConnectorClient(https://github.com/neckata/ModularArchitecture/blob/master/Shared/Shared.Core/Interfaces/Services/Connector/IConnectorClient.cs)
+### IConnectorClient
 
 Every connector/module which will be added to the solution needs to implement IConnectorClient Shared/Shared.Core/Interfaces/Services/Connector/IConnectorClient.cs
-The iterface has this methods, which need to be impelmented in the module:
  - UpdateActionAsync
  - CreateActionAsync
  - GetActions
