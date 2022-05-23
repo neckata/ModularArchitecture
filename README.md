@@ -64,6 +64,14 @@ You can use these credentials to generate jwt tokens in the `api/identity/tokens
 
 ![Dependencies](https://raw.githubusercontent.com/neckata/ModularArchitecture/master/About/dependencies.PNG)
 
+### IConnectorClient 
+
+https://github.com/neckata/ModularArchitecture/blob/master/Shared/Shared.Core/Interfaces/Services/Connector/IConnectorClient.cs
+
+ - UpdateActionAsync
+ - CreateActionAsync
+ - GetActions
+
 ### Swagger
  - There is swagger instaled
  - Module seperation is seen -> Outlook/Slack and their specific endpoints 
