@@ -3,7 +3,6 @@
 ### Technology Stack :muscle:
 
 - API - ASP.NET Core 5.0 WebAPI
-- Client - Angular 12 Material
 - Data Access - [Entity Framework Core 5.0](https://docs.microsoft.com/en-us/ef/core/)
 - DB Providers - MSSQL
 
@@ -20,7 +19,7 @@
 3. Add you MSSQL connection string under `PersistenceSettings`. The default connection string is `"mssql": "Data Source=.; Initial Catalog=ModularArchitecture; Integrated Security=true; Max Pool Size=1000; Min Pool Size=12; Pooling=True;"`
 4. That's everything you need to setup the API. Just build and run the API project.
 5. By default, the database is migrated and latest changes are applied.
-6. Some default data is also seeded to this database like roles, users, brands, products etc.
+6. Some default data is also seeded to this database like roles, users.
 
 #### Default Credentials
 
@@ -31,7 +30,7 @@ You can use these credentials to generate jwt tokens in the `api/identity/tokens
 ### Project Structure
 
 - API / Host – A very thin Rest API / Host Application that is responsible for registering the controllers/services of other modules into the service container.
-- Modules – A logical block of the business unit. For example, Slack. Everything that is related to Slack can be found here. We will walk through the definition of a module in the next section.
+- Modules – A logical block of the business unit. For example, Slack. Everything that is related to Slack can be found here. 
 - Shared Infrastructure – Application-Specific Interfaces and implementations are found here for other modules to consume. This includes Middlewares, Data Access providers, and so on.
 - Database
 
@@ -49,7 +48,7 @@ You can use these credentials to generate jwt tokens in the `api/identity/tokens
  - One module should never depend on any other module. It can depend on Abstraction Interfaces that are present in Shared Application Projects.
  - Each module has to follow a domain-driven architecture
  - Every module will be further split into API, Core, and Infrastructure projects to enforce Clean Architecture.
- - Cross Module communication can happen only via Interfaces/events/in-memory bus.
+ - Cross Module communication can happen only via Interfaces.
 
  - Modules.Slack.Core – Contains Entities, Abstractions, and everything needed for the module to function independently.
  - Modules.Slack.Infrastructure – This project depends on the Core for abstractions.
