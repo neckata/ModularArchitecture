@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Slack.Core.Interfaces;
-using ModularArchitecture.DTOs.Actions;
 using ModularArchitecture.Shared.Core.Constants;
 using ModularArchitecture.Shared.Infrastructure.Controllers;
 using Microsoft.AspNetCore.Authorization;
@@ -11,18 +10,18 @@ namespace Slack.Infrastructure.Controllers.Slack
     [ApiVersion("1")]
     public class SlackController : CommonBaseController
     {
-        private ISlackClient _SlackService;
+        private ISlackClient _slackService;
 
-        public SlackController(ISlackClient SlackService)
+        public SlackController(ISlackClient slackService)
         {
-            _SlackService = SlackService;
+            _slackService = slackService;
         }
 
         [HttpPut]
         [Authorize(Policy = Permissions.Slack.View)]
         public async Task<IActionResult> GetChannels()
         {
-            return Ok(await _SlackService.GetChannels());
+            return Ok(await _slackService.GetChannels());
         }
     }
 }

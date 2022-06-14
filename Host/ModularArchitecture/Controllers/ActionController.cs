@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using MediatR;
+using System.Linq;
+using System.Reflection;
 
 namespace Host.ModularArchitecture.Controllers
 {
@@ -16,20 +19,25 @@ namespace Host.ModularArchitecture.Controllers
     {
         private readonly IConnectorFactory _connectorFactory;
         private readonly IEventService _eventService;
+        private readonly IMediator _mediator;
 
-        public ActionController(IConnectorFactory connectorFactory, IEventService eventService)
+        public ActionController(IConnectorFactory connectorFactory, IEventService eventService, IMediator mediator)
         {
             _connectorFactory = connectorFactory;
             _eventService = eventService;
+            _mediator = mediator;
         }
 
         [HttpPut]
-        [Authorize(Policy = Permissions.Actions.Create)]
-        public async Task<IActionResult> CreateActionAsync(ConnectorTypeEnum connector, CreateActionRequest request)
+       // [Authorize(Policy = Permissions.Actions.Create)]
+        public async Task<IActionResult> CreateActionAsync(CreateActionRequest request)
         {
-            var connectorObject = _connectorFactory.CreateFor(connector);
+            Assembly Outlook = AppDomain.CurrentDomain.GetAssemblies().First(x => x.FullName.Contains("Outlook"));
+            Type CreateActionCommand = Outlook.GetTypes().First(x => x.Name == "CreateActionCommand");
+            ConstructorInfo CreateActionCommandConstructor = CreateActionCommand.GetConstructor(new[] { typeof(CreateActionRequest) });
+            object CreateActionCommandConstructorInstance = CreateActionCommandConstructor.Invoke(new object[] { request });
 
-            var response = await connectorObject.CreateActionAsync(request);
+            var response = await _mediator.Send(CreateActionCommandConstructorInstance);
 
             return Ok(response);
         }

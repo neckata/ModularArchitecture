@@ -1,6 +1,9 @@
 ﻿using Outlook.Core.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
+using MediatR;
+using Outlook.Core.Commands;
 
 namespace ModularArchitecture.Modules.Outlook.Infrastructure.Extensions
 {
@@ -10,6 +13,7 @@ namespace ModularArchitecture.Modules.Outlook.Infrastructure.Extensions
         {
             services.AddTransient<IOutlookClient, OutlookConnectorClient>();
             services.AddControllers();
+            services.AddMediatR(typeof(CreateActionCommand).GetTypeInfo().Assembly);
             return services;
         }
     }
