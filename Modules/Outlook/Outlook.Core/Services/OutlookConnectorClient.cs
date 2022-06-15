@@ -2,10 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using ModularArchitecture.DTOs.Actions;
 using ModularArchitecture.Shared.Core.Entities;
-using ModularArchitecture.Shared.Core.Enums;
 using ModularArchitecture.Shared.Core.Features;
 using ModularArchitecture.Shared.Core.Interfaces;
-using ModularArchitecture.Shared.Core.Interfaces.Services.Connector;
 using ModularArchitecture.Shared.Core.Wrapper;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Outlook.Core.Services
 {
-    public class OutlookConnectorClient : IConnectorClient, IOutlookClient
+    public class OutlookConnectorClient : IOutlookClient
     {
         private readonly IMapper _mapper;
         private readonly IApplicationDbContext _context;
@@ -24,9 +22,9 @@ namespace Outlook.Core.Services
             _context = context;
         }
 
-        public async Task<IResult<List<Action>>> GetActions()
+        public async Task<IResult<List<Action>>> GetActionsAsync()
         {
-            var actions = await _context.Actions.Where(x=>x.ConnectorType == ConnectorTypeEnum.Outlook).AsNoTracking().ToListAsync();
+            var actions = await _context.Actions.Where(x=>x.ConnectorType == "Outlook").AsNoTracking().ToListAsync();
 
             return await Result<List<Action>>.SuccessAsync(actions);
         }
@@ -54,7 +52,7 @@ namespace Outlook.Core.Services
 
             var action = _mapper.Map<Action>(request);
 
-            action.ConnectorType = ConnectorTypeEnum.Outlook;
+            action.ConnectorType = "Outlook";
 
             action.AddDomainEvent(new ActionAddEvent(action));
 
@@ -62,13 +60,6 @@ namespace Outlook.Core.Services
             await _context.SaveChangesAsync();
 
             return await Result<System.Guid>.SuccessAsync(action.Id, "Action Added");
-        }
-
-        public async Task<IResult<List<string>>> GetEmails()
-        {
-            var emails = GetEmailsFromOutlook();
-
-            return await Result<List<string>>.SuccessAsync(emails);
         }
 
         private void UpdateOutlookEvent(UpdateActionRequest request)
@@ -79,12 +70,6 @@ namespace Outlook.Core.Services
         private void AddOutlookEvent(CreateActionRequest request)
         {
             //Here you will connect and add the event in outlook
-        }
-
-        private List<string> GetEmailsFromOutlook()
-        {
-            //Here you will connect and get emails
-            return new List<string>();
         }
     }
 }

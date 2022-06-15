@@ -3,10 +3,8 @@ using ModularArchitecture.Shared.Core.Entities;
 using ModularArchitecture.Shared.Core.Interfaces;
 using ModularArchitecture.Shared.Core.Interfaces.Services;
 using Microsoft.Extensions.Logging;
-using System.Linq;
-using ModularArchitecture.Shared.Core.Enums;
-using System;
 using Microsoft.EntityFrameworkCore;
+using ModularArchitecture.Shared.Infrastructure.Utilities;
 
 namespace ModularArchitecture.Shared.Infrastructure.Persistence
 {
@@ -33,8 +31,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence
         {
             Task.Run(async () =>
             {
-                var connectorsList = Enum.GetValues(typeof(ConnectorTypeEnum)).Cast<ConnectorTypeEnum>().Select(x => x.ToString());
-                foreach (string connectorName in connectorsList)
+                foreach (string connectorName in ConnectorTypes.Instance.Modules)
                 {
                     var connector = new Connector {Name = connectorName };
                     var connectorInDb = await _db.Connectors.FirstOrDefaultAsync(x=>x.Name == connectorName);

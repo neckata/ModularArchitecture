@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using ModularArchitecture.Shared.Core.Wrapper;
+﻿using ModularArchitecture.Shared.Core.Interfaces.Services.Connector;
 
 namespace Slack.Core.Interfaces
 {
-    public interface ISlackClient
+    public interface ISlackClient : IConnectorClient
     {
-        public Task<IResult<List<string>>> GetChannels();
+
     }
 }

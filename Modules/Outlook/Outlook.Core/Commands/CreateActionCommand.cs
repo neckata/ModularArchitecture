@@ -1,26 +1,35 @@
 ﻿using MediatR;
 using ModularArchitecture.DTOs.Actions;
+using ModularArchitecture.Shared.Core.Wrapper;
+using Outlook.Core.Services;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Outlook.Core.Commands
 {
-    public class CreateActionCommand : IRequest<string>
+    public class CreateActionCommand : IRequest<IResult<Guid>>
     {
-        public string Id { get; set; }
+        public CreateActionRequest Request { get; set; }
 
         public CreateActionCommand(CreateActionRequest createAction)
         {
-            Id = createAction.Id;
+            Request = createAction;
         }
     }
 
-    public class CreateActionCommandHandler : IRequestHandler<CreateActionCommand, string>
+    public class CreateActionCommandHandler : IRequestHandler<CreateActionCommand, IResult<Guid>>
     {
-        public async Task<string> Handle(CreateActionCommand command, CancellationToken cancellationToken)
+        private IOutlookClient _outlookClient;
+
+        public CreateActionCommandHandler(IOutlookClient outlookClient)
         {
-            return null;
+            _outlookClient = outlookClient;
+        }
+
+        public async Task<IResult<Guid>> Handle(CreateActionCommand command, CancellationToken cancellationToken)
+        {
+            return await _outlookClient.CreateActionAsync(command.Request);
         }
     }
 }

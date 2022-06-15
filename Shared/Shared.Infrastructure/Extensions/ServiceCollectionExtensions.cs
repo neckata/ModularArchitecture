@@ -37,6 +37,7 @@ using Microsoft.AspNetCore.Authorization;
 using ModularArchitecture.Shared.Infrastructure.Permissions;
 using ModularArchitecture.Shared.Core.Interfaces.Services.Event;
 using ModularArchitecture.Shared.Core.IntegrationServices.Event;
+using ModularArchitecture.Shared.Infrastructure.Utilities;
 
 [assembly: InternalsVisibleTo("ModularArchitecture")]
 
@@ -281,9 +282,12 @@ namespace ModularArchitecture.Shared.Infrastructure.Extensions
 
             var directoryPaths = Directory.GetDirectories(@"..\..\Modules");
 
+            List<string> modules = new List<string>();
+
             foreach (var directoryPath in directoryPaths)
             {
                 string moduleName = Path.GetFileName(Path.GetDirectoryName(directoryPath + "\\"));
+                modules.Add(moduleName);
 
                 var referencedPaths = Directory.GetFiles($@"{directoryPath}\{moduleName}.Infrastructure\bin\Debug\net5.0", "*.dll");
 
@@ -304,6 +308,8 @@ namespace ModularArchitecture.Shared.Infrastructure.Extensions
                     if (add)
                         toLoad.Add(path);
                 }
+
+                ConnectorTypes.Instance.Modules = modules;
 
                 toLoad.ForEach(filename =>
                 {

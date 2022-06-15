@@ -1,7 +1,9 @@
-﻿namespace ModularArchitecture.DTOs.Actions
+﻿using System;
+
+namespace ModularArchitecture.DTOs.Actions
 {
     public class CreateActionRequest
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
     }
 }
