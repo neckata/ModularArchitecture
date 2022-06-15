@@ -8,7 +8,7 @@ namespace ModularArchitecture.Shared.Core.Interfaces.Services.Event
 {
     public interface IEventService
     {
-        Task<Result<List<ConnectorResponse>>> GetAllConnectorsAsync();
+        Task<IResult<List<ConnectorResponse>>> GetAllConnectorsAsync();
 
         Task<IResult<ConnectorResponse>> GetConnectorAsync(Guid connectorId);
     }

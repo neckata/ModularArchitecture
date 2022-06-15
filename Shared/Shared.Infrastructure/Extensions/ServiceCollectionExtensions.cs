@@ -37,6 +37,7 @@ using Microsoft.AspNetCore.Authorization;
 using ModularArchitecture.Shared.Infrastructure.Permissions;
 using ModularArchitecture.Shared.Core.Interfaces.Services.Event;
 using ModularArchitecture.Shared.Core.IntegrationServices.Event;
+using ModularArchitecture.Shared.Infrastructure.Utilities;
 
 [assembly: InternalsVisibleTo("ModularArchitecture")]
 
@@ -54,7 +55,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Extensions
             services
                 .AddDatabaseContext<ApplicationDbContext>()
                 .AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
-       
+
             services.AddApiVersioning(o =>
             {
                 o.AssumeDefaultVersionWhenUnspecified = true;
@@ -73,6 +74,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Extensions
             services.AddSwaggerDocumentation();
             services.AddCorsPolicy();
             services.AddApplicationSettings(config);
+            services.MapModules();
 
             return services;
         }
@@ -271,6 +273,58 @@ namespace ModularArchitecture.Shared.Infrastructure.Extensions
                 Version = "v1",
                 Title = "ModularArchitecture API"
             });
+        }
+
+        private static IServiceCollection MapModules(this IServiceCollection services)
+        {
+            var loadedAssemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
+            var loadedPaths = loadedAssemblies.Where(p => !p.IsDynamic && p.GetName().Name != "ModularArchitecture").Select(a => a.GetName().Name).OrderBy(x => x).ToArray();
+
+            var directoryPaths = Directory.GetDirectories(@"..\..\Modules");
+
+            List<string> modules = new List<string>();
+
+            foreach (var directoryPath in directoryPaths)
+            {
+                string moduleName = Path.GetFileName(Path.GetDirectoryName(directoryPath + "\\"));
+                modules.Add(moduleName);
+
+                var referencedPaths = Directory.GetFiles($@"{directoryPath}\{moduleName}.Infrastructure\bin\Debug\net5.0", "*.dll");
+
+                List<string> toLoad = new List<string>();
+
+                foreach (var path in referencedPaths)
+                {
+                    bool add = true;
+                    foreach (var loadedPath in loadedPaths)
+                    {
+                        if (path.Contains(loadedPath))
+                        {
+                            add = false;
+                            break;
+                        }
+                    }
+
+                    if (add)
+                        toLoad.Add(path);
+                }
+
+                ConnectorTypes.Instance.Modules = modules;
+
+                toLoad.ForEach(filename =>
+                {
+                    Assembly a = Assembly.LoadFrom(Path.GetFullPath(filename));
+                    AppDomain.CurrentDomain.Load(a.GetName());
+                });
+
+                Assembly module = AppDomain.CurrentDomain.GetAssemblies().First(x => x.FullName.Contains($"{moduleName}.Infrastructure"));
+
+                Type serviceCollectionExtensions = module.GetTypes().First(x => x.Name == "ServiceCollectionExtensions");
+
+                services = (IServiceCollection)serviceCollectionExtensions.GetMethod($"Add{moduleName}Infrastructure").Invoke(null, new object[] { services });
+            }
+
+            return services;
         }
     }
 }

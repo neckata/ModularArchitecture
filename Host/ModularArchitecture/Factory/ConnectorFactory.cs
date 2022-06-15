@@ -1,30 +1,39 @@
-﻿using Slack.Core.Services;
-using ModularArchitecture.Shared.Core.Enums;
-using ModularArchitecture.Shared.Core.Interfaces.Services.Connector;
-using ModularArchitecture.Shared.Core;
-using Outlook.Core.Services;
-using System;
-using Slack.Core.Interfaces;
+﻿using System;
+using System.Linq;
+using System.Reflection;
+using ModularArchitecture.DTOs.Actions;
+using ModularArchitecture.Shared.Infrastructure.Enums;
 
 namespace Host.ModularArchitecture.Factory
 {
     public class ConnectorFactory : IConnectorFactory
     {
-        readonly IServiceProvider _container;
-
-        public ConnectorFactory(IServiceProvider container)
+        public object CreateCommand(string connectorType, object request, ActionsTypeEnum actionsType)
         {
-            _container = container;
-        }
-
-        public IConnectorClient CreateFor(ConnectorTypeEnum connectorType)
-        {
-            switch (connectorType)
+            Assembly module = AppDomain.CurrentDomain.GetAssemblies().First(x => x.FullName.Contains(connectorType));
+            switch (actionsType)
             {
-                case ConnectorTypeEnum.Slack:
-                    return (SlackConnectorClient)_container.GetService(typeof(ISlackClient));
-                case ConnectorTypeEnum.Outlook:
-                    return (OutlookConnectorClient)_container.GetService(typeof(IOutlookClient));
+                case ActionsTypeEnum.Create:
+                    {
+                        Type createActionCommand = module.GetTypes().First(x => x.Name == "CreateActionCommand");
+                        ConstructorInfo createActionCommandConstructor = createActionCommand.GetConstructor(new[] { typeof(CreateActionRequest) });
+                        object createActionCommandConstructorInstance = createActionCommandConstructor.Invoke(new object[] { request });
+                        return createActionCommandConstructorInstance;
+                    }
+                case ActionsTypeEnum.Update:
+                    {
+                        Type updateActionCommand = module.GetTypes().First(x => x.Name == "UpdateActionCommand");
+                        ConstructorInfo updateActionCommandConstructor = updateActionCommand.GetConstructor(new[] { typeof(UpdateActionRequest) });
+                        object updateActionCommandConstructorInstance = updateActionCommandConstructor.Invoke(new object[] { request });
+                        return updateActionCommandConstructorInstance;
+                    }
+                case ActionsTypeEnum.View:
+                    {
+                        Type getActionsCommand = module.GetTypes().First(x => x.Name == "GetActionsCommand");
+                        ConstructorInfo getActionsCommandConstructor = getActionsCommand.GetConstructor(Type.EmptyTypes);
+                        object getActionsCommandConstructorInstance = getActionsCommandConstructor.Invoke(new object[] { });
+                        return getActionsCommandConstructorInstance;
+                    }
             }
 
             throw new ArgumentException($"Unknown connectorType '{connectorType}'");

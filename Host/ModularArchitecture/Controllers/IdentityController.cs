@@ -4,6 +4,7 @@ using ModularArchitecture.Shared.Infrastructure.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using ModularArchitecture.Shared.Core.Wrapper;
 
 namespace Host.ModularArchitecture.Controllers
 {
@@ -21,7 +22,7 @@ namespace Host.ModularArchitecture.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> GetTokenAsync(TokenRequest request)
         {
-            var token = await _tokenService.GetTokenAsync(request, GenerateIPAddress());
+            IResult<TokenResponse> token = await _tokenService.GetTokenAsync(request, GenerateIPAddress());
 
             return Ok(token);
         }
@@ -30,7 +31,7 @@ namespace Host.ModularArchitecture.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> RefreshAsync(RefreshTokenRequest request)
         {
-            var response = await _tokenService.RefreshTokenAsync(request, GenerateIPAddress());
+            IResult<TokenResponse> response = await _tokenService.RefreshTokenAsync(request, GenerateIPAddress());
 
             return Ok(response);
         }

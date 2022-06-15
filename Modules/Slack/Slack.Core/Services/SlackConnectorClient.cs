@@ -9,12 +9,11 @@ using Microsoft.EntityFrameworkCore;
 using ModularArchitecture.DTOs.Actions;
 using ModularArchitecture.Shared.Core.Entities;
 using System.Collections.Generic;
-using ModularArchitecture.Shared.Core.Enums;
 using Slack.Core.Interfaces;
 
 namespace Slack.Core.Services
 {
-    public class SlackConnectorClient : IConnectorClient, ISlackClient
+    public class SlackConnectorClient : ISlackClient
     {
         private readonly IMapper _mapper;
         private readonly IApplicationDbContext _context;
@@ -25,9 +24,9 @@ namespace Slack.Core.Services
             _context = context;
         }
 
-        public async Task<IResult<List<Action>>> GetActions()
+        public async Task<IResult<List<Action>>> GetActionsAsync()
         {
-            var actions = await _context.Actions.Where(x => x.ConnectorType == ConnectorTypeEnum.Slack).AsNoTracking().ToListAsync();
+            var actions = await _context.Actions.Where(x => x.ConnectorType == "Slack").AsNoTracking().ToListAsync();
 
             return await Result<List<Action>>.SuccessAsync(actions);
         }
@@ -54,7 +53,7 @@ namespace Slack.Core.Services
 
             var action = _mapper.Map<Action>(request);
 
-            action.ConnectorType = ConnectorTypeEnum.Slack;
+            action.ConnectorType = "Slack";
 
             action.AddDomainEvent(new ActionAddEvent(action));
 
@@ -62,19 +61,6 @@ namespace Slack.Core.Services
             await _context.SaveChangesAsync();
 
             return await Result<System.Guid>.SuccessAsync(action.Id, "Channel Added");
-        }
-
-        public async Task<IResult<List<string>>> GetChannels()
-        {
-            var emails = GetChannelsFromSlack();
-
-            return await Result<List<string>>.SuccessAsync(emails);
-        }
-
-        private List<string> GetChannelsFromSlack()
-        {
-            //Here you will connect to slack and get channels
-            return new List<string>();
         }
 
         private void UpdateChannel(UpdateActionRequest request)

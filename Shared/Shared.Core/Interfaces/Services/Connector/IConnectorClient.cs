@@ -12,6 +12,6 @@ namespace ModularArchitecture.Shared.Core.Interfaces.Services.Connector
 
         Task<IResult<System.Guid>> CreateActionAsync(CreateActionRequest request);
 
-        Task<IResult<List<Action>>> GetActions();
+        Task<IResult<List<Action>>> GetActionsAsync();
     }
 }
