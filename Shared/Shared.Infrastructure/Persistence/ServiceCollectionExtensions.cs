@@ -10,7 +10,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence
         public static IServiceCollection AddDatabaseContext<T>(this IServiceCollection services)
             where T : DbContext
         {
-            var options = services.GetOptions<PersistenceSettings>(nameof(PersistenceSettings));
+            PersistenceSettings options = services.GetOptions<PersistenceSettings>(nameof(PersistenceSettings));
             string connectionString = options.ConnectionStrings.MSSQL;
             services.AddMSSQL<T>(connectionString);
 

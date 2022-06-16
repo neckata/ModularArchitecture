@@ -1,5 +1,4 @@
-﻿using ModularArchitecture.Shared.Core.Interfaces.Services.Connector;
-using ModularArchitecture.Shared.Core.Wrapper;
+﻿using ModularArchitecture.Shared.Core.Wrapper;
 using System.Threading.Tasks;
 using AutoMapper;
 using ModularArchitecture.Shared.Core.Features;
@@ -13,12 +12,12 @@ using Slack.Core.Interfaces;
 
 namespace Slack.Core.Services
 {
-    public class SlackConnectorClient : ISlackClient
+    public class SlackClient : ISlackClient
     {
         private readonly IMapper _mapper;
         private readonly IApplicationDbContext _context;
 
-        public SlackConnectorClient(IMapper mapper, IApplicationDbContext context)
+        public SlackClient(IMapper mapper, IApplicationDbContext context)
         {
             _mapper = mapper;
             _context = context;
@@ -26,7 +25,7 @@ namespace Slack.Core.Services
 
         public async Task<IResult<List<Action>>> GetActionsAsync()
         {
-            var actions = await _context.Actions.Where(x => x.ConnectorType == "Slack").AsNoTracking().ToListAsync();
+            List<Action> actions = await _context.Actions.Where(x => x.ConnectorType == "Slack").AsNoTracking().ToListAsync();
 
             return await Result<List<Action>>.SuccessAsync(actions);
         }
@@ -35,7 +34,7 @@ namespace Slack.Core.Services
         {
             UpdateChannel(request);
 
-            var action = await _context.Actions.Where(b => b.Id == request.Id).AsNoTracking().FirstOrDefaultAsync();
+            Action action = await _context.Actions.Where(b => b.Id == request.Id).AsNoTracking().FirstOrDefaultAsync();
 
             _mapper.Map(request, action);
 
@@ -51,7 +50,7 @@ namespace Slack.Core.Services
         {
             AddChannel(request);
 
-            var action = _mapper.Map<Action>(request);
+            Action action = _mapper.Map<Action>(request);
 
             action.ConnectorType = "Slack";
 

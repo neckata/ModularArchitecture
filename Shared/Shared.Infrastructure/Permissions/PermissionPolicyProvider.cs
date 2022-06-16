@@ -21,7 +21,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Permissions
         {
             if (policyName.StartsWith(ApplicationClaimTypes.Permission, StringComparison.OrdinalIgnoreCase))
             {
-                var policy = new AuthorizationPolicyBuilder();
+                AuthorizationPolicyBuilder policy = new AuthorizationPolicyBuilder();
                 policy.AddRequirements(new PermissionRequirement(policyName));
                 return Task.FromResult(policy.Build());
             }

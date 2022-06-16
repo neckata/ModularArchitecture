@@ -12,7 +12,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Extensions
                 throw new ArgumentNullException(nameof(principal));
             }
 
-            var claim = principal.FindFirst(ClaimTypes.NameIdentifier);
+            Claim claim = principal.FindFirst(ClaimTypes.NameIdentifier);
             return claim?.Value;
         }
 
@@ -23,7 +23,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Extensions
                 throw new ArgumentNullException(nameof(principal));
             }
 
-            var claim = principal.FindFirst(ClaimTypes.Email);
+            Claim claim = principal.FindFirst(ClaimTypes.Email);
             return claim?.Value;
         }
     }

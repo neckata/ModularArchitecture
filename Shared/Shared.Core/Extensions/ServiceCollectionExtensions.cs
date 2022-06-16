@@ -12,7 +12,7 @@ namespace ModularArchitecture.Shared.Core.Extensions
         public static IServiceCollection AddSerialization(this IServiceCollection services, IConfiguration config)
         {
             services.Configure<SerializationSettings>(config.GetSection(nameof(SerializationSettings)));
-            var options = services.GetOptions<SerializationSettings>(nameof(SerializationSettings));
+            SerializationSettings options = services.GetOptions<SerializationSettings>(nameof(SerializationSettings));
             services.AddSingleton<IJsonSerializerSettingsOptions, JsonSerializerSettingsOptions>();
             if (options.UseSystemTextJson)
             {
@@ -38,9 +38,9 @@ namespace ModularArchitecture.Shared.Core.Extensions
         public static T GetOptions<T>(this IServiceCollection services, string sectionName)
             where T : new()
         {
-            using var serviceProvider = services.BuildServiceProvider();
-            var configuration = serviceProvider.GetRequiredService<IConfiguration>();
-            var section = configuration.GetSection(sectionName);
+            using ServiceProvider serviceProvider = services.BuildServiceProvider();
+            IConfiguration configuration = serviceProvider.GetRequiredService<IConfiguration>();
+            IConfigurationSection section = configuration.GetSection(sectionName);
             var options = new T();
             section.Bind(options);
 

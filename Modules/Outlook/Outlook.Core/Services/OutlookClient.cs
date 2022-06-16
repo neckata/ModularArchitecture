@@ -5,18 +5,19 @@ using ModularArchitecture.Shared.Core.Entities;
 using ModularArchitecture.Shared.Core.Features;
 using ModularArchitecture.Shared.Core.Interfaces;
 using ModularArchitecture.Shared.Core.Wrapper;
+using Outlook.Core.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Outlook.Core.Services
 {
-    public class OutlookConnectorClient : IOutlookClient
+    public class OutlookClient : IOutlookClient
     {
         private readonly IMapper _mapper;
         private readonly IApplicationDbContext _context;
 
-        public OutlookConnectorClient(IMapper mapper, IApplicationDbContext context)
+        public OutlookClient(IMapper mapper, IApplicationDbContext context)
         {
             _mapper = mapper;
             _context = context;
@@ -24,7 +25,7 @@ namespace Outlook.Core.Services
 
         public async Task<IResult<List<Action>>> GetActionsAsync()
         {
-            var actions = await _context.Actions.Where(x=>x.ConnectorType == "Outlook").AsNoTracking().ToListAsync();
+            List<Action> actions = await _context.Actions.Where(x=>x.ConnectorType == "Outlook").AsNoTracking().ToListAsync();
 
             return await Result<List<Action>>.SuccessAsync(actions);
         }
@@ -33,7 +34,7 @@ namespace Outlook.Core.Services
         {
             UpdateOutlookEvent(request);
 
-            var action = await _context.Actions.Where(b => b.Id == request.Id).AsNoTracking().FirstOrDefaultAsync();
+            Action action = await _context.Actions.Where(b => b.Id == request.Id).AsNoTracking().FirstOrDefaultAsync();
 
             _mapper.Map(request, action);
 
@@ -50,7 +51,7 @@ namespace Outlook.Core.Services
         {
             AddOutlookEvent(request);
 
-            var action = _mapper.Map<Action>(request);
+            Action action = _mapper.Map<Action>(request);
 
             action.ConnectorType = "Outlook";
 

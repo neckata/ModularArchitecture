@@ -7,7 +7,6 @@ using ModularArchitecture.Shared.Core.Interfaces.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using ModularArchitecture.Shared.Infrastructure.Utilities;
-using System.Linq;
 using ModularArchitecture.Shared.Core.Helpers;
 
 namespace ModularArchitecture.Shared.Infrastructure.Persistence
@@ -42,11 +41,11 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence
         {
             Task.Run(async () =>
             {
-                var roleList = new List<string> { RoleConstants.SuperAdmin, RoleConstants.Admin };
+                List<string> roleList = new List<string> { RoleConstants.SuperAdmin, RoleConstants.Admin };
                 foreach (string roleName in roleList)
                 {
-                    var role = new Role(roleName);
-                    var roleInDb = await _roleManager.FindByNameAsync(roleName);
+                    Role role = new Role(roleName);
+                    Role roleInDb = await _roleManager.FindByNameAsync(roleName);
                     if (roleInDb == null)
                     {
                         await _roleManager.CreateAsync(role);
@@ -61,8 +60,8 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence
             Task.Run(async () =>
             {
                 // Check if Role Exists
-                var superAdminRole = new Role(RoleConstants.SuperAdmin);
-                var superAdminRoleInDb = await _roleManager.FindByNameAsync(RoleConstants.SuperAdmin);
+                Role superAdminRole = new Role(RoleConstants.SuperAdmin);
+                Role superAdminRoleInDb = await _roleManager.FindByNameAsync(RoleConstants.SuperAdmin);
                 if (superAdminRoleInDb == null)
                 {
                     await _roleManager.CreateAsync(superAdminRole);
@@ -70,7 +69,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence
                 }
 
                 // Check if User Exists
-                var superUser = new User
+                User superUser = new User
                 {
                     FirstName = "Admin",
                     LastName = "Admin",
@@ -80,11 +79,11 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence
                     PhoneNumberConfirmed = true,
                     IsActive = true
                 };
-                var superUserInDb = await _userManager.FindByEmailAsync(superUser.Email);
+                User superUserInDb = await _userManager.FindByEmailAsync(superUser.Email);
                 if (superUserInDb == null)
                 {
                     await _userManager.CreateAsync(superUser, UserConstants.DefaultPassword);
-                    var result = await _userManager.AddToRoleAsync(superUser, RoleConstants.SuperAdmin);
+                    IdentityResult result = await _userManager.AddToRoleAsync(superUser, RoleConstants.SuperAdmin);
                     if (result.Succeeded)
                     {
                         _logger.LogInformation("Seeded Default SuperAdmin User.");

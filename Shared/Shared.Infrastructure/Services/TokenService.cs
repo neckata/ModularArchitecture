@@ -41,7 +41,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Services
 
         public async Task<IResult<TokenResponse>> GetTokenAsync(TokenRequest request, string ipAddress)
         {
-            var user = await _userManager.FindByEmailAsync(request.Email);
+            User user = await _userManager.FindByEmailAsync(request.Email);
             if (user == null)
             {
                 throw new IdentityException("User Not Found.", statusCode: HttpStatusCode.Unauthorized);
@@ -62,7 +62,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Services
             user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(_config.RefreshTokenExpirationInDays);
             await _userManager.UpdateAsync(user);
             string token = await GenerateJwtAsync(user, ipAddress);
-            var response = new TokenResponse(token, user.RefreshToken, user.RefreshTokenExpiryTime);
+            TokenResponse response = new TokenResponse(token, user.RefreshToken, user.RefreshTokenExpiryTime);
             await _eventLog.LogCustomEventAsync(new() { Description = $"Generated Tokens for {user.Email}." });
             return await Result<TokenResponse>.SuccessAsync(response);
         }
@@ -74,9 +74,9 @@ namespace ModularArchitecture.Shared.Infrastructure.Services
                 throw new IdentityException("Invalid Client Token.", statusCode: HttpStatusCode.Unauthorized);
             }
 
-            var userPrincipal = GetPrincipalFromExpiredToken(request.Token);
+            ClaimsPrincipal userPrincipal = GetPrincipalFromExpiredToken(request.Token);
             string userEmail = userPrincipal.FindFirstValue(ClaimTypes.Email);
-            var user = await _userManager.FindByEmailAsync(userEmail);
+            User user = await _userManager.FindByEmailAsync(userEmail);
             if (user == null)
             {
                 throw new IdentityException("User Not Found.", statusCode: HttpStatusCode.NotFound);
@@ -91,7 +91,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Services
             user.RefreshToken = GenerateRefreshToken();
             user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(_config.RefreshTokenExpirationInDays);
             await _userManager.UpdateAsync(user);
-            var response = new TokenResponse(token, user.RefreshToken, user.RefreshTokenExpiryTime);
+            TokenResponse response = new TokenResponse(token, user.RefreshToken, user.RefreshTokenExpiryTime);
             return await Result<TokenResponse>.SuccessAsync(response);
         }
 
@@ -102,15 +102,15 @@ namespace ModularArchitecture.Shared.Infrastructure.Services
 
         private async Task<IEnumerable<Claim>> GetClaimsAsync(User user, string ipAddress)
         {
-            var userClaims = await _userManager.GetClaimsAsync(user);
-            var roles = await _userManager.GetRolesAsync(user);
-            var roleClaims = new List<Claim>();
-            var permissionClaims = new List<Claim>();
+            IList<Claim> userClaims = await _userManager.GetClaimsAsync(user);
+            IList<string> roles = await _userManager.GetRolesAsync(user);
+            List<Claim> roleClaims = new List<Claim>();
+            List<Claim> permissionClaims = new List<Claim>();
             foreach (string role in roles)
             {
                 roleClaims.Add(new Claim(ClaimTypes.Role, role));
-                var thisRole = await _roleManager.FindByNameAsync(role);
-                var allPermissionsForThisRoles = await _roleManager.GetClaimsAsync(thisRole);
+                Role thisRole = await _roleManager.FindByNameAsync(role);
+                IList<Claim> allPermissionsForThisRoles = await _roleManager.GetClaimsAsync(thisRole);
                 permissionClaims.AddRange(allPermissionsForThisRoles);
             }
 
@@ -138,17 +138,17 @@ namespace ModularArchitecture.Shared.Infrastructure.Services
 
         private string GenerateEncryptedToken(SigningCredentials signingCredentials, IEnumerable<Claim> claims)
         {
-            var token = new JwtSecurityToken(
+            JwtSecurityToken token = new JwtSecurityToken(
                claims: claims,
                expires: DateTime.UtcNow.AddMinutes(_config.TokenExpirationInMinutes),
                signingCredentials: signingCredentials);
-            var tokenHandler = new JwtSecurityTokenHandler();
+            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
             return tokenHandler.WriteToken(token);
         }
 
         private ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
         {
-            var tokenValidationParameters = new TokenValidationParameters
+            TokenValidationParameters tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.Key)),
@@ -157,8 +157,8 @@ namespace ModularArchitecture.Shared.Infrastructure.Services
                 RoleClaimType = ClaimTypes.Role,
                 ClockSkew = TimeSpan.Zero
             };
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out var securityToken);
+            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+            ClaimsPrincipal principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out var securityToken);
             if (securityToken is not JwtSecurityToken jwtSecurityToken ||
                 !jwtSecurityToken.Header.Alg.Equals(
                     SecurityAlgorithms.HmacSha256,

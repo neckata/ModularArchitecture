@@ -1,12 +1,12 @@
 ﻿using MediatR;
 using ModularArchitecture.DTOs.Actions;
 using ModularArchitecture.Shared.Core.Wrapper;
-using Outlook.Core.Interfaces;
+using Slack.Core.Interfaces;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Outlook.Core.Commands
+namespace Slack.Core.Commands
 {
     public class CreateActionCommand : IRequest<IResult<Guid>>
     {
@@ -20,16 +20,16 @@ namespace Outlook.Core.Commands
 
     public class CreateActionCommandHandler : IRequestHandler<CreateActionCommand, IResult<Guid>>
     {
-        private IOutlookClient _outlookClient;
+        private ISlackClient _slackClient;
 
-        public CreateActionCommandHandler(IOutlookClient outlookClient)
+        public CreateActionCommandHandler(ISlackClient slackClient)
         {
-            _outlookClient = outlookClient;
+            _slackClient = slackClient;
         }
 
         public async Task<IResult<Guid>> Handle(CreateActionCommand command, CancellationToken cancellationToken)
         {
-            return await _outlookClient.CreateActionAsync(command.Request);
+            return await _slackClient.CreateActionAsync(command.Request);
         }
     }
 }

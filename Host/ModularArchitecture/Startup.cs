@@ -1,5 +1,4 @@
 using Host.ModularArchitecture.Factory;
-using ModularArchitecture.Shared.Core;
 using ModularArchitecture.Shared.Core.Extensions;
 using ModularArchitecture.Shared.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Builder;

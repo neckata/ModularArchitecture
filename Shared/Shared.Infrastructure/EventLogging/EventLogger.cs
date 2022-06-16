@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using ModularArchitecture.Shared.Core.Domain;
 using ModularArchitecture.Shared.Core.EventLogging;
 using ModularArchitecture.Shared.Core.Interfaces;
@@ -32,8 +33,8 @@ namespace ModularArchitecture.Shared.Infrastructure.EventLogging
             {
                 string serializedData = _jsonSerializer.Serialize(@event, @event.GetType());
 
-                var userId = _user.GetUserId();
-                var thisEvent = new EventLog(@event, serializedData, changes, userId);
+                Guid userId = _user.GetUserId();
+                EventLog thisEvent = new EventLog(@event, serializedData, changes, userId);
                 await context.EventLogs.AddAsync(thisEvent);
                 await context.SaveChangesAsync();
             }
