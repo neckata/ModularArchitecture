@@ -1,6 +1,9 @@
 ﻿using Slack.Core.Interfaces;
 using Slack.Core.Services;
 using Microsoft.Extensions.DependencyInjection;
+using MediatR;
+using Slack.Core.Commands;
+using System.Reflection;
 
 namespace ModularArchitecture.Modules.Slack.Infrastructure.Extensions
 {
@@ -8,7 +11,8 @@ namespace ModularArchitecture.Modules.Slack.Infrastructure.Extensions
     {
         public static IServiceCollection AddSlackInfrastructure(this IServiceCollection services)
         {
-            services.AddTransient<ISlackClient, SlackConnectorClient>();
+            services.AddTransient<ISlackClient, SlackClient>();
+            services.AddMediatR(typeof(CreateActionCommand).GetTypeInfo().Assembly);
             return services;
         }
     }

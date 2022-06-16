@@ -33,7 +33,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence
             {
                 foreach (string connectorName in ConnectorTypes.Instance.Modules)
                 {
-                    var connector = new Connector {Name = connectorName };
+                    Connector connector = new Connector {Name = connectorName };
                     var connectorInDb = await _db.Connectors.FirstOrDefaultAsync(x=>x.Name == connectorName);
                     if (connectorInDb == null)
                     {

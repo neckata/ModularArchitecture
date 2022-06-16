@@ -4,6 +4,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace ModularArchitecture.Shared.Infrastructure.Interceptors
 {
@@ -16,11 +17,11 @@ namespace ModularArchitecture.Shared.Infrastructure.Interceptors
 
         public ValidationResult AfterAspNetValidation(ActionContext actionContext, IValidationContext validationContext, ValidationResult result)
         {
-            var failures = result.Errors.Where(f => f != null).ToList();
+            List<ValidationFailure> failures = result.Errors.Where(f => f != null).ToList();
 
             if (failures.Count != 0)
             {
-                var errorMessages = failures.Select(a => a.ErrorMessage).Distinct().ToList();
+                List<string> errorMessages = failures.Select(a => a.ErrorMessage).Distinct().ToList();
                 throw new CustomValidationException(errorMessages);
             }
 

@@ -7,6 +7,7 @@ using ModularArchitecture.Shared.Core.Constants;
 using ModularArchitecture.Shared.Core.Entities;
 using ModularArchitecture.Shared.DTOs.Identity.Roles;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace ModularArchitecture.Shared.Core.Helpers
 {
@@ -45,7 +46,7 @@ namespace ModularArchitecture.Shared.Core.Helpers
 
         public static async Task<IdentityResult> AddPermissionClaimAsync(this RoleManager<Role> roleManager, Role role, string permission)
         {
-            var allClaims = await roleManager.GetClaimsAsync(role);
+            IList<Claim> allClaims = await roleManager.GetClaimsAsync(role);
             if (!allClaims.Any(a => a.Type == ApplicationClaimTypes.Permission && a.Value == permission))
             {
                 return await roleManager.AddClaimAsync(role, new(ApplicationClaimTypes.Permission, permission));

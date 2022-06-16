@@ -30,7 +30,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence
 
         public DbSet<EventLog> EventLogs { get; set; }
 
-        public DbSet<Connector> Connectors { get ; set ; }
+        public DbSet<Connector> Connectors { get; set; }
 
         public DbSet<Action> Actions { get; set; }
 
@@ -61,26 +61,26 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             var changes = OnBeforeSaveChanges();
-            var domainEntities = ChangeTracker
+            List<EntityEntry<IBaseEntity>> domainEntities = ChangeTracker
                   .Entries<IBaseEntity>()
                   .Where(x => x.Entity.DomainEvents != null && x.Entity.DomainEvents.Any())
                   .ToList();
 
-            var domainEvents = domainEntities
+            List<Event> domainEvents = domainEntities
                 .SelectMany(x => x.Entity.DomainEvents)
                 .ToList();
 
             domainEntities.ToList()
                 .ForEach(entity => entity.Entity.ClearDomainEvents());
 
-            var tasks = domainEvents
+            IEnumerable<Task> tasks = domainEvents
                 .Select(async (domainEvent) =>
                 {
                     var relatedEntriesChanges = changes.Where(x => domainEvent.RelatedEntities.Any(t => t == x.entityEntry.Entity.GetType())).ToList();
                     if (relatedEntriesChanges.Any())
                     {
-                        var oldValues = relatedEntriesChanges.ToDictionary(x => x.entityEntry.Entity.GetType().GetGenericTypeName(), y => y.oldValues);
-                        var newValues = relatedEntriesChanges.ToDictionary(x => x.entityEntry.Entity.GetType().GetGenericTypeName(), y => y.newValues);
+                        Dictionary<string,string> oldValues = relatedEntriesChanges.ToDictionary(x => x.entityEntry.Entity.GetType().GetGenericTypeName(), y => y.oldValues);
+                        Dictionary<string, string> newValues = relatedEntriesChanges.ToDictionary(x => x.entityEntry.Entity.GetType().GetGenericTypeName(), y => y.newValues);
                         var relatedChanges = (oldValues.Count == 0 ? null : _json.Serialize(oldValues), newValues.Count == 0 ? null : _json.Serialize(newValues));
                         await _eventLogger.SaveAsync(domainEvent, relatedChanges, this);
                     }
@@ -98,15 +98,15 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence
         {
             var result = new List<(EntityEntry entityEntry, string oldValues, string newValues)>();
             ChangeTracker.DetectChanges();
-            foreach (var entry in ChangeTracker.Entries())
+            foreach (EntityEntry entry in ChangeTracker.Entries())
             {
                 if (entry.State == EntityState.Unchanged)
                 {
                     continue;
                 }
 
-                var previousData = new Dictionary<string, object>();
-                var currentData = new Dictionary<string, object>();
+                Dictionary<string, object> previousData = new Dictionary<string, object>();
+                Dictionary<string, object> currentData = new Dictionary<string, object>();
                 foreach (var property in entry.Properties)
                 {
                     string propertyName = property.Metadata.Name;

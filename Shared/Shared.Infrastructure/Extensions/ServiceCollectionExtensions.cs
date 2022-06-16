@@ -146,7 +146,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Extensions
         private static IServiceCollection AddJwtAuthentication(
             this IServiceCollection services, IConfiguration config)
         {
-            var jwtSettings = services.GetOptions<JwtSettings>(nameof(JwtSettings));
+            JwtSettings jwtSettings = services.GetOptions<JwtSettings>(nameof(JwtSettings));
             byte[] key = Encoding.ASCII.GetBytes(jwtSettings.Key);
             services
                 .AddAuthentication(authentication =>
@@ -215,13 +215,13 @@ namespace ModularArchitecture.Shared.Infrastructure.Extensions
                         return false;
                     }
 
-                    var versions = methodInfo
+                    IEnumerable<ApiVersion> versions = methodInfo
                         .DeclaringType?
                         .GetCustomAttributes(true)
                         .OfType<ApiVersionAttribute>()
                         .SelectMany(attr => attr.Versions);
 
-                    var maps = methodInfo
+                    List<ApiVersion> maps = methodInfo
                         .GetCustomAttributes(true)
                         .OfType<MapToApiVersionAttribute>()
                         .SelectMany(attr => attr.Versions)
@@ -277,10 +277,10 @@ namespace ModularArchitecture.Shared.Infrastructure.Extensions
 
         private static IServiceCollection MapModules(this IServiceCollection services)
         {
-            var loadedAssemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
-            var loadedPaths = loadedAssemblies.Where(p => !p.IsDynamic && p.GetName().Name != "ModularArchitecture").Select(a => a.GetName().Name).OrderBy(x => x).ToArray();
+            List<Assembly> loadedAssemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
+            string[] loadedPaths = loadedAssemblies.Where(p => !p.IsDynamic && p.GetName().Name != "ModularArchitecture").Select(a => a.GetName().Name).OrderBy(x => x).ToArray();
 
-            var directoryPaths = Directory.GetDirectories(@"..\..\Modules");
+            string[] directoryPaths = Directory.GetDirectories(@"..\..\Modules");
 
             List<string> modules = new List<string>();
 
@@ -289,11 +289,11 @@ namespace ModularArchitecture.Shared.Infrastructure.Extensions
                 string moduleName = Path.GetFileName(Path.GetDirectoryName(directoryPath + "\\"));
                 modules.Add(moduleName);
 
-                var referencedPaths = Directory.GetFiles($@"{directoryPath}\{moduleName}.Infrastructure\bin\Debug\net5.0", "*.dll");
+                string[] referencedPaths = Directory.GetFiles($@"{directoryPath}\{moduleName}.Infrastructure\bin\Debug\net5.0", "*.dll");
 
                 List<string> toLoad = new List<string>();
 
-                foreach (var path in referencedPaths)
+                foreach (string path in referencedPaths)
                 {
                     bool add = true;
                     foreach (var loadedPath in loadedPaths)

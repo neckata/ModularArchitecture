@@ -39,7 +39,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Middlewares
             }
             catch (Exception exception)
             {
-                var response = context.Response;
+                HttpResponse response = context.Response;
                 response.ContentType = "application/json";
                 if (exception is not CustomException && exception.InnerException != null)
                 {
@@ -49,7 +49,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Middlewares
                     }
                 }
 
-                var responseModel = await ErrorResult<string>.ReturnErrorAsync(exception.Message);
+                ErrorResult<string> responseModel = await ErrorResult<string>.ReturnErrorAsync(exception.Message);
                 responseModel.Source = exception.Source;
                 responseModel.Exception = exception.Message;
                 _logger.LogError(exception.Message);
