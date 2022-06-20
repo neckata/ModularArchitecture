@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ModularArchitecture</name>
+    </assembly>
+    <members>
+        <member name="T:Host.ModularArchitecture.Controllers.ActionController">
+            <summary>
+            Controller used for accessing available connectors and using their features
+            </summary>
+        </member>
+        <member name="M:Host.ModularArchitecture.Controllers.ActionController.#ctor(Host.ModularArchitecture.Factory.IConnectorFactory,ModularArchitecture.Shared.Core.Interfaces.Services.Event.IEventService,MediatR.IMediator)">
+            <summary>
+            ActionController
+            </summary>
+            <param name="connectorFactory"></param>
+            <param name="eventService"></param>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:Host.ModularArchitecture.Controllers.ActionController.CreateActionAsync(System.String,ModularArchitecture.DTOs.Actions.CreateActionRequest)">
+            <summary>
+            Create action from specific connector
+            </summary>
+            <param name="connectorType">Connector</param>
+            <param name="request">Action</param>
+            <returns>Created action</returns>
+        </member>
+        <member name="M:Host.ModularArchitecture.Controllers.ActionController.UpdateActionAsync(System.String,ModularArchitecture.DTOs.Actions.UpdateActionRequest)">
+            <summary>
+            Update action from specific connector
+            </summary>
+            <param name="connectorType">Connector</param>
+            <param name="request">Action</param>
+            <returns>Updated action</returns>
+        </member>
+        <member name="M:Host.ModularArchitecture.Controllers.ActionController.GetActions(System.String)">
+            <summary>
+            Get actions from specific connector
+            </summary>
+            <param name="connectorType">Connector</param>
+            <returns>List of actions</returns>
+        </member>
+        <member name="M:Host.ModularArchitecture.Controllers.ActionController.GetConnectors">
+            <summary>
+            Get available connectors
+            </summary>
+            <returns>List of connectors</returns>
+        </member>
+        <member name="M:Host.ModularArchitecture.Controllers.ActionController.GetConnector(System.Guid)">
+            <summary>
+            Get detailed information about connector
+            </summary>
+            <param name="connectorId"></param>
+            <returns>Connector</returns>
+        </member>
+        <member name="T:Host.ModularArchitecture.Controllers.IdentityController">
+            <summary>
+            IdentityController
+            </summary>
+        </member>
+        <member name="M:Host.ModularArchitecture.Controllers.IdentityController.#ctor(ModularArchitecture.Shared.Core.Services.Identity.ITokenService)">
+            <summary>
+            IdentityController
+            </summary>
+            <param name="tokenService"></param>
+        </member>
+        <member name="M:Host.ModularArchitecture.Controllers.IdentityController.GetTokenAsync(ModularArchitecture.Shared.DTOs.Identity.Tokens.TokenRequest)">
+            <summary>
+            Create token
+            </summary>
+            <param name="request"></param>
+            <returns>Generated token</returns>
+        </member>
+        <member name="M:Host.ModularArchitecture.Controllers.IdentityController.RefreshAsync(ModularArchitecture.Shared.DTOs.Identity.Tokens.RefreshTokenRequest)">
+            <summary>
+            Refresh token
+            </summary>
+            <param name="request"></param>
+            <returns>New token</returns>
+        </member>
+        <member name="M:Host.ModularArchitecture.Controllers.IdentityController.GenerateIPAddress">
+            <summary>
+            GenerateIPAddress
+            </summary>
+            <returns>IPv4 IP Address</returns>
+        </member>
+        <member name="T:Host.ModularArchitecture.Factory.ConnectorFactory">
+            <summary>
+            Provides access to connector to be used
+            </summary>
+        </member>
+        <member name="M:Host.ModularArchitecture.Factory.ConnectorFactory.CreateCommand(System.String,System.Object,ModularArchitecture.Shared.Infrastructure.Enums.ActionsTypeEnum)">
+            <summary>
+            Creates a action command for MediatR to be used agaisnt specific connector
+            </summary>
+            <param name="connectorType">Connector</param>
+            <param name="request">Data</param>
+            <param name="actionsType">Type of action</param>
+            <returns>Command object</returns>
+        </member>
+        <member name="T:Host.ModularArchitecture.Factory.IConnectorFactory">
+            <summary>
+            Provides access to connector to be used
+            </summary>
+        </member>
+        <member name="M:Host.ModularArchitecture.Factory.IConnectorFactory.CreateCommand(System.String,System.Object,ModularArchitecture.Shared.Infrastructure.Enums.ActionsTypeEnum)">
+            <summary>
+            Creates a action command for MediatR to be used agaisnt specific connector
+            </summary>
+            <param name="connectorType"></param>
+            <param name="request"></param>
+            <param name="actionsType"></param>
+            <returns>Command object</returns>
+        </member>
+    </members>
+</doc>

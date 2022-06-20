@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity;
 using ModularArchitecture.Shared.Core.Constants;
 using ModularArchitecture.Shared.Core.Entities;
 using ModularArchitecture.Shared.DTOs.Identity.Roles;
-using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Reflection;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace ModularArchitecture.Shared.Core.Helpers
 {

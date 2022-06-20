@@ -15,7 +15,7 @@ namespace Slack.Core.Commands
 
     public class GetActionsCommandHandler : IRequestHandler<GetActionsCommand, IResult<List<Action>>>
     {
-        private ISlackClient _slackClient;
+        private readonly ISlackClient _slackClient;
 
         public GetActionsCommandHandler(ISlackClient slackClient)
         {

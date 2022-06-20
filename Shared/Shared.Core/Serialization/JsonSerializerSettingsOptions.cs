@@ -1,6 +1,6 @@
-﻿using System.Text.Json;
-using ModularArchitecture.Shared.Core.Interfaces.Serialization;
+﻿using ModularArchitecture.Shared.Core.Interfaces.Serialization;
 using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace ModularArchitecture.Shared.Core.Serialization
 {

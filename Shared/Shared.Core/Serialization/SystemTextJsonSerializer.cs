@@ -1,7 +1,7 @@
-﻿using System;
-using System.Text.Json;
+﻿using Microsoft.Extensions.Options;
 using ModularArchitecture.Shared.Core.Interfaces.Serialization;
-using Microsoft.Extensions.Options;
+using System;
+using System.Text.Json;
 
 namespace ModularArchitecture.Shared.Core.Serialization
 {

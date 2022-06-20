@@ -1,10 +1,10 @@
-﻿using System.Linq;
-using ModularArchitecture.Shared.Core.Exceptions;
-using FluentValidation;
+﻿using FluentValidation;
 using FluentValidation.AspNetCore;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
+using ModularArchitecture.Shared.Core.Exceptions;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ModularArchitecture.Shared.Infrastructure.Interceptors
 {

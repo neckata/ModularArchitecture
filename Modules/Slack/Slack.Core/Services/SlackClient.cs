@@ -1,14 +1,14 @@
-﻿using ModularArchitecture.Shared.Core.Wrapper;
-using System.Threading.Tasks;
-using AutoMapper;
-using ModularArchitecture.Shared.Core.Features;
-using ModularArchitecture.Shared.Core.Interfaces;
-using System.Linq;
+﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using ModularArchitecture.DTOs.Actions;
 using ModularArchitecture.Shared.Core.Entities;
-using System.Collections.Generic;
+using ModularArchitecture.Shared.Core.Features;
+using ModularArchitecture.Shared.Core.Interfaces;
+using ModularArchitecture.Shared.Core.Wrapper;
 using Slack.Core.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Slack.Core.Services
 {

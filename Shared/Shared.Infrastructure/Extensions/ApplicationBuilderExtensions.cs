@@ -1,9 +1,9 @@
-﻿using System.Runtime.CompilerServices;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using ModularArchitecture.Shared.Core.Interfaces.Services;
 using ModularArchitecture.Shared.Infrastructure.Middlewares;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("ModularArchitecture")]
 

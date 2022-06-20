@@ -25,7 +25,7 @@ namespace Outlook.Core.Services
 
         public async Task<IResult<List<Action>>> GetActionsAsync()
         {
-            List<Action> actions = await _context.Actions.Where(x=>x.ConnectorType == "Outlook").AsNoTracking().ToListAsync();
+            List<Action> actions = await _context.Actions.Where(x => x.ConnectorType == "Outlook").AsNoTracking().ToListAsync();
 
             return await Result<List<Action>>.SuccessAsync(actions);
         }

@@ -1,9 +1,9 @@
-﻿using System.Linq;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using ModularArchitecture.Shared.Core.Interfaces.Serialization;
 using ModularArchitecture.Shared.Core.Serialization;
 using ModularArchitecture.Shared.Core.Settings;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+using System.Linq;
 
 namespace ModularArchitecture.Shared.Core.Extensions
 {

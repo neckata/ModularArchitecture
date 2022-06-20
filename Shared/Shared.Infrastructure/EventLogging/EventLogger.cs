@@ -1,10 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using ModularArchitecture.Shared.Core.Domain;
+﻿using ModularArchitecture.Shared.Core.Domain;
 using ModularArchitecture.Shared.Core.EventLogging;
 using ModularArchitecture.Shared.Core.Interfaces;
 using ModularArchitecture.Shared.Core.Interfaces.Serialization;
 using ModularArchitecture.Shared.Core.Interfaces.Services.Identity;
+using System;
+using System.Threading.Tasks;
 
 namespace ModularArchitecture.Shared.Infrastructure.EventLogging
 {

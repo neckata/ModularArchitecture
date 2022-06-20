@@ -1,10 +1,10 @@
-using System.Threading.Tasks;
 using AutoMapper;
 using ModularArchitecture.Shared.Core.EventLogging;
 using ModularArchitecture.Shared.Core.Interfaces;
 using ModularArchitecture.Shared.Core.Interfaces.Services;
 using ModularArchitecture.Shared.Core.Wrapper;
 using ModularArchitecture.Shared.DTOs.Identity.EventLogs;
+using System.Threading.Tasks;
 
 namespace ModularArchitecture.Shared.Infrastructure.Services
 {

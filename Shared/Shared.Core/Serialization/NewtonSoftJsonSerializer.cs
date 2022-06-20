@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Microsoft.Extensions.Options;
 using ModularArchitecture.Shared.Core.Interfaces.Serialization;
-using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using System;
 
 namespace ModularArchitecture.Shared.Core.Serialization
 {

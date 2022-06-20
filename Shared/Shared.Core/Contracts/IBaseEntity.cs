@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using ModularArchitecture.Shared.Core.Domain;
+﻿using ModularArchitecture.Shared.Core.Domain;
+using System.Collections.Generic;
 
 namespace ModularArchitecture.Shared.Core.Contracts
 {

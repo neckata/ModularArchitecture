@@ -1,6 +1,6 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Linq;
-using AutoMapper;
 
 namespace ModularArchitecture.Shared.Core.Mappings.Converters
 {

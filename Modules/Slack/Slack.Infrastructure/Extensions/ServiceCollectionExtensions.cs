@@ -1,8 +1,8 @@
-﻿using Slack.Core.Interfaces;
-using Slack.Core.Services;
+﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using MediatR;
 using Slack.Core.Commands;
+using Slack.Core.Interfaces;
+using Slack.Core.Services;
 using System.Reflection;
 
 namespace ModularArchitecture.Modules.Slack.Infrastructure.Extensions

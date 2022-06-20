@@ -1,13 +1,23 @@
-﻿using System;
+﻿using ModularArchitecture.DTOs.Actions;
+using ModularArchitecture.Shared.Infrastructure.Enums;
+using System;
 using System.Linq;
 using System.Reflection;
-using ModularArchitecture.DTOs.Actions;
-using ModularArchitecture.Shared.Infrastructure.Enums;
 
 namespace Host.ModularArchitecture.Factory
 {
+    /// <summary>
+    /// Provides access to connector to be used
+    /// </summary>
     public class ConnectorFactory : IConnectorFactory
     {
+        /// <summary>
+        /// Creates a action command for MediatR to be used agaisnt specific connector
+        /// </summary>
+        /// <param name="connectorType">Connector</param>
+        /// <param name="request">Data</param>
+        /// <param name="actionsType">Type of action</param>
+        /// <returns>Command object</returns>
         public object CreateCommand(string connectorType, object request, ActionsTypeEnum actionsType)
         {
             Assembly module = AppDomain.CurrentDomain.GetAssemblies().First(x => x.FullName.Contains(connectorType));

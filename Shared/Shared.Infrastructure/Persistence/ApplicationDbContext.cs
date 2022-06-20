@@ -1,4 +1,9 @@
-﻿using ModularArchitecture.Shared.Core.Contracts;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.Extensions.Options;
+using ModularArchitecture.Shared.Core.Contracts;
 using ModularArchitecture.Shared.Core.Domain;
 using ModularArchitecture.Shared.Core.Entities;
 using ModularArchitecture.Shared.Core.EventLogging;
@@ -7,11 +12,6 @@ using ModularArchitecture.Shared.Core.Interfaces.Serialization;
 using ModularArchitecture.Shared.Core.Settings;
 using ModularArchitecture.Shared.Core.Utilities;
 using ModularArchitecture.Shared.Infrastructure.Extensions;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -79,7 +79,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence
                     var relatedEntriesChanges = changes.Where(x => domainEvent.RelatedEntities.Any(t => t == x.entityEntry.Entity.GetType())).ToList();
                     if (relatedEntriesChanges.Any())
                     {
-                        Dictionary<string,string> oldValues = relatedEntriesChanges.ToDictionary(x => x.entityEntry.Entity.GetType().GetGenericTypeName(), y => y.oldValues);
+                        Dictionary<string, string> oldValues = relatedEntriesChanges.ToDictionary(x => x.entityEntry.Entity.GetType().GetGenericTypeName(), y => y.oldValues);
                         Dictionary<string, string> newValues = relatedEntriesChanges.ToDictionary(x => x.entityEntry.Entity.GetType().GetGenericTypeName(), y => y.newValues);
                         var relatedChanges = (oldValues.Count == 0 ? null : _json.Serialize(oldValues), newValues.Count == 0 ? null : _json.Serialize(newValues));
                         await _eventLogger.SaveAsync(domainEvent, relatedChanges, this);

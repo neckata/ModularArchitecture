@@ -1,7 +1,6 @@
-using System.Threading.Tasks;
-using ModularArchitecture.Shared.Core.EventLogging;
 using ModularArchitecture.Shared.Core.Wrapper;
 using ModularArchitecture.Shared.DTOs.Identity.EventLogs;
+using System.Threading.Tasks;
 
 namespace ModularArchitecture.Shared.Core.Interfaces.Services
 {

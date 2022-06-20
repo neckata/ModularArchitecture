@@ -1,4 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using ModularArchitecture.Shared.Core.Entities;
+using ModularArchitecture.Shared.Core.Exceptions;
+using ModularArchitecture.Shared.Core.Interfaces.Services;
+using ModularArchitecture.Shared.Core.Services.Identity;
+using ModularArchitecture.Shared.Core.Settings;
+using ModularArchitecture.Shared.Core.Wrapper;
+using ModularArchitecture.Shared.DTOs.Identity.Tokens;
+using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
@@ -7,16 +17,6 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using ModularArchitecture.Shared.Core.Entities;
-using ModularArchitecture.Shared.Core.Exceptions;
-using ModularArchitecture.Shared.Core.Interfaces.Services;
-using ModularArchitecture.Shared.Core.Services.Identity;
-using ModularArchitecture.Shared.Core.Settings;
-using ModularArchitecture.Shared.Core.Wrapper;
-using ModularArchitecture.Shared.DTOs.Identity.Tokens;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 
 namespace ModularArchitecture.Shared.Infrastructure.Services
 {

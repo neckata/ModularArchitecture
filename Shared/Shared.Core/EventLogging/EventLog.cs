@@ -1,6 +1,6 @@
-﻿using System;
-using ModularArchitecture.Shared.Core.Contracts;
+﻿using ModularArchitecture.Shared.Core.Contracts;
 using ModularArchitecture.Shared.Core.Domain;
+using System;
 
 namespace ModularArchitecture.Shared.Core.EventLogging
 {

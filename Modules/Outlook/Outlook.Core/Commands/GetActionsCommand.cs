@@ -15,7 +15,7 @@ namespace Outlook.Core.Commands
 
     public class GetActionsCommandHandler : IRequestHandler<GetActionsCommand, IResult<List<Action>>>
     {
-        private IOutlookClient _outlookClient;
+        private readonly IOutlookClient _outlookClient;
 
         public GetActionsCommandHandler(IOutlookClient outlookClient)
         {

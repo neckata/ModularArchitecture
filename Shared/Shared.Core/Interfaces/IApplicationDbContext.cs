@@ -1,6 +1,6 @@
-﻿using ModularArchitecture.Shared.Core.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using ModularArchitecture.Shared.Core.Entities;
 using ModularArchitecture.Shared.Core.EventLogging;
-using Microsoft.EntityFrameworkCore;
 
 namespace ModularArchitecture.Shared.Core.Interfaces
 {
