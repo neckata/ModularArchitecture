@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using ModularArchitecture.Shared.Core.Constants;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
+using ModularArchitecture.Shared.Core.Constants;
+using System;
+using System.Threading.Tasks;
 
 namespace ModularArchitecture.Shared.Infrastructure.Permissions
 {

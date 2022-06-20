@@ -20,7 +20,7 @@ namespace Outlook.Core.Commands
 
     public class CreateActionCommandHandler : IRequestHandler<CreateActionCommand, IResult<Guid>>
     {
-        private IOutlookClient _outlookClient;
+        private readonly IOutlookClient _outlookClient;
 
         public CreateActionCommandHandler(IOutlookClient outlookClient)
         {

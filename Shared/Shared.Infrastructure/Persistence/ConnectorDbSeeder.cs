@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using ModularArchitecture.Shared.Core.Entities;
 using ModularArchitecture.Shared.Core.Interfaces;
 using ModularArchitecture.Shared.Core.Interfaces.Services;
-using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
 using ModularArchitecture.Shared.Infrastructure.Utilities;
+using System.Threading.Tasks;
 
 namespace ModularArchitecture.Shared.Infrastructure.Persistence
 {
@@ -33,8 +33,8 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence
             {
                 foreach (string connectorName in ConnectorTypes.Instance.Modules)
                 {
-                    Connector connector = new Connector {Name = connectorName };
-                    var connectorInDb = await _db.Connectors.FirstOrDefaultAsync(x=>x.Name == connectorName);
+                    Connector connector = new Connector { Name = connectorName };
+                    var connectorInDb = await _db.Connectors.FirstOrDefaultAsync(x => x.Name == connectorName);
                     if (connectorInDb == null)
                     {
                         await _db.Connectors.AddAsync(connector);

@@ -20,7 +20,7 @@ namespace Slack.Core.Commands
 
     public class CreateActionCommandHandler : IRequestHandler<CreateActionCommand, IResult<Guid>>
     {
-        private ISlackClient _slackClient;
+        private readonly ISlackClient _slackClient;
 
         public CreateActionCommandHandler(ISlackClient slackClient)
         {

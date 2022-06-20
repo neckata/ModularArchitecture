@@ -1,8 +1,8 @@
-﻿using ModularArchitecture.Shared.Core.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using ModularArchitecture.Shared.Core.Interfaces;
 using ModularArchitecture.Shared.Core.Interfaces.Services.Event;
 using ModularArchitecture.Shared.Core.Wrapper;
 using ModularArchitecture.Shared.DTOs.Connector;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;

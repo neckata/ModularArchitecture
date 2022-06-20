@@ -1,8 +1,8 @@
-﻿using ModularArchitecture.Shared.Core.Wrapper;
-using System.Threading.Tasks;
-using ModularArchitecture.DTOs.Actions;
-using System.Collections.Generic;
+﻿using ModularArchitecture.DTOs.Actions;
 using ModularArchitecture.Shared.Core.Entities;
+using ModularArchitecture.Shared.Core.Wrapper;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ModularArchitecture.Shared.Core.Interfaces.Services.Connector
 {

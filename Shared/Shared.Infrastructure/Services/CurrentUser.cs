@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using ModularArchitecture.Shared.Core.Interfaces.Services.Identity;
+using ModularArchitecture.Shared.Infrastructure.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
-using ModularArchitecture.Shared.Infrastructure.Extensions;
-using ModularArchitecture.Shared.Core.Interfaces.Services.Identity;
-using Microsoft.AspNetCore.Http;
 
 namespace ModularArchitecture.Shared.Infrastructure.Services
 {

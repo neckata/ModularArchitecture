@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-using ModularArchitecture.Shared.Core.Wrapper;
+﻿using ModularArchitecture.Shared.Core.Wrapper;
 using ModularArchitecture.Shared.DTOs.Identity.Tokens;
+using System.Threading.Tasks;
 
 namespace ModularArchitecture.Shared.Core.Services.Identity
 {

@@ -1,7 +1,7 @@
-﻿using ModularArchitecture.Shared.Core.Extensions;
-using ModularArchitecture.Shared.Core.Settings;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using ModularArchitecture.Shared.Core.Extensions;
+using ModularArchitecture.Shared.Core.Settings;
 
 namespace ModularArchitecture.Shared.Infrastructure.Persistence
 {

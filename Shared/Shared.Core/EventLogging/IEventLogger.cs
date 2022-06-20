@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-using ModularArchitecture.Shared.Core.Domain;
+﻿using ModularArchitecture.Shared.Core.Domain;
 using ModularArchitecture.Shared.Core.Interfaces;
+using System.Threading.Tasks;
 
 namespace ModularArchitecture.Shared.Core.EventLogging
 {

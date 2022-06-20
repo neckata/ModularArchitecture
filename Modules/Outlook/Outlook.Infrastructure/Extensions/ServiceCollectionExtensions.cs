@@ -1,9 +1,9 @@
-﻿using Outlook.Core.Services;
+﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
-using MediatR;
 using Outlook.Core.Commands;
 using Outlook.Core.Interfaces;
+using Outlook.Core.Services;
+using System.Reflection;
 
 namespace ModularArchitecture.Modules.Outlook.Infrastructure.Extensions
 {

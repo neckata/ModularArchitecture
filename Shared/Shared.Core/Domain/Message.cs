@@ -1,5 +1,5 @@
-﻿using System;
-using ModularArchitecture.Shared.Core.Utilities;
+﻿using ModularArchitecture.Shared.Core.Utilities;
+using System;
 
 namespace ModularArchitecture.Shared.Core.Domain
 {

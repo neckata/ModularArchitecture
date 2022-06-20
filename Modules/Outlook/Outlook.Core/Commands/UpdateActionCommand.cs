@@ -20,7 +20,7 @@ namespace Outlook.Core.Commands
 
     public class UpdateActionCommandHandler : IRequestHandler<UpdateActionCommand, IResult<Guid>>
     {
-        private IOutlookClient _outlookClient;
+        private readonly IOutlookClient _outlookClient;
 
         public UpdateActionCommandHandler(IOutlookClient outlookClient)
         {

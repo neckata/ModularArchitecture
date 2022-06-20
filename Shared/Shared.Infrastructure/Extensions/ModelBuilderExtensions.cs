@@ -1,8 +1,8 @@
-﻿using System.Linq;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using ModularArchitecture.Shared.Core.Entities;
 using ModularArchitecture.Shared.Core.Settings;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace ModularArchitecture.Shared.Infrastructure.Extensions
 {

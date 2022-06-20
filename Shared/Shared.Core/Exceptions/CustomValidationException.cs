@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Net;
-using Microsoft.Extensions.Localization;
 
 namespace ModularArchitecture.Shared.Core.Exceptions
 {

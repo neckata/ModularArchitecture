@@ -1,11 +1,11 @@
 using Host.ModularArchitecture.Factory;
-using ModularArchitecture.Shared.Core.Extensions;
-using ModularArchitecture.Shared.Infrastructure.Extensions;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MediatR;
+using ModularArchitecture.Shared.Core.Extensions;
+using ModularArchitecture.Shared.Infrastructure.Extensions;
 using System.Reflection;
 
 namespace Host.ModularArchitecture

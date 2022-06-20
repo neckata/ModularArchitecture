@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using ModularArchitecture.Shared.Core.Exceptions;
 using ModularArchitecture.Shared.Core.Interfaces.Serialization;
 using ModularArchitecture.Shared.Core.Serialization;
 using ModularArchitecture.Shared.Core.Settings;
 using ModularArchitecture.Shared.Core.Wrapper;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Serialization;
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace ModularArchitecture.Shared.Infrastructure.Middlewares
 {

@@ -1,23 +1,35 @@
-﻿using ModularArchitecture.Shared.Core.Services.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using ModularArchitecture.Shared.Core.Services.Identity;
+using ModularArchitecture.Shared.Core.Wrapper;
 using ModularArchitecture.Shared.DTOs.Identity.Tokens;
 using ModularArchitecture.Shared.Infrastructure.Controllers;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using ModularArchitecture.Shared.Core.Wrapper;
 
 namespace Host.ModularArchitecture.Controllers
 {
+    /// <summary>
+    /// IdentityController
+    /// </summary>
     [ApiVersion("1")]
     public class IdentityController : CommonBaseController
     {
         private readonly ITokenService _tokenService;
 
+        /// <summary>
+        /// IdentityController
+        /// </summary>
+        /// <param name="tokenService"></param>
         public IdentityController(ITokenService tokenService)
         {
             _tokenService = tokenService;
         }
 
+        /// <summary>
+        /// Create token
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns>Generated token</returns>
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> GetTokenAsync(TokenRequest request)
@@ -27,6 +39,11 @@ namespace Host.ModularArchitecture.Controllers
             return Ok(token);
         }
 
+        /// <summary>
+        /// Refresh token
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns>New token</returns>
         [HttpPost("refresh")]
         [AllowAnonymous]
         public async Task<ActionResult> RefreshAsync(RefreshTokenRequest request)
@@ -36,6 +53,10 @@ namespace Host.ModularArchitecture.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// GenerateIPAddress
+        /// </summary>
+        /// <returns>IPv4 IP Address</returns>
         private string GenerateIPAddress()
         {
             if (Request.Headers.ContainsKey("X-Forwarded-For"))

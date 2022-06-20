@@ -4,6 +4,6 @@ namespace Outlook.Core.Interfaces
 {
     public interface IOutlookClient : IConnectorClient
     {
-       
+
     }
 }

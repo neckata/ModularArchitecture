@@ -1,7 +1,7 @@
-﻿using System;
+﻿using ModularArchitecture.Shared.Core.Contracts;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using ModularArchitecture.Shared.Core.Contracts;
 
 namespace ModularArchitecture.Shared.Core.Domain
 {
