@@ -4,6 +4,46 @@
         <name>ModularArchitecture.Shared.Core</name>
     </assembly>
     <members>
+        <member name="T:ModularArchitecture.Shared.Core.Contracts.IBaseEntity">
+            <summary>
+            Base entity to extend
+            </summary>
+        </member>
+        <member name="P:ModularArchitecture.Shared.Core.Contracts.IBaseEntity.DomainEvents">
+            <summary>
+            Events which occured in entity lifecycle
+            </summary>
+        </member>
+        <member name="M:ModularArchitecture.Shared.Core.Contracts.IBaseEntity.AddDomainEvent(ModularArchitecture.Shared.Core.Domain.Event)">
+            <summary>
+            Add event in entity lifecycle(update/delete/add)
+            </summary>
+            <param name="domainEvent"></param>
+        </member>
+        <member name="M:ModularArchitecture.Shared.Core.Contracts.IBaseEntity.RemoveDomainEvent(ModularArchitecture.Shared.Core.Domain.Event)">
+            <summary>
+            Remove event from entity lifecycle
+            </summary>
+            <param name="domainEvent"></param>
+        </member>
+        <member name="M:ModularArchitecture.Shared.Core.Contracts.IBaseEntity.ClearDomainEvents">
+            <summary>
+            Clear all events from entity
+            </summary>
+        </member>
+        <member name="T:ModularArchitecture.Shared.Core.Extensions.ServiceCollectionExtensions">
+            <summary>
+            Extends ServiceCollection and adds Serialization
+            </summary>
+        </member>
+        <member name="M:ModularArchitecture.Shared.Core.Extensions.ServiceCollectionExtensions.AddSerialization(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Add SystemTextJson or NewtonsoftJson serialization depending on config
+            </summary>
+            <param name="services"></param>
+            <param name="config"></param>
+            <returns></returns>
+        </member>
         <member name="F:ModularArchitecture.Shared.Core.Serialization.TimespanJsonConverter.TimeSpanFormatString">
             <summary>
             Format: Days.Hours:Minutes:Seconds:Milliseconds.

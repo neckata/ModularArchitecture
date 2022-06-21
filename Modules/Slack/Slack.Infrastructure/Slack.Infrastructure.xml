@@ -4,5 +4,17 @@
         <name>Slack.Infrastructure</name>
     </assembly>
     <members>
+        <member name="T:ModularArchitecture.Modules.Slack.Infrastructure.Extensions.ServiceCollectionExtensions">
+            <summary>
+            Extension of ServiceCollection
+            </summary>
+        </member>
+        <member name="M:ModularArchitecture.Modules.Slack.Infrastructure.Extensions.ServiceCollectionExtensions.AddSlackInfrastructure(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Called by reflection in Startup, injecting all services in main assembly
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

@@ -7,8 +7,17 @@ using System.Linq;
 
 namespace ModularArchitecture.Shared.Core.Extensions
 {
+    /// <summary>
+    /// Extends ServiceCollection and adds Serialization
+    /// </summary>
     public static class ServiceCollectionExtensions
     {
+        /// <summary>
+        /// Add SystemTextJson or NewtonsoftJson serialization depending on config
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="config"></param>
+        /// <returns></returns>
         public static IServiceCollection AddSerialization(this IServiceCollection services, IConfiguration config)
         {
             services.Configure<SerializationSettings>(config.GetSection(nameof(SerializationSettings)));
