@@ -14,7 +14,7 @@ namespace ModularArchitecture.Shared.Core.Interfaces
 
         public DbSet<RoleClaim> RoleClaims { get; set; }
 
-        public DbSet<Connector> Connectors { get; set; }
+        public DbSet<Module> Modules { get; set; }
 
         public DbSet<Action> Actions { get; set; }
     }

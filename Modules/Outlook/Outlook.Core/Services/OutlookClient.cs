@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace Outlook.Core.Services
 {
     /// <summary>
-    /// OutlookClient extends IConnectorClient
+    /// OutlookClient extends IModuleClient
     /// </summary>
     public class OutlookClient : IOutlookClient
     {
@@ -37,7 +37,7 @@ namespace Outlook.Core.Services
         /// <returns></returns>
         public async Task<IResult<List<Action>>> GetActionsAsync()
         {
-            List<Action> actions = await _context.Actions.Where(x => x.ConnectorType == "Outlook").AsNoTracking().ToListAsync();
+            List<Action> actions = await _context.Actions.Where(x => x.ModuleType == "Outlook").AsNoTracking().ToListAsync();
 
             return await Result<List<Action>>.SuccessAsync(actions);
         }
@@ -75,7 +75,7 @@ namespace Outlook.Core.Services
 
             Action action = _mapper.Map<Action>(request);
 
-            action.ConnectorType = "Outlook";
+            action.ModuleType = "Outlook";
 
             action.AddDomainEvent(new ActionAddEvent(action));
 

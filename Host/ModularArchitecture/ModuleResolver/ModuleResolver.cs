@@ -4,23 +4,23 @@ using System;
 using System.Linq;
 using System.Reflection;
 
-namespace Host.ModularArchitecture.Factory
+namespace Host.ModularArchitecture.ModuleResolver
 {
     /// <summary>
-    /// Provides access to connector to be used
+    /// Provides access to Module to be used
     /// </summary>
-    public class ConnectorFactory : IConnectorFactory
+    public class ModuleResolver : IModuleResolver
     {
         /// <summary>
-        /// Creates a action command for MediatR to be used agaisnt specific connector
+        /// Creates a action command for MediatR to be used agaisnt specific Module
         /// </summary>
-        /// <param name="connectorType">Connector</param>
+        /// <param name="moduleType">Module</param>
         /// <param name="request">Data</param>
         /// <param name="actionsType">Type of action</param>
         /// <returns>Command object</returns>
-        public object CreateCommand(string connectorType, object request, ActionsTypeEnum actionsType)
+        public object CreateCommand(string moduleType, object request, ActionsTypeEnum actionsType)
         {
-            Assembly module = AppDomain.CurrentDomain.GetAssemblies().First(x => x.FullName.Contains(connectorType));
+            Assembly module = AppDomain.CurrentDomain.GetAssemblies().First(x => x.FullName.Contains(moduleType));
             switch (actionsType)
             {
                 case ActionsTypeEnum.Create:
@@ -46,7 +46,7 @@ namespace Host.ModularArchitecture.Factory
                     }
             }
 
-            throw new ArgumentException($"Unknown connectorType '{connectorType}'");
+            throw new ArgumentException($"Unknown ModuleType '{moduleType}'");
         }
     }
 }

@@ -49,9 +49,9 @@ namespace ModularArchitecture.Shared.Infrastructure.Extensions
                 entity.ToTable("UserClaims");
             });
 
-            builder.Entity<Connector>(entity =>
+            builder.Entity<Module>(entity =>
             {
-                entity.ToTable("Connectors");
+                entity.ToTable("Modules");
             });
 
             builder.Entity<Action>(entity =>

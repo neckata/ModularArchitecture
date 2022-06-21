@@ -2,21 +2,21 @@
 
 namespace ModularArchitecture.Shared.Infrastructure.Utilities
 {
-    public sealed class ConnectorTypes
+    public sealed class ModuleTypes
     {
-        private ConnectorTypes() { }
+        private ModuleTypes() { }
 
         public List<string> Modules { get; set; }
 
-        private static ConnectorTypes instance = null;
+        private static ModuleTypes instance = null;
 
-        public static ConnectorTypes Instance
+        public static ModuleTypes Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new ConnectorTypes();
+                    instance = new ModuleTypes();
                 }
                 return instance;
             }

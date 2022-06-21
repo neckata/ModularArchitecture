@@ -4,11 +4,11 @@ namespace ModularArchitecture.Shared.Core.Constants
 {
     public static class Permissions
     {
-        [DisplayName("Connectors")]
-        [Description("Connectors Permissions")]
-        public static class Connectors
+        [DisplayName("Modules")]
+        [Description("Modules Permissions")]
+        public static class Modules
         {
-            public const string View = "Permissions.Connectors.View";
+            public const string View = "Permissions.Modules.View";
         }
 
         [DisplayName("Roles")]

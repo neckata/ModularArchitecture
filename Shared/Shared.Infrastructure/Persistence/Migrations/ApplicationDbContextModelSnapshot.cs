@@ -26,7 +26,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("ConnectorType")
+                    b.Property<int>("ModuleType")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -34,7 +34,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence.Migrations
                     b.ToTable("Actions");
                 });
 
-            modelBuilder.Entity("ModularArchitecture.Shared.Core.Entities.Connector", b =>
+            modelBuilder.Entity("ModularArchitecture.Shared.Core.Entities.Module", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -45,7 +45,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Connectors");
+                    b.ToTable("Modules");
                 });
 
             modelBuilder.Entity("ModularArchitecture.Shared.Core.Entities.Role", b =>

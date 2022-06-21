@@ -1,11 +1,11 @@
-﻿using ModularArchitecture.Shared.Core.Interfaces.Services.Connector;
+﻿using ModularArchitecture.Shared.Core.Interfaces.Services.Action;
 
 namespace Outlook.Core.Interfaces
 {
     /// <summary>
-    /// Extends IConnectorClient and adds more functionalities if needed
+    /// Extends IModuleClient and adds more functionalities if needed
     /// </summary>
-    public interface IOutlookClient : IConnectorClient
+    public interface IOutlookClient : IActionService
     {
 
     }

@@ -1,19 +1,19 @@
 ﻿using System;
 
-namespace ModularArchitecture.Shared.DTOs.Connector
+namespace ModularArchitecture.Shared.DTOs.Module
 {
     /// <summary>
-    /// ConnectorResponse
+    /// ModuleResponse
     /// </summary>
-    public class ConnectorResponse
+    public class ModuleResponse
     {
         /// <summary>
-        /// Connector ID
+        /// Module ID
         /// </summary>
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Connector Name
+        /// Module Name
         /// </summary>
         public string Name { get; set; }
     }

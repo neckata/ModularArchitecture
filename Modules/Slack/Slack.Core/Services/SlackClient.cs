@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace Slack.Core.Services
 {
     /// <summary>
-    /// SlackClient extends IConnectorClient
+    /// SlackClient extends IModuleClient
     /// </summary>
     public class SlackClient : ISlackClient
     {
@@ -37,7 +37,7 @@ namespace Slack.Core.Services
         /// <returns></returns>
         public async Task<IResult<List<Action>>> GetActionsAsync()
         {
-            List<Action> actions = await _context.Actions.Where(x => x.ConnectorType == "Slack").AsNoTracking().ToListAsync();
+            List<Action> actions = await _context.Actions.Where(x => x.ModuleType == "Slack").AsNoTracking().ToListAsync();
 
             return await Result<List<Action>>.SuccessAsync(actions);
         }
@@ -74,7 +74,7 @@ namespace Slack.Core.Services
 
             Action action = _mapper.Map<Action>(request);
 
-            action.ConnectorType = "Slack";
+            action.ModuleType = "Slack";
 
             action.AddDomainEvent(new ActionAddEvent(action));
 

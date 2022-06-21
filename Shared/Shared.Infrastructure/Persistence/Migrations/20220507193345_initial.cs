@@ -16,7 +16,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ConnectorType = table.Column<int>(type: "int", nullable: false)
+                    ModuleType = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -73,7 +73,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Connectors",
+                name: "Modules",
                 schema: "Application",
                 columns: table => new
                 {
@@ -81,7 +81,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Connectors", x => x.Id);
+                    table.PrimaryKey("PK_Modules", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -311,7 +311,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence.Migrations
                 schema: "Application");
 
             migrationBuilder.DropTable(
-                name: "Connectors",
+                name: "Modules",
                 schema: "Application");
 
             migrationBuilder.DropTable(

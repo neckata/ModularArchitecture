@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ModularArchitecture.Shared.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220508101114_Connectors")]
-    partial class Connectors
+    [Migration("20220508101114_Modules")]
+    partial class Modules
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,7 +28,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("ConnectorType")
+                    b.Property<int>("ModuleType")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -36,7 +36,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence.Migrations
                     b.ToTable("Actions");
                 });
 
-            modelBuilder.Entity("ModularArchitecture.Shared.Core.Entities.Connector", b =>
+            modelBuilder.Entity("ModularArchitecture.Shared.Core.Entities.Module", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,7 +47,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Connectors");
+                    b.ToTable("Modules");
                 });
 
             modelBuilder.Entity("ModularArchitecture.Shared.Core.Entities.Role", b =>

@@ -44,6 +44,73 @@
             <param name="config"></param>
             <returns></returns>
         </member>
+        <member name="T:ModularArchitecture.Shared.Core.IntegrationServices.Module.ModuleService">
+            <summary>
+            Get modules which are availabe for use
+            </summary>
+        </member>
+        <member name="M:ModularArchitecture.Shared.Core.IntegrationServices.Module.ModuleService.#ctor(ModularArchitecture.Shared.Core.Interfaces.IApplicationDbContext)">
+            <summary>
+            ModuleService
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:ModularArchitecture.Shared.Core.IntegrationServices.Module.ModuleService.GetAllModulesAsync">
+            <summary>
+            Gets all availabe modules
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ModularArchitecture.Shared.Core.IntegrationServices.Module.ModuleService.GetModuleAsync(System.Guid)">
+            <summary>
+            Gets Module detailed information
+            </summary>
+            <param name="ModuleId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ModularArchitecture.Shared.Core.Interfaces.Services.Action.IActionService">
+            <summary>
+            Base interface to be implemented by all Modules
+            </summary>
+        </member>
+        <member name="M:ModularArchitecture.Shared.Core.Interfaces.Services.Action.IActionService.UpdateActionAsync(ModularArchitecture.DTOs.Actions.UpdateActionRequest)">
+            <summary>
+            Update action in Module
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ModularArchitecture.Shared.Core.Interfaces.Services.Action.IActionService.CreateActionAsync(ModularArchitecture.DTOs.Actions.CreateActionRequest)">
+            <summary>
+            Create action in Module
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ModularArchitecture.Shared.Core.Interfaces.Services.Action.IActionService.GetActionsAsync">
+            <summary>
+             Get created actions in Module
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ModularArchitecture.Shared.Core.Interfaces.Services.Module.IModuleService">
+            <summary>
+            Get modules which are available for use
+            </summary>
+        </member>
+        <member name="M:ModularArchitecture.Shared.Core.Interfaces.Services.Module.IModuleService.GetAllModulesAsync">
+            <summary>
+            Gets all available modules
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ModularArchitecture.Shared.Core.Interfaces.Services.Module.IModuleService.GetModuleAsync(System.Guid)">
+            <summary>
+            Gets Module detailed information
+            </summary>
+            <param name="ModuleId"></param>
+            <returns></returns>
+        </member>
         <member name="F:ModularArchitecture.Shared.Core.Serialization.TimespanJsonConverter.TimeSpanFormatString">
             <summary>
             Format: Days.Hours:Minutes:Seconds:Milliseconds.

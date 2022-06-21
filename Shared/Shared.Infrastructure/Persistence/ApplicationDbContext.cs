@@ -30,7 +30,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence
 
         public DbSet<EventLog> EventLogs { get; set; }
 
-        public DbSet<Connector> Connectors { get; set; }
+        public DbSet<Module> Modules { get; set; }
 
         public DbSet<Action> Actions { get; set; }
 

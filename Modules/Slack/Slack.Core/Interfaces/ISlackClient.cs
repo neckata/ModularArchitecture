@@ -1,11 +1,11 @@
-﻿using ModularArchitecture.Shared.Core.Interfaces.Services.Connector;
+﻿using ModularArchitecture.Shared.Core.Interfaces.Services.Action;
 
 namespace Slack.Core.Interfaces
 {
     /// <summary>
-    /// Extends IConnectorClient and adds more functionalities if needed
+    /// Extends IModuleClient and adds more functionalities if needed
     /// </summary>
-    public interface ISlackClient : IConnectorClient
+    public interface ISlackClient : IActionService
     {
 
     }

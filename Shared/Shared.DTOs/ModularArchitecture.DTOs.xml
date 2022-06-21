@@ -34,19 +34,19 @@
             Action ID
             </summary>
         </member>
-        <member name="T:ModularArchitecture.Shared.DTOs.Connector.ConnectorResponse">
+        <member name="T:ModularArchitecture.Shared.DTOs.Module.ModuleResponse">
             <summary>
-            ConnectorResponse
+            ModuleResponse
             </summary>
         </member>
-        <member name="P:ModularArchitecture.Shared.DTOs.Connector.ConnectorResponse.Id">
+        <member name="P:ModularArchitecture.Shared.DTOs.Module.ModuleResponse.Id">
             <summary>
-            Connector ID
+            Module ID
             </summary>
         </member>
-        <member name="P:ModularArchitecture.Shared.DTOs.Connector.ConnectorResponse.Name">
+        <member name="P:ModularArchitecture.Shared.DTOs.Module.ModuleResponse.Name">
             <summary>
-            Connector Name
+            Module Name
             </summary>
         </member>
     </members>

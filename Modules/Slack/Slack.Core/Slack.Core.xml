@@ -100,12 +100,12 @@
         </member>
         <member name="T:Slack.Core.Interfaces.ISlackClient">
             <summary>
-            Extends IConnectorClient and adds more functionalities if needed
+            Extends IModuleClient and adds more functionalities if needed
             </summary>
         </member>
         <member name="T:Slack.Core.Services.SlackClient">
             <summary>
-            SlackClient extends IConnectorClient
+            SlackClient extends IModuleClient
             </summary>
         </member>
         <member name="M:Slack.Core.Services.SlackClient.#ctor(AutoMapper.IMapper,ModularArchitecture.Shared.Core.Interfaces.IApplicationDbContext)">

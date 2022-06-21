@@ -100,12 +100,12 @@
         </member>
         <member name="T:Outlook.Core.Interfaces.IOutlookClient">
             <summary>
-            Extends IConnectorClient and adds more functionalities if needed
+            Extends IModuleClient and adds more functionalities if needed
             </summary>
         </member>
         <member name="T:Outlook.Core.Services.OutlookClient">
             <summary>
-            OutlookClient extends IConnectorClient
+            OutlookClient extends IModuleClient
             </summary>
         </member>
         <member name="M:Outlook.Core.Services.OutlookClient.#ctor(AutoMapper.IMapper,ModularArchitecture.Shared.Core.Interfaces.IApplicationDbContext)">

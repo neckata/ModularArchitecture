@@ -1,4 +1,4 @@
-using Host.ModularArchitecture.Factory;
+using Host.ModularArchitecture.ModuleResolver;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,7 +26,7 @@ namespace Host.ModularArchitecture
                   .AddSerialization(_config)
                   .AddSharedInfrastructure(_config)
                   .AddMediatR(Assembly.GetExecutingAssembly())
-                  .AddTransient<IConnectorFactory, ConnectorFactory>();
+                  .AddTransient<IModuleResolver, ModuleResolver.ModuleResolver>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

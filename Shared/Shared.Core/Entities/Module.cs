@@ -2,11 +2,11 @@
 
 namespace ModularArchitecture.Shared.Core.Entities
 {
-    public class Connector : BaseEntity
+    public class Module : BaseEntity
     {
         public string Name { get; set; }
 
-        public Connector()
+        public Module()
         {
 
         }

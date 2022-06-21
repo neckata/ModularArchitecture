@@ -13,10 +13,10 @@ using ModularArchitecture.Shared.Core.Entities;
 using ModularArchitecture.Shared.Core.EventLogging;
 using ModularArchitecture.Shared.Core.Exceptions;
 using ModularArchitecture.Shared.Core.Extensions;
-using ModularArchitecture.Shared.Core.IntegrationServices.Event;
+using ModularArchitecture.Shared.Core.IntegrationServices.Module;
 using ModularArchitecture.Shared.Core.Interfaces;
 using ModularArchitecture.Shared.Core.Interfaces.Services;
-using ModularArchitecture.Shared.Core.Interfaces.Services.Event;
+using ModularArchitecture.Shared.Core.Interfaces.Services.Module;
 using ModularArchitecture.Shared.Core.Interfaces.Services.Identity;
 using ModularArchitecture.Shared.Core.Services.Identity;
 using ModularArchitecture.Shared.Core.Settings;
@@ -43,6 +43,9 @@ using System.Threading.Tasks;
 
 namespace ModularArchitecture.Shared.Infrastructure.Extensions
 {
+    /// <summary>
+    /// Extends ServiceCollection and add all shared infrastructure
+    /// </summary>
     public static class ServiceCollectionExtensions
     {
         internal static IServiceCollection AddSharedInfrastructure(this IServiceCollection services, IConfiguration config)
@@ -79,11 +82,16 @@ namespace ModularArchitecture.Shared.Infrastructure.Extensions
             return services;
         }
 
+        /// <summary>
+        /// Services
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="config"></param>
+        /// <returns></returns>
         private static IServiceCollection AddApplicationLayer(this IServiceCollection services, IConfiguration config)
         {
-            //Here add all services
             services.AddTransient<IEventLogService, EventLogService>();
-            services.AddTransient<IEventService, EventService>();
+            services.AddTransient<IModuleService, ModuleService>();
             return services;
         }
 
@@ -130,7 +138,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Extensions
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
             services.AddTransient<IDatabaseSeeder, IdentityDbSeeder>();
-            services.AddTransient<IDatabaseSeeder, ConnectorDbSeeder>();
+            services.AddTransient<IDatabaseSeeder, ModuleDbSeeder>();
             services.AddPermissions(configuration);
             services.AddJwtAuthentication(configuration);
             return services;
@@ -309,7 +317,7 @@ namespace ModularArchitecture.Shared.Infrastructure.Extensions
                         toLoad.Add(path);
                 }
 
-                ConnectorTypes.Instance.Modules = modules;
+                ModuleTypes.Instance.Modules = modules;
 
                 toLoad.ForEach(filename =>
                 {

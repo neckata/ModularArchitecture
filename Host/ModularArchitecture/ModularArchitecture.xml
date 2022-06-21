@@ -6,52 +6,52 @@
     <members>
         <member name="T:Host.ModularArchitecture.Controllers.ActionController">
             <summary>
-            Controller used for accessing available connectors and using their features
+            Controller used for accessing available Modules and using their features
             </summary>
         </member>
-        <member name="M:Host.ModularArchitecture.Controllers.ActionController.#ctor(Host.ModularArchitecture.Factory.IConnectorFactory,ModularArchitecture.Shared.Core.Interfaces.Services.Event.IEventService,MediatR.IMediator)">
+        <member name="M:Host.ModularArchitecture.Controllers.ActionController.#ctor(Host.ModularArchitecture.ModuleResolver.IModuleResolver,ModularArchitecture.Shared.Core.Interfaces.Services.Module.IModuleService,MediatR.IMediator)">
             <summary>
             ActionController
             </summary>
-            <param name="connectorFactory"></param>
+            <param name="moduleResolver"></param>
             <param name="eventService"></param>
             <param name="mediator"></param>
         </member>
         <member name="M:Host.ModularArchitecture.Controllers.ActionController.CreateActionAsync(System.String,ModularArchitecture.DTOs.Actions.CreateActionRequest)">
             <summary>
-            Create action from specific connector
+            Create action from specific Module
             </summary>
-            <param name="connectorType">Connector</param>
+            <param name="moduleType">Module</param>
             <param name="request">Action</param>
             <returns>Created action</returns>
         </member>
         <member name="M:Host.ModularArchitecture.Controllers.ActionController.UpdateActionAsync(System.String,ModularArchitecture.DTOs.Actions.UpdateActionRequest)">
             <summary>
-            Update action from specific connector
+            Update action from specific Module
             </summary>
-            <param name="connectorType">Connector</param>
+            <param name="moduleType">Module</param>
             <param name="request">Action</param>
             <returns>Updated action</returns>
         </member>
         <member name="M:Host.ModularArchitecture.Controllers.ActionController.GetActions(System.String)">
             <summary>
-            Get actions from specific connector
+            Get actions from specific Module
             </summary>
-            <param name="connectorType">Connector</param>
+            <param name="moduleType">Module</param>
             <returns>List of actions</returns>
         </member>
-        <member name="M:Host.ModularArchitecture.Controllers.ActionController.GetConnectors">
+        <member name="M:Host.ModularArchitecture.Controllers.ActionController.GetModules">
             <summary>
-            Get available connectors
+            Get available Modules
             </summary>
-            <returns>List of connectors</returns>
+            <returns>List of Modules</returns>
         </member>
-        <member name="M:Host.ModularArchitecture.Controllers.ActionController.GetConnector(System.Guid)">
+        <member name="M:Host.ModularArchitecture.Controllers.ActionController.GetModule(System.Guid)">
             <summary>
-            Get detailed information about connector
+            Get detailed information about Module
             </summary>
-            <param name="connectorId"></param>
-            <returns>Connector</returns>
+            <param name="moduleId"></param>
+            <returns>Module</returns>
         </member>
         <member name="T:Host.ModularArchitecture.Controllers.IdentityController">
             <summary>
@@ -84,32 +84,32 @@
             </summary>
             <returns>IPv4 IP Address</returns>
         </member>
-        <member name="T:Host.ModularArchitecture.Factory.ConnectorFactory">
+        <member name="T:Host.ModularArchitecture.ModuleResolver.IModuleResolver">
             <summary>
-            Provides access to connector to be used
+            Provides access to Module to be used
             </summary>
         </member>
-        <member name="M:Host.ModularArchitecture.Factory.ConnectorFactory.CreateCommand(System.String,System.Object,ModularArchitecture.Shared.Infrastructure.Enums.ActionsTypeEnum)">
+        <member name="M:Host.ModularArchitecture.ModuleResolver.IModuleResolver.CreateCommand(System.String,System.Object,ModularArchitecture.Shared.Infrastructure.Enums.ActionsTypeEnum)">
             <summary>
-            Creates a action command for MediatR to be used agaisnt specific connector
+            Creates a action command for MediatR to be used agaisnt specific Module
             </summary>
-            <param name="connectorType">Connector</param>
-            <param name="request">Data</param>
-            <param name="actionsType">Type of action</param>
-            <returns>Command object</returns>
-        </member>
-        <member name="T:Host.ModularArchitecture.Factory.IConnectorFactory">
-            <summary>
-            Provides access to connector to be used
-            </summary>
-        </member>
-        <member name="M:Host.ModularArchitecture.Factory.IConnectorFactory.CreateCommand(System.String,System.Object,ModularArchitecture.Shared.Infrastructure.Enums.ActionsTypeEnum)">
-            <summary>
-            Creates a action command for MediatR to be used agaisnt specific connector
-            </summary>
-            <param name="connectorType"></param>
+            <param name="moduleType"></param>
             <param name="request"></param>
             <param name="actionsType"></param>
+            <returns>Command object</returns>
+        </member>
+        <member name="T:Host.ModularArchitecture.ModuleResolver.ModuleResolver">
+            <summary>
+            Provides access to Module to be used
+            </summary>
+        </member>
+        <member name="M:Host.ModularArchitecture.ModuleResolver.ModuleResolver.CreateCommand(System.String,System.Object,ModularArchitecture.Shared.Infrastructure.Enums.ActionsTypeEnum)">
+            <summary>
+            Creates a action command for MediatR to be used agaisnt specific Module
+            </summary>
+            <param name="moduleType">Module</param>
+            <param name="request">Data</param>
+            <param name="actionsType">Type of action</param>
             <returns>Command object</returns>
         </member>
     </members>
