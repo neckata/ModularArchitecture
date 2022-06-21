@@ -4,5 +4,50 @@
         <name>ModularArchitecture.DTOs</name>
     </assembly>
     <members>
+        <member name="T:ModularArchitecture.DTOs.Actions.ActionResponse">
+            <summary>
+            ActionResponse
+            </summary>
+        </member>
+        <member name="P:ModularArchitecture.DTOs.Actions.ActionResponse.Id">
+            <summary>
+            Action ID
+            </summary>
+        </member>
+        <member name="T:ModularArchitecture.DTOs.Actions.CreateActionRequest">
+            <summary>
+            CreateActionRequest
+            </summary>
+        </member>
+        <member name="P:ModularArchitecture.DTOs.Actions.CreateActionRequest.Id">
+            <summary>
+            Action ID
+            </summary>
+        </member>
+        <member name="T:ModularArchitecture.DTOs.Actions.UpdateActionRequest">
+            <summary>
+            UpdateActionRequest
+            </summary>
+        </member>
+        <member name="P:ModularArchitecture.DTOs.Actions.UpdateActionRequest.Id">
+            <summary>
+            Action ID
+            </summary>
+        </member>
+        <member name="T:ModularArchitecture.Shared.DTOs.Module.ModuleResponse">
+            <summary>
+            ModuleResponse
+            </summary>
+        </member>
+        <member name="P:ModularArchitecture.Shared.DTOs.Module.ModuleResponse.Id">
+            <summary>
+            Module ID
+            </summary>
+        </member>
+        <member name="P:ModularArchitecture.Shared.DTOs.Module.ModuleResponse.Name">
+            <summary>
+            Module Name
+            </summary>
+        </member>
     </members>
 </doc>

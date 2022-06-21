@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace ModularArchitecture.Shared.Infrastructure.Persistence
 {
-    internal class ConnectorDbSeeder : IDatabaseSeeder
+    internal class ModuleDbSeeder : IDatabaseSeeder
     {
-        private readonly ILogger<ConnectorDbSeeder> _logger;
+        private readonly ILogger<ModuleDbSeeder> _logger;
         private readonly IApplicationDbContext _db;
 
-        public ConnectorDbSeeder(
-            ILogger<ConnectorDbSeeder> logger,
+        public ModuleDbSeeder(
+            ILogger<ModuleDbSeeder> logger,
             IApplicationDbContext db)
         {
             _logger = logger;
@@ -23,22 +23,22 @@ namespace ModularArchitecture.Shared.Infrastructure.Persistence
 
         public void Initialize()
         {
-            AddConnectors();
+            AddModules();
             _db.SaveChanges();
         }
 
-        private void AddConnectors()
+        private void AddModules()
         {
             Task.Run(async () =>
             {
-                foreach (string connectorName in ConnectorTypes.Instance.Modules)
+                foreach (string ModuleName in ModuleTypes.Instance.Modules)
                 {
-                    Connector connector = new Connector { Name = connectorName };
-                    var connectorInDb = await _db.Connectors.FirstOrDefaultAsync(x => x.Name == connectorName);
-                    if (connectorInDb == null)
+                    Module Module = new Module { Name = ModuleName };
+                    var ModuleInDb = await _db.Modules.FirstOrDefaultAsync(x => x.Name == ModuleName);
+                    if (ModuleInDb == null)
                     {
-                        await _db.Connectors.AddAsync(connector);
-                        _logger.LogInformation(string.Format("Added '{0}' to Connectors", connectorName));
+                        await _db.Modules.AddAsync(Module);
+                        _logger.LogInformation(string.Format("Added '{0}' to Modules", ModuleName));
                     }
                 }
             }).GetAwaiter().GetResult();

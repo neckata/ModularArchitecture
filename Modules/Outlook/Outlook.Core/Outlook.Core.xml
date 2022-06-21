@@ -4,5 +4,136 @@
         <name>Outlook.Core</name>
     </assembly>
     <members>
+        <member name="T:Outlook.Core.Commands.CreateActionCommand">
+            <summary>
+            Create action command, created with reflection
+            </summary>
+        </member>
+        <member name="P:Outlook.Core.Commands.CreateActionCommand.Request">
+            <summary>
+            Request
+            </summary>
+        </member>
+        <member name="M:Outlook.Core.Commands.CreateActionCommand.#ctor(ModularArchitecture.DTOs.Actions.CreateActionRequest)">
+            <summary>
+            CreateActionCommand
+            </summary>
+            <param name="createAction"></param>
+        </member>
+        <member name="T:Outlook.Core.Commands.CreateActionCommandHandler">
+            <summary>
+            Outlook handler for create action command, called with Reflection
+            </summary>
+        </member>
+        <member name="M:Outlook.Core.Commands.CreateActionCommandHandler.#ctor(Outlook.Core.Interfaces.IOutlookClient)">
+            <summary>
+            CreateActionCommandHandler
+            </summary>
+            <param name="outlookClient"></param>
+        </member>
+        <member name="M:Outlook.Core.Commands.CreateActionCommandHandler.Handle(Outlook.Core.Commands.CreateActionCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handle CreateActionCommand
+            </summary>
+            <param name="command"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Outlook.Core.Commands.GetActionsCommand">
+            <summary>
+            Get actions command, created with reflection
+            </summary>
+        </member>
+        <member name="T:Outlook.Core.Commands.GetActionsCommandHandler">
+            <summary>
+            Outlook handler for get actions command, called with Reflection
+            </summary>
+        </member>
+        <member name="M:Outlook.Core.Commands.GetActionsCommandHandler.#ctor(Outlook.Core.Interfaces.IOutlookClient)">
+            <summary>
+            GetActionsCommandHandler
+            </summary>
+            <param name="outlookClient"></param>
+        </member>
+        <member name="M:Outlook.Core.Commands.GetActionsCommandHandler.Handle(Outlook.Core.Commands.GetActionsCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handle GetActionsCommand
+            </summary>
+            <param name="command"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Outlook.Core.Commands.UpdateActionCommand">
+            <summary>
+            Update action command, created with reflection
+            </summary>
+        </member>
+        <member name="P:Outlook.Core.Commands.UpdateActionCommand.Request">
+            <summary>
+            Request
+            </summary>
+        </member>
+        <member name="M:Outlook.Core.Commands.UpdateActionCommand.#ctor(ModularArchitecture.DTOs.Actions.UpdateActionRequest)">
+            <summary>
+            UpdateActionCommand
+            </summary>
+            <param name="UpdateAction"></param>
+        </member>
+        <member name="T:Outlook.Core.Commands.UpdateActionCommandHandler">
+            <summary>
+            Outlook handler for update action command, called with Reflection
+            </summary>
+        </member>
+        <member name="M:Outlook.Core.Commands.UpdateActionCommandHandler.#ctor(Outlook.Core.Interfaces.IOutlookClient)">
+            <summary>
+            UpdateActionCommandHandler
+            </summary>
+            <param name="outlookClient"></param>
+        </member>
+        <member name="M:Outlook.Core.Commands.UpdateActionCommandHandler.Handle(Outlook.Core.Commands.UpdateActionCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handle UpdateActionCommand
+            </summary>
+            <param name="command"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Outlook.Core.Interfaces.IOutlookClient">
+            <summary>
+            Extends IModuleClient and adds more functionalities if needed
+            </summary>
+        </member>
+        <member name="T:Outlook.Core.Services.OutlookClient">
+            <summary>
+            OutlookClient extends IModuleClient
+            </summary>
+        </member>
+        <member name="M:Outlook.Core.Services.OutlookClient.#ctor(AutoMapper.IMapper,ModularArchitecture.Shared.Core.Interfaces.IApplicationDbContext)">
+            <summary>
+            OutlookClient
+            </summary>
+            <param name="mapper"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:Outlook.Core.Services.OutlookClient.GetActionsAsync">
+            <summary>
+            Get created actions in outlook
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Outlook.Core.Services.OutlookClient.UpdateActionAsync(ModularArchitecture.DTOs.Actions.UpdateActionRequest)">
+            <summary>
+            Update action in outlook
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Outlook.Core.Services.OutlookClient.CreateActionAsync(ModularArchitecture.DTOs.Actions.CreateActionRequest)">
+            <summary>
+            Create action in outlook
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

@@ -4,5 +4,136 @@
         <name>Slack.Core</name>
     </assembly>
     <members>
+        <member name="T:Slack.Core.Commands.CreateActionCommand">
+            <summary>
+            Create action command, created with reflection
+            </summary>
+        </member>
+        <member name="P:Slack.Core.Commands.CreateActionCommand.Request">
+            <summary>
+            Request
+            </summary>
+        </member>
+        <member name="M:Slack.Core.Commands.CreateActionCommand.#ctor(ModularArchitecture.DTOs.Actions.CreateActionRequest)">
+            <summary>
+            CreateActionCommand
+            </summary>
+            <param name="createAction"></param>
+        </member>
+        <member name="T:Slack.Core.Commands.CreateActionCommandHandler">
+            <summary>
+            Slack handler for create action command, called with Reflection
+            </summary>
+        </member>
+        <member name="M:Slack.Core.Commands.CreateActionCommandHandler.#ctor(Slack.Core.Interfaces.ISlackClient)">
+            <summary>
+            CreateActionCommandHandler
+            </summary>
+            <param name="slackClient"></param>
+        </member>
+        <member name="M:Slack.Core.Commands.CreateActionCommandHandler.Handle(Slack.Core.Commands.CreateActionCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handle CreateActionCommand
+            </summary>
+            <param name="command"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Slack.Core.Commands.GetActionsCommand">
+            <summary>
+            Get actions command, created with reflection
+            </summary>
+        </member>
+        <member name="T:Slack.Core.Commands.GetActionsCommandHandler">
+            <summary>
+            Slack handler for get actions command, called with Reflection
+            </summary>
+        </member>
+        <member name="M:Slack.Core.Commands.GetActionsCommandHandler.#ctor(Slack.Core.Interfaces.ISlackClient)">
+            <summary>
+            GetActionsCommandHandler
+            </summary>
+            <param name="slackClient"></param>
+        </member>
+        <member name="M:Slack.Core.Commands.GetActionsCommandHandler.Handle(Slack.Core.Commands.GetActionsCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handle GetActionsCommand
+            </summary>
+            <param name="command"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Slack.Core.Commands.UpdateActionCommand">
+            <summary>
+            Update action command, created with reflection
+            </summary>
+        </member>
+        <member name="P:Slack.Core.Commands.UpdateActionCommand.Request">
+            <summary>
+            Request
+            </summary>
+        </member>
+        <member name="M:Slack.Core.Commands.UpdateActionCommand.#ctor(ModularArchitecture.DTOs.Actions.UpdateActionRequest)">
+            <summary>
+            UpdateActionCommand
+            </summary>
+            <param name="UpdateAction"></param>
+        </member>
+        <member name="T:Slack.Core.Commands.UpdateActionCommandHandler">
+            <summary>
+            Slack handler for update action command, called with Reflection
+            </summary>
+        </member>
+        <member name="M:Slack.Core.Commands.UpdateActionCommandHandler.#ctor(Slack.Core.Interfaces.ISlackClient)">
+            <summary>
+            UpdateActionCommandHandler
+            </summary>
+            <param name="slackClient"></param>
+        </member>
+        <member name="M:Slack.Core.Commands.UpdateActionCommandHandler.Handle(Slack.Core.Commands.UpdateActionCommand,System.Threading.CancellationToken)">
+            <summary>
+            Handle UpdateActionCommand
+            </summary>
+            <param name="command"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Slack.Core.Interfaces.ISlackClient">
+            <summary>
+            Extends IModuleClient and adds more functionalities if needed
+            </summary>
+        </member>
+        <member name="T:Slack.Core.Services.SlackClient">
+            <summary>
+            SlackClient extends IModuleClient
+            </summary>
+        </member>
+        <member name="M:Slack.Core.Services.SlackClient.#ctor(AutoMapper.IMapper,ModularArchitecture.Shared.Core.Interfaces.IApplicationDbContext)">
+            <summary>
+            SlackClient
+            </summary>
+            <param name="mapper"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:Slack.Core.Services.SlackClient.GetActionsAsync">
+            <summary>
+            Get created actions in slack
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Slack.Core.Services.SlackClient.UpdateActionAsync(ModularArchitecture.DTOs.Actions.UpdateActionRequest)">
+            <summary>
+            Update action in slack
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Slack.Core.Services.SlackClient.CreateActionAsync(ModularArchitecture.DTOs.Actions.CreateActionRequest)">
+            <summary>
+            Create action in slack
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
