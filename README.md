@@ -47,35 +47,33 @@ You can use these credentials to generate jwt tokens in the `api/identity/tokens
  - A module is a logical unit of the business requirement. Slack and Outlook are a few examples of Modules.
  - One module should never depend on any other module. It can depend on Abstraction Interfaces that are present in Shared Application Projects.
  - Each module has to follow a domain-driven architecture
- - Every module will be further split into API, Core, and Infrastructure projects to enforce Clean Architecture.
- - Cross Module communication can happen only via Interfaces.
+ - Every module will be further split into Core and Infrastructure projects to enforce Clean Architecture.
 
  - Modules.Slack.Core – Contains Entities, Abstractions, and everything needed for the module to function independently.
  - Modules.Slack.Infrastructure – This project depends on the Core for abstractions.
-
-![Modules](https://raw.githubusercontent.com/neckata/ModularArchitecture/master/About/modules.PNG)
 
 ### Dependencies 
  - Module.Slack.Core should have a referece to Shared.Core
  - Module.Slack.Infrastructure should have a referece to Shared.Infrastructure & Module.Slack.Core
  - Shared.Infrastructure should have a reference to Shared.Core
  - Shared.Core should depend on Shared.Models
-
+ - All modules in Module folder are build and injected with reflection into the project
+ 
 ![Dependencies](https://raw.githubusercontent.com/neckata/ModularArchitecture/master/About/dependencies.PNG)
 
-### IConnectorClient
+### IModuleClient
 
-Every connector/module which will be added to the solution needs to implement IConnectorClient Shared/Shared.Core/Interfaces/Services/Connector/IConnectorClient.cs
+Every module which will be added to the solution needs to implement IModuleClient Shared/Shared.Core/Interfaces/Services/Connector/IConnectorClient.cs
  - UpdateActionAsync
  - CreateActionAsync
  - GetActions
-When implemented, the main controller -> Action can be used to acces diffrent connector implemantations
+ 
+When implemented, the main controller -> Action can be used to acces diffrent IModuleClient implemantations
 
 ### Swagger
  - There is swagger instaled
- - Module seperation is seen -> Outlook/Slack and their specific endpoints 
- - The "Action" controller is where the diffrent implemantation of the IConnectorClient from the modules comes into use
- - You can add/update/get an action by chosing the specific connector
- - You can get all Connectors from Action controller
+ - The "Action" controller is where the diffrent implemantation of the IModuleClient from the modules comes into use
+ - You can add/update/get an action by chosing the specific module
+ - You can get all Modules from Action controller
  
 ![Dependencies](https://raw.githubusercontent.com/neckata/ModularArchitecture/master/About/swagger.PNG)

@@ -17,5 +17,12 @@
             <param name="config"></param>
             <returns></returns>
         </member>
+        <member name="M:ModularArchitecture.Shared.Infrastructure.Extensions.ServiceCollectionExtensions.MapModules(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Get all modules in folder "Modules" and load their dlls to the main assembly
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
