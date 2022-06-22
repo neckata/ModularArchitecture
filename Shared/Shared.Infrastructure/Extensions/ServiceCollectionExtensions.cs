@@ -283,6 +283,11 @@ namespace ModularArchitecture.Shared.Infrastructure.Extensions
             });
         }
 
+        /// <summary>
+        /// Get all modules in folder "Modules" and load their dlls to the main assembly
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
         private static IServiceCollection MapModules(this IServiceCollection services)
         {
             List<Assembly> loadedAssemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
