@@ -63,7 +63,7 @@ You can use these credentials to generate jwt tokens in the `api/identity/tokens
 
 ### IModuleClient
 
-Every module which will be added to the solution needs to implement IModuleClient Shared/Shared.Core/Interfaces/Services/Connector/IConnectorClient.cs
+Every module which will be added to the solution needs to implement IModuleClient Shared/Shared.Core/Interfaces/Services/Connector/IModuleClient.cs
  - UpdateActionAsync
  - CreateActionAsync
  - GetActions
